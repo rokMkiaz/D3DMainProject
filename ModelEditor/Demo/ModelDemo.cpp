@@ -14,7 +14,7 @@ void ModelDemo::Initialize()
 	Airplane();
 	Tower();
 	Tank();
-	Kachujin();
+
 	IronMan();
 
 
@@ -45,7 +45,7 @@ void ModelDemo::Update()
 		tank->UpdateTransform(bone, transform.World());
 		tank->Update();
 	}
-	if (kachujin != NULL) kachujin->Update();
+
 	if (ironMan != NULL) ironMan->Update();
 
 }
@@ -81,11 +81,6 @@ void ModelDemo::Render()
 		tank->Render();
 	}
 
-	if (kachujin != NULL)
-	{
-		kachujin->Pass(pass);
-		kachujin->Render();
-	}
 	if (ironMan != NULL)
 	{
 		ironMan->Pass(pass);
@@ -119,15 +114,6 @@ void ModelDemo::Tank()
 	tank->GetTransform()->Position(20, 0, 0);
 }
 
-void ModelDemo::Kachujin()
-{
-	kachujin = new ModelRender(shader);
-	kachujin->ReadMesh(L"Kachujin/Mesh");
-	kachujin->ReadMaterial(L"Kachujin/Mesh");
-	kachujin->GetTransform()->Position(0, 0, -30);
-	kachujin->GetTransform()->Scale(0.025f, 0.025f, 0.025f);
-}
-
 void ModelDemo::IronMan()
 {
 
@@ -136,7 +122,6 @@ void ModelDemo::IronMan()
 	ironMan->ReadMaterial(L"IronMan/IronMan");
 	ironMan->GetTransform()->Position(30, 0, -30);
 	ironMan->GetTransform()->Scale(0.025f, 0.025f, 0.025f);
-
 }
 
 

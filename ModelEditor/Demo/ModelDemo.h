@@ -17,7 +17,7 @@ private:
 	void Airplane();
 	void Tower();
 	void Tank();
-	void Kachujin();
+
 	void IronMan();
 
 
@@ -27,7 +27,7 @@ private:
 	ModelRender* airplane = NULL;
 	ModelRender* tower = NULL;
 	ModelRender* tank = NULL;
-	ModelRender* kachujin = NULL;
+
 	ModelRender* ironMan = NULL;
 
 

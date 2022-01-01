@@ -153,6 +153,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Demo\AnimationDemo.cpp" />
     <ClCompile Include="Writer\Converter.cpp" />
     <ClCompile Include="ExportFile.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -163,6 +164,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Demo\AnimationDemo.h" />
     <ClInclude Include="Writer\Converter.h" />
     <ClInclude Include="ExportFile.h" />
     <ClInclude Include="Main.h" />

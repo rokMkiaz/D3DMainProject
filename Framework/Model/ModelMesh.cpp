@@ -59,6 +59,8 @@ void ModelMesh::SetShader(Shader* shader)
 
 
 	material->SetShader(shader);
+
+	sTransformsSRV = shader->AsSRV("TransformsMap");
 }
 
 void ModelMesh::Update()
@@ -80,6 +82,9 @@ void ModelMesh::Render()
 
 	vertexBuffer->Render();
 	indexBuffer->Render();
+
+	if (transformsSRV != NULL)
+		sTransformsSRV->SetResource(transformsSRV);
 
 	D3D::GetDC()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 

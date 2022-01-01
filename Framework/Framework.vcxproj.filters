@@ -41,6 +41,7 @@
     <ClCompile Include="Model\ModelRender.cpp" />
     <ClCompile Include="Renders\Material.cpp" />
     <ClCompile Include="Model\ModelClip.cpp" />
+    <ClCompile Include="Model\ModelAnimator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Renders">
@@ -99,5 +100,6 @@
     <ClInclude Include="Model\ModelRender.h" />
     <ClInclude Include="Renders\Material.h" />
     <ClInclude Include="Model\ModelClip.h" />
+    <ClInclude Include="Model\ModelAnimator.h" />
   </ItemGroup>
 </Project>
