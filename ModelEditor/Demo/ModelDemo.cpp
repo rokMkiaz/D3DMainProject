@@ -136,7 +136,7 @@ void ModelDemo::IronMan()
 	ironMan->ReadMaterial(L"IronMan/IronMan");
 	ironMan->GetTransform()->Position(30, 0, -30);
 	ironMan->GetTransform()->Scale(0.025f, 0.025f, 0.025f);
-	int i = 0;
+
 }
 
 
