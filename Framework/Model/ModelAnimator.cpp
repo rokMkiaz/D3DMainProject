@@ -20,8 +20,6 @@ ModelAnimator::~ModelAnimator()
 	SafeRelease(texture);
 	SafeRelease(srv);
 
-	int i = 0;
-
 	SafeDelete(frameBuffer);
 }
 
