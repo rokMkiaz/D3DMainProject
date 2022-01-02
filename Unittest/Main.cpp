@@ -2,6 +2,7 @@
 #include "Main.h"
 #include "Systems/Window.h"
 
+#include"Instancing/InstancingDemo.h"
 #include"World\GridDemo.h"
 #include"World\WorldDemo3.h"
 #include"World/RotationDemo.h"
@@ -24,7 +25,8 @@
 
 void Main::Initialize()
 {
-	Push(new CubeSkyDemo);
+	Push(new InstancingDemo);
+	//Push(new CubeSkyDemo);
 	//Push(new CubeMapDemo);
 	//Push(new MeshDemo);
 	//Push(new GetVerticalRaycast);

@@ -25,6 +25,7 @@
     <ClCompile Include="Mesh\MeshDemo.cpp" />
     <ClCompile Include="Objects\CubeMapDemo.cpp" />
     <ClCompile Include="Objects\CubeSkyDemo.cpp" />
+    <ClCompile Include="Instancing\InstancingDemo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main.h" />
@@ -51,5 +52,6 @@
     <ClInclude Include="Mesh\MeshDemo.h" />
     <ClInclude Include="Objects\CubeMapDemo.h" />
     <ClInclude Include="Objects\CubeSkyDemo.h" />
+    <ClInclude Include="Instancing\InstancingDemo.h" />
   </ItemGroup>
 </Project>

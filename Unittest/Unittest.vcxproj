@@ -153,6 +153,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Instancing\InstancingDemo.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Mesh\CubeDemo.cpp" />
     <ClCompile Include="Mesh\MeshDemo.cpp" />
@@ -182,6 +183,7 @@
     <ClCompile Include="World\WorldDemo3.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Instancing\InstancingDemo.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="Mesh\CubeDemo.h" />
     <ClInclude Include="Mesh\MeshDemo.h" />

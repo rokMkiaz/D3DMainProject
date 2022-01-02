@@ -7,6 +7,11 @@ public:
 	~ModelAnimator();
 
 	void Update();
+private:
+	void UpdateTweenMode();
+	void UpdateBlendMode();
+
+public:
 	void Render();
 
 public:
@@ -18,6 +23,10 @@ public:
 	Model* GetModel() { return model; }
 
 	void Pass(UINT pass);
+
+	void PlayTweenMode(UINT clip, float speed = 1.0f, float takeTime = 1.0f);
+	void PlayBlendMode(UINT clip, UINT clip1, UINT clip2);
+	void SetBlendAlpha(float alpha);
 
 private:
 	void CreateTexture();
@@ -62,10 +71,42 @@ private:
 		float Speed = 1.0f;
 
 		Vector2 Padding;
-	} keyframeDesc;
+	}; //keyframeDesc;
 
 	ConstantBuffer* frameBuffer;
 	ID3DX11EffectConstantBuffer* sFrameBuffer;
+
+	struct TweenDesc
+	{
+		float TakeTime = 1.0f;
+		float TweenTime = 0.0f;
+		float ChangeTime = 0.0f;
+		float Padding;
+
+		KeyframeDesc Curr;
+		KeyframeDesc Next;
+
+		TweenDesc()
+		{
+			Curr.Clip = 0;
+			Next.Clip = -1;
+		}
+	}tweenDesc;
+
+
+
+private:
+	struct BlendDesc
+	{
+		UINT Mode = 0;
+		float Alpha = 0;
+		Vector2 Padding;
+
+		KeyframeDesc Clip[3];//자연스럽게 할 동작 수
+	}blendDesc;
+
+	ConstantBuffer* blendBuffer;
+	ID3DX11EffectConstantBuffer* sBlendBuffer;
 
 
 private:

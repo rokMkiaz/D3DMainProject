@@ -7,8 +7,11 @@ ModelAnimator::ModelAnimator(Shader* shader)
 	model = new Model();
 	transform = new Transform(shader);
 
-	frameBuffer = new ConstantBuffer(&keyframeDesc, sizeof(KeyframeDesc));
-	sFrameBuffer = shader->AsConstantBuffer("CB_AnimationFrame");
+	frameBuffer = new ConstantBuffer(&tweenDesc, sizeof(TweenDesc));
+	sFrameBuffer = shader->AsConstantBuffer("CB_TweenFrame");
+
+	blendBuffer = new ConstantBuffer(&blendDesc, sizeof(BlendDesc));
+	sBlendBuffer = shader->AsConstantBuffer("CB_BlendFrame");
 }
 
 ModelAnimator::~ModelAnimator()
@@ -22,18 +25,15 @@ ModelAnimator::~ModelAnimator()
 
 
 	SafeDelete(frameBuffer);
+	SafeDelete(blendBuffer);
 }
 
 void ModelAnimator::Update()
 {
-	ImGui::InputInt("Clip", &keyframeDesc.Clip);
-	keyframeDesc.Clip %= model->ClipCount();
-	
-	keyframeDesc.CurrFrame ++* Time::Delta();
-	ImGui::InputInt("CurrFrame", (int*)&keyframeDesc.CurrFrame);
-	keyframeDesc.CurrFrame %= model->ClipByIndex(keyframeDesc.Clip)->FrameCount();
-	
-	
+	if (blendDesc.Mode == 0)
+		UpdateTweenMode();
+	else
+		UpdateBlendMode();
 
 	if (texture == NULL)
 	{
@@ -47,10 +47,95 @@ void ModelAnimator::Update()
 		mesh->Update();
 }
 
+void ModelAnimator::UpdateTweenMode()
+{
+	TweenDesc& desc = tweenDesc;
+
+	//현재 애니메이션
+	{
+		ModelClip* clip = model->ClipByIndex(desc.Curr.Clip);
+
+		desc.Curr.RunningTime += Time::Delta();
+
+		float time = 1.0f / clip->FrameRate() / desc.Curr.Speed;
+		if (desc.Curr.Time >= 1.0f)
+		{
+			desc.Curr.RunningTime = 0;
+
+			desc.Curr.CurrFrame = (desc.Curr.CurrFrame + 1) % clip->FrameCount();
+			desc.Curr.NextFrame = (desc.Curr.CurrFrame + 1) % clip->FrameCount();//러프
+		}
+		desc.Curr.Time = desc.Curr.RunningTime / time;
+
+	}
+
+	if (desc.Next.Clip > -1)
+	{
+		desc.ChangeTime += Time::Delta();
+		desc.TweenTime = desc.ChangeTime / desc.TakeTime;
+
+		if (desc.TweenTime >= 1.0f)
+		{
+			desc.Curr = desc.Next;
+
+			desc.Next.Clip = -1;
+			desc.Next.CurrFrame = 0;
+			desc.Next.NextFrame = 0;
+			desc.Next.Time = 0;
+			desc.Next.RunningTime = 0.0f;
+
+			desc.ChangeTime = 0.0f;
+			desc.TweenTime = 0.0f;
+		}
+		else
+		{
+			ModelClip* clip = model->ClipByIndex(desc.Next.Clip);
+
+			desc.Next.RunningTime += Time::Delta();
+
+			float time = 1.0f / clip->FrameRate() / desc.Next.Speed;
+			if (desc.Next.Time >= 1.0f)
+			{
+				desc.Next.RunningTime = 0;
+
+				desc.Next.NextFrame = (desc.Next.NextFrame + 1) % clip->FrameCount();
+				desc.Next.NextFrame = (desc.Next.NextFrame + 1) % clip->FrameCount();//러프
+			}
+			desc.Next.Time = desc.Next.RunningTime / time;
+		}
+	}
+
+}
+
+void ModelAnimator::UpdateBlendMode()
+{
+	BlendDesc& desc = blendDesc;
+
+	for (UINT i = 0; i < 3; i++)
+	{
+		ModelClip* clip = model->ClipByIndex(desc.Clip[i].Clip);
+
+		desc.Clip[i].RunningTime += Time::Delta();
+
+		float time = 1.0f / clip->FrameRate() / desc.Clip[i].Speed;
+		if (desc.Clip[i].Time >= 1.0f)
+		{
+			desc.Clip[i].RunningTime = 0;
+
+			desc.Clip[i].CurrFrame = (desc.Clip[i].CurrFrame + 1) % clip->FrameCount();
+			desc.Clip[i].NextFrame = (desc.Clip[i].CurrFrame + 1) % clip->FrameCount();
+		}
+		desc.Clip[i].Time = desc.Clip[i].RunningTime / time;
+	}
+}
+
 void ModelAnimator::Render()
 {
 	frameBuffer->Render();
 	sFrameBuffer->SetConstantBuffer(frameBuffer->Buffer());
+
+	blendBuffer->Render();
+	sBlendBuffer->SetConstantBuffer(blendBuffer->Buffer());
 
 	for (ModelMesh* mesh : model->Meshes())
 	{
@@ -78,6 +163,32 @@ void ModelAnimator::Pass(UINT pass)
 {
 	for (ModelMesh* mesh : model->Meshes())
 		mesh->Pass(pass);
+}
+
+void ModelAnimator::PlayTweenMode(UINT clip, float speed, float takeTime )
+{
+	blendDesc.Mode = 0;
+
+	tweenDesc.TakeTime = takeTime;
+
+	tweenDesc.Next.Clip = clip;
+	tweenDesc.Next.Speed = speed;
+}
+
+void ModelAnimator::PlayBlendMode(UINT clip, UINT clip1, UINT clip2)
+{
+	blendDesc.Mode = 1;
+
+	blendDesc.Clip[0].Clip = clip;
+	blendDesc.Clip[1].Clip = clip1;
+	blendDesc.Clip[2].Clip = clip2;
+}
+
+void ModelAnimator::SetBlendAlpha(float alpha)
+{
+	alpha = Math::Clamp(alpha, 0.0f, 2.0f);
+
+	blendDesc.Alpha = alpha;
 }
 
 void ModelAnimator::CreateTexture()
