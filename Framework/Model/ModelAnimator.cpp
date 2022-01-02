@@ -28,10 +28,12 @@ void ModelAnimator::Update()
 {
 	ImGui::InputInt("Clip", &keyframeDesc.Clip);
 	keyframeDesc.Clip %= model->ClipCount();
-
+	
+	keyframeDesc.CurrFrame ++* Time::Delta();
 	ImGui::InputInt("CurrFrame", (int*)&keyframeDesc.CurrFrame);
-	keyframeDesc.CurrFrame = model->ClipByIndex(keyframeDesc.Clip)->FrameCount();
-
+	keyframeDesc.CurrFrame %= model->ClipByIndex(keyframeDesc.Clip)->FrameCount();
+	
+	
 
 	if (texture == NULL)
 	{

@@ -28,12 +28,12 @@ void AnimationDemo::Update()
 void AnimationDemo::Render()
 {
 	ImGui::SliderFloat3("Direction2", direction, -1, +1);
-	shader->AsVector("Direction")->SetFloatVector(direction);
+	shader->AsVector("Direction2")->SetFloatVector(direction);
 	
 
 	static int pass = 0;
 	ImGui::InputInt("Pass2", &pass);
-	pass %= 2;
+	pass%= 2;
 
 
 
@@ -59,6 +59,10 @@ void AnimationDemo::Kachujin()
 	kachujin->ReadClip(L"Kachujin/Salsa Dancing");
 	kachujin->GetTransform()->Position(0, 0, -30);
 	kachujin->GetTransform()->Scale(0.025f, 0.025f, 0.025f);
+
+
+
+
 }
 
 

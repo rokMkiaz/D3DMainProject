@@ -5,11 +5,11 @@
 void ExportFile::Initialize()
 {
 
-	Airplane();
-	Tower();
-	Tank();
-    Kachujin();
-	IronMan();
+	//Airplane();
+	//Tower();
+	//Tank();
+    //Kachujin();
+	//IronMan();
 }
 
 void ExportFile::Airplane()
@@ -82,6 +82,7 @@ void ExportFile::IronMan()
 	conv->ExportMesh(L"IronMan/IronMan");
 	conv->ExportMaterial(L"IronMan/IronMan");
 	SafeDelete(conv);
+
 }
 
 
