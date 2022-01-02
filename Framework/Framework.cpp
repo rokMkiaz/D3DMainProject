@@ -1,3 +1,3 @@
 #include "Framework.h"
 
-int a = 1;
+int a = 5;
