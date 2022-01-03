@@ -154,6 +154,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Demo\AnimationDemo.cpp" />
+    <ClCompile Include="Demo\MeshDemo.cpp" />
     <ClCompile Include="Writer\Converter.cpp" />
     <ClCompile Include="ExportFile.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -165,6 +166,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Demo\AnimationDemo.h" />
+    <ClInclude Include="Demo\MeshDemo.h" />
     <ClInclude Include="Writer\Converter.h" />
     <ClInclude Include="ExportFile.h" />
     <ClInclude Include="Main.h" />

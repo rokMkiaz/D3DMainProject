@@ -17,7 +17,7 @@ private:
 	void Airplane();
 	void Tower();
 	void Tank();
-
+	//void Kachujin();
 	void IronMan();
 
 
@@ -31,11 +31,4 @@ private:
 	ModelRender* ironMan = NULL;
 
 
-
-	CubeSky* sky;
-
-	Vector3 direction = Vector3(-1, -1, +1);
-
-	Shader* gridShader;
-	MeshGrid* grid;
 };

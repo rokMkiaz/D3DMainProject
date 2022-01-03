@@ -33,7 +33,7 @@ private:
 	vector<ModelBone*> childs;
 };
 
-/////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
 
 class ModelMesh
 {
@@ -51,23 +51,18 @@ public:
 	void SetShader(Shader* shader);
 
 	void Update();
-	void Render();
+	void Render(UINT drawCount);
 
 	wstring Name() { return name; }
 
 	int BoneIndex() { return boneIndex; }
 	class ModelBone* Bone() { return bone; }
 
-	void Transforms(Matrix* transforms);
-	void SetTransform(Transform* transform);
-
 	void TransformsSRV(ID3D11ShaderResourceView* srv) { transformsSRV = srv; }
 
 private:
 	struct BoneDesc
 	{
-		Matrix Transforms[MAX_MODEL_TRANSFORMS];
-
 		UINT Index;
 		float Padding[3];
 	} boneDesc;
@@ -78,7 +73,6 @@ private:
 	Shader* shader;
 	UINT pass = 0;
 
-	Transform* transform = NULL;
 	PerFrame* perFrame = NULL;
 
 	wstring materialName = L"";

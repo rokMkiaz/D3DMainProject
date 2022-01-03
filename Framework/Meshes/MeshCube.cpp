@@ -1,8 +1,7 @@
 #include "Framework.h"
 #include "MeshCube.h"
 
-MeshCube::MeshCube(Shader * shader)
-	: Mesh(shader)
+MeshCube::MeshCube()
 {
 
 }
@@ -60,7 +59,7 @@ void MeshCube::Create()
 	vertices = new MeshVertex[v.size()];
 	vertexCount = v.size();
 
-	copy(v.begin(), v.end(), stdext::checked_array_iterator<MeshVertex *>(vertices, vertexCount));
+	copy(v.begin(), v.end(), stdext::checked_array_iterator<MeshVertex*>(vertices, vertexCount));
 
 
 	indexCount = 36;

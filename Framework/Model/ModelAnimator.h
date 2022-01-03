@@ -8,8 +8,8 @@ public:
 
 	void Update();
 private:
-	void UpdateTweenMode();
-	void UpdateBlendMode();
+	void UpdateTweenMode(UINT index);
+	void UpdateBlendMode(UINT index);
 
 public:
 	void Render();
@@ -19,14 +19,17 @@ public:
 	void ReadMaterial(wstring file);
 	void ReadClip(wstring file);
 
-	Transform* GetTransform() { return transform; }
 	Model* GetModel() { return model; }
 
 	void Pass(UINT pass);
 
-	void PlayTweenMode(UINT clip, float speed = 1.0f, float takeTime = 1.0f);
-	void PlayBlendMode(UINT clip, UINT clip1, UINT clip2);
-	void SetBlendAlpha(float alpha);
+	Transform* AddTransform();
+	Transform* GetTransform(UINT index) { return transforms[index]; }
+	void UpdateTransforms();
+
+	void PlayTweenMode(UINT index, UINT clip, float speed = 1.0f, float takeTime = 1.0f);
+	void PlayBlendMode(UINT index, UINT clip, UINT clip1, UINT clip2);
+	void SetBlendAlpha(UINT index, float alpha);
 
 private:
 	void CreateTexture();
@@ -49,6 +52,7 @@ private:
 		{
 			for (UINT i = 0; i < MAX_MODEL_KEYFRAMES; i++)
 				SafeDeleteArray(Transform[i]);
+
 			SafeDeleteArray(Transform);
 		}
 	};
@@ -71,7 +75,7 @@ private:
 		float Speed = 1.0f;
 
 		Vector2 Padding;
-	}; //keyframeDesc;
+	}; // keyframeDesc;
 
 	ConstantBuffer* frameBuffer;
 	ID3DX11EffectConstantBuffer* sFrameBuffer;
@@ -91,9 +95,7 @@ private:
 			Curr.Clip = 0;
 			Next.Clip = -1;
 		}
-	}tweenDesc;
-
-
+	} tweenDesc[MAX_MODEL_INSTANCE];
 
 private:
 	struct BlendDesc
@@ -102,15 +104,18 @@ private:
 		float Alpha = 0;
 		Vector2 Padding;
 
-		KeyframeDesc Clip[3];//자연스럽게 할 동작 수
-	}blendDesc;
+		KeyframeDesc Clip[3];
+	} blendDesc[MAX_MODEL_INSTANCE];
 
 	ConstantBuffer* blendBuffer;
 	ID3DX11EffectConstantBuffer* sBlendBuffer;
 
-
 private:
 	Shader* shader;
 	Model* model;
-	Transform* transform;
+
+	vector<Transform*> transforms;
+	Matrix worlds[MAX_MODEL_INSTANCE];
+
+	VertexBuffer* instanceBuffer;
 };

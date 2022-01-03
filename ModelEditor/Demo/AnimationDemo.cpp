@@ -1,78 +1,61 @@
-#include"stdafx.h"
-#include"AnimationDemo.h"
-#include"Writer/Converter.h"
-
+#include "stdafx.h"
+#include "AnimationDemo.h"
+#include "Writer/Converter.h"
 
 void AnimationDemo::Initialize()
 {
-	Context::Get()->GetCamera()->RotationDegree(20, 0, 0);
-	Context::Get()->GetCamera()->Position(1, 36, -85);
+	Context::Get()->GetCamera()->RotationDegree(17, 0, 0);
+	Context::Get()->GetCamera()->Position(0, 6, -41);
 
 
-	shader = new Shader(L"49_AnimationBlending.fx");
-
+	shader = new Shader(L"53_InstancingAnimation.fx");
 
 	Kachujin();
-
 
 }
 
 void AnimationDemo::Update()
 {
+	static UINT instance = 20;
+	static UINT clip = 0;
+	static float speed = 1.0f;
+	static float tweenTime = 1.0f;
 
-	if (kachujin != NULL) kachujin->Update();
+	static bool blendMode = false;
+	static float alpha = 0.0f;
 
+	ImGui::Checkbox("BlendMode", &blendMode);
+	if (blendMode == false)
+	{
+		ImGui::InputInt("Instance", (int*)&instance);
+		ImGui::InputInt("Clip", (int*)&clip);
+		clip %= 5;
 
+		ImGui::InputFloat("Speed", &speed, 0.01f);
+		ImGui::InputFloat("TweenTime", &tweenTime, 0.01f);
+
+		if (ImGui::Button("Apply"))
+			kachujin->PlayTweenMode(instance, clip, speed, tweenTime);
+	}
+	else
+	{
+		ImGui::InputInt("Instance", (int*)&instance);
+		ImGui::SliderFloat("Alpha", &alpha, 0.0f, 2.0f);
+
+		kachujin->SetBlendAlpha(instance, alpha);
+
+		if (ImGui::Button("Apply"))
+			kachujin->PlayBlendMode(instance, 0, 1, 2);
+	}
+
+	if (kachujin != NULL)
+		kachujin->Update();
 }
 
 void AnimationDemo::Render()
 {
-	static int clip = 0;
-	static float speed = 1.0f;
-	static float takeTime = 1.0f;
-
-	static bool bBlendMode = false;
-	static float blendAlpha = 0.0f;
-
-	ImGui::Checkbox("BlendMode", &bBlendMode);
-	if (bBlendMode == false)
-	{
-		ImGui::InputInt("Clip", &clip);
-		clip %= 5;
-
-		ImGui::SliderFloat("Speed", &speed, 0.1f, 5.0f);
-		ImGui::SliderFloat("TakeTime", &takeTime, 0.1f, 5.0f);
-
-		if (ImGui::Button("Apply"))
-			kachujin->PlayTweenMode(clip, speed, takeTime);
-	}
-	else
-	{
-		ImGui::SliderFloat("Alpha", &blendAlpha, 0.0f, 2.0f);
-		kachujin->SetBlendAlpha(blendAlpha);
-
-		if (ImGui::Button("Apply"))
-			kachujin->PlayBlendMode(0, 1, 2);
-	}
-
-
-
-	ImGui::SliderFloat3("Direction2", direction, -1, +1);
-	shader->AsVector("Direction")->SetFloatVector(direction);
-
-	static int pass = 0;
-	ImGui::InputInt("Pass2", &pass);
-	pass %= 2;
-
-
-
-	if (kachujin != NULL)
-	{
-		kachujin->Pass(pass);
-		kachujin->Render();
-	}
+	if (kachujin != NULL) kachujin->Render();
 }
-
 
 void AnimationDemo::Kachujin()
 {
@@ -84,10 +67,13 @@ void AnimationDemo::Kachujin()
 	kachujin->ReadClip(L"Kachujin/Sword And Shield Run");
 	kachujin->ReadClip(L"Kachujin/Sword And Shield Slash");
 	kachujin->ReadClip(L"Kachujin/Salsa Dancing");
-	kachujin->GetTransform()->Position(0, 0, -30);
-	kachujin->GetTransform()->Scale(0.025f, 0.025f, 0.025f);
 
-
+	for (float x = -50; x <= 50; x += 2.5f)
+	{
+		Transform* transform = kachujin->AddTransform();
+		transform->Position(x, 0, -5);
+		transform->Scale(0.01f, 0.01f, 0.01f);
+	}
+	kachujin->UpdateTransforms();
+	kachujin->Pass(2);
 }
-
-

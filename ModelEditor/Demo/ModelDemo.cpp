@@ -9,81 +9,46 @@ void ModelDemo::Initialize()
 	Context::Get()->GetCamera()->Position(1, 36, -85);
 
 
-	shader = new Shader(L"38_Model_Old.fx");
+	shader = new Shader(L"52_InstancingModel.fx");
 
 	Airplane();
 	Tower();
 	Tank();
-
-	IronMan();
-
-
-	sky = new CubeSky(L"Environment/GrassCube1024.dds");
-
-	gridShader = new Shader(L"25_Mesh_Old.fx");
-	grid = new MeshGrid(gridShader, 6, 6);
-	grid->GetTransform()->Scale(12, 1, 12);
-	grid->DiffuseMap(L"Floor.png");
+	//IronMan();
 
 }
 
 void ModelDemo::Update()
 {
-	sky->Update();
-	grid->Update();
-
 	if (airplane != NULL) airplane->Update();
 	if (tower != NULL) tower->Update();
-	if (tank != NULL)
-	{
-		ModelBone* bone = tank->GetModel()->BoneByIndex(10);
-
-		Transform transform;
-		float rotation = sinf(Time::Get()->Running() + 100) * Math::PI * Time::Delta();
-		transform.Rotation(0, rotation, 0);
-
-		tank->UpdateTransform(bone, transform.World());
-		tank->Update();
-	}
-
+	if (tank != NULL) tank->Update();
 	if (ironMan != NULL) ironMan->Update();
-
 }
 
 void ModelDemo::Render()
 {
-	ImGui::SliderFloat3("Direction", direction, -1, +1);
-	shader->AsVector("Direction")->SetFloatVector(direction);
-	gridShader->AsVector("Direction")->SetFloatVector(direction);
 
-	static int pass = 0;
-	ImGui::InputInt("Pass", &pass);
-	pass %= 2;
 
-	sky->Render();
-	grid->Render();
+
 
 	if (airplane != NULL)
 	{
-		airplane->Pass(pass);
 		airplane->Render();
 	}
 
 	if (tower != NULL)
 	{
-		tower->Pass(pass);
 		tower->Render();
 	}
 
 	if (tank != NULL)
 	{
-		tank->Pass(pass);
 		tank->Render();
 	}
 
 	if (ironMan != NULL)
 	{
-		ironMan->Pass(pass);
 		ironMan->Render();
 	}
 
@@ -94,7 +59,17 @@ void ModelDemo::Airplane()
 	airplane = new ModelRender(shader);
 	airplane->ReadMesh(L"B787/Airplane");
 	airplane->ReadMaterial(L"B787/Airplane");
-	airplane->GetTransform()->Scale(0.005f, 0.005f, 0.005f);
+
+	for (float x = -50; x <= 50; x += 2.5f)
+	{
+		Transform* transform = airplane->AddTransform();
+
+		transform->Position(Vector3(x, 0.0f, 2.5f));
+		transform->RotationDegree(0, Math::Random(-180.0f, 180.0f), 0);
+		transform->Scale(0.00025f, 0.00025f, 0.00025f);
+	}
+	airplane->UpdateTransforms();
+	airplane->Pass(1);
 }
 
 void ModelDemo::Tower()
@@ -102,8 +77,17 @@ void ModelDemo::Tower()
 	tower = new ModelRender(shader);
 	tower->ReadMesh(L"Tower/Tower");
 	tower->ReadMaterial(L"Tower/Tower");
-	tower->GetTransform()->Position(-20, 0, 0);
-	tower->GetTransform()->Scale(0.01f, 0.01f, 0.01f);
+
+	for (float x = -50; x <= 50; x += 2.5f)
+	{
+		Transform* transform = tower->AddTransform();
+
+		transform->Position(Vector3(x, 0.0f, 7.5f));
+		transform->RotationDegree(0, Math::Random(-180.0f, 180.0f), 0);
+		transform->Scale(0.003f, 0.003f, 0.003f);
+	}
+	tower->UpdateTransforms();
+	tower->Pass(1);
 }
 
 void ModelDemo::Tank()
@@ -111,17 +95,37 @@ void ModelDemo::Tank()
 	tank = new ModelRender(shader);
 	tank->ReadMesh(L"Tank/Tank");
 	tank->ReadMaterial(L"Tank/Tank");
-	tank->GetTransform()->Position(20, 0, 0);
+
+	for (float x = -50; x <= 50; x += 2.5f)
+	{
+		Transform* transform = tank->AddTransform();
+
+		transform->Position(Vector3(x, 0.0f, 5.0f));
+		transform->RotationDegree(0, Math::Random(-180.0f, 180.0f), 0);
+		transform->Scale(0.1f, 0.1f, 0.1f);
+	}
+	tank->UpdateTransforms();
+	tank->Pass(1);
 }
 
 void ModelDemo::IronMan()
 {
 
+
 	ironMan = new ModelRender(shader);
 	ironMan->ReadMesh(L"IronMan/IronMan");
 	ironMan->ReadMaterial(L"IronMan/IronMan");
-	ironMan->GetTransform()->Position(30, 0, -30);
-	ironMan->GetTransform()->Scale(0.025f, 0.025f, 0.025f);
+
+	for (float x = -50; x <= 50; x += 2.5f)
+	{
+		Transform* transform = ironMan->AddTransform();
+
+		transform->Position(Vector3(x, 0.0f, 10.0f));
+		transform->RotationDegree(0, Math::Random(-180.0f, 180.0f), 0);
+		transform->Scale(0.025f, 0.025f, 0.025f);
+	}
+	ironMan->UpdateTransforms();
+	ironMan->Pass(1);
 }
 
 

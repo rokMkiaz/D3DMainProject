@@ -1,11 +1,12 @@
-#include"Framework.h"
-#include"CubeSky.h"
+#include "Framework.h"
+#include "CubeSky.h"
 
 CubeSky::CubeSky(wstring file)
 {
 	shader = new Shader(L"29_CubeSky_Old.fx");
 
-	sphere = new MeshSphere(shader, 0.5f);
+	sphere = new MeshRender(shader, new MeshSphere(0.5f));
+	sphere->AddTransform();
 
 	file = L"../../_Textures/" + file;
 	Check(D3DX11CreateShaderResourceViewFromFile
@@ -14,7 +15,6 @@ CubeSky::CubeSky(wstring file)
 	));
 
 	sSrv = shader->AsSRV("SkyCubeMap");
-
 }
 
 CubeSky::~CubeSky()
@@ -30,7 +30,8 @@ void CubeSky::Update()
 	Vector3 position;
 	Context::Get()->GetCamera()->Position(&position);
 
-	sphere->GetTransform()->Position(position);
+	sphere->GetTransform(0)->Position(position);
+	sphere->UpdateTransforms();
 }
 
 void CubeSky::Render()

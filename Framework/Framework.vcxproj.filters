@@ -30,7 +30,6 @@
     <ClCompile Include="Meshes\MeshGrid.cpp" />
     <ClCompile Include="Meshes\MeshSphere.cpp" />
     <ClCompile Include="Meshes\MeshCube.cpp" />
-    <ClCompile Include="Objects\CubeMap.cpp" />
     <ClCompile Include="Environment\CubeSky.cpp" />
     <ClCompile Include="Renders\Buffers.cpp" />
     <ClCompile Include="Renders\Transform.cpp" />
@@ -42,6 +41,7 @@
     <ClCompile Include="Renders\Material.cpp" />
     <ClCompile Include="Model\ModelClip.cpp" />
     <ClCompile Include="Model\ModelAnimator.cpp" />
+    <ClCompile Include="Meshes\MeshRender.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Renders">
@@ -89,7 +89,6 @@
     <ClInclude Include="Meshes\MeshGrid.h" />
     <ClInclude Include="Meshes\MeshSphere.h" />
     <ClInclude Include="Meshes\MeshCube.h" />
-    <ClInclude Include="Objects\CubeMap.h" />
     <ClInclude Include="Environment\CubeSky.h" />
     <ClInclude Include="Renders\Buffers.h" />
     <ClInclude Include="Renders\Transform.h" />
@@ -101,5 +100,6 @@
     <ClInclude Include="Renders\Material.h" />
     <ClInclude Include="Model\ModelClip.h" />
     <ClInclude Include="Model\ModelAnimator.h" />
+    <ClInclude Include="Meshes\MeshRender.h" />
   </ItemGroup>
 </Project>

@@ -1,8 +1,8 @@
 #include "Framework.h"
 #include "MeshSphere.h"
 
-MeshSphere::MeshSphere(Shader * shader, float radius, UINT stackCount, UINT sliceCount)
-	: Mesh(shader), radius(radius), stackCount(stackCount), sliceCount(sliceCount)
+MeshSphere::MeshSphere(float radius, UINT stackCount, UINT sliceCount)
+	: radius(radius), stackCount(stackCount), sliceCount(sliceCount)
 {
 
 }
@@ -30,7 +30,7 @@ void MeshSphere::Create()
 
 			Vector3 p = Vector3
 			(
-				(radius * sinf(phi) * cosf(theta)), //구면좌표계로 그림
+				(radius * sinf(phi) * cosf(theta)),
 				(radius * cos(phi)),
 				(radius * sinf(phi) * sinf(theta))
 			);
@@ -39,7 +39,7 @@ void MeshSphere::Create()
 			D3DXVec3Normalize(&n, &p);
 
 			Vector2 uv = Vector2(theta / (Math::PI * 2), phi / Math::PI);
-			
+
 			v.push_back(MeshVertex(p.x, p.y, p.z, uv.x, uv.y, n.x, n.y, n.z));
 		}
 	}
@@ -49,10 +49,10 @@ void MeshSphere::Create()
 	vertices = new MeshVertex[v.size()];
 	vertexCount = v.size();
 
-	copy(v.begin(), v.end(), stdext::checked_array_iterator<MeshVertex *>(vertices, vertexCount));
+	copy(v.begin(), v.end(), stdext::checked_array_iterator<MeshVertex*>(vertices, vertexCount));
 
 
-	
+
 	vector<UINT> i;
 	for (UINT k = 1; k <= sliceCount; k++)
 	{
@@ -90,7 +90,7 @@ void MeshSphere::Create()
 	indices = new UINT[i.size()];
 	indexCount = i.size();
 
-	copy(i.begin(), i.end(), stdext::checked_array_iterator<UINT *>(indices, indexCount));
+	copy(i.begin(), i.end(), stdext::checked_array_iterator<UINT*>(indices, indexCount));
 
 	int a = 0;
 }

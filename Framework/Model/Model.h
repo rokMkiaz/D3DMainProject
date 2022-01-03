@@ -1,6 +1,7 @@
 #pragma once
 #define MAX_MODEL_TRANSFORMS 250
 #define MAX_MODEL_KEYFRAMES 500
+#define MAX_MODEL_INSTANCE 500
 
 class ModelBone;
 class ModelMesh;

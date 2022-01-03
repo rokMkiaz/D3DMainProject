@@ -1,8 +1,8 @@
 #include "Framework.h"
 #include "MeshGrid.h"
 
-MeshGrid::MeshGrid(Shader * shader, float offsetU, float offsetV)
-	: Mesh(shader), offsetU(offsetU), offsetV(offsetV)
+MeshGrid::MeshGrid(float offsetU, float offsetV)
+	: offsetU(offsetU), offsetV(offsetV)
 {
 
 }
@@ -21,7 +21,7 @@ void MeshGrid::Create()
 	float h = ((float)countZ - 1) * 0.5f;
 
 	vector<MeshVertex> v;
-	for(UINT z = 0; z < countZ; z++)
+	for (UINT z = 0; z < countZ; z++)
 	{
 		for (UINT x = 0; x < countX; x++)
 		{
@@ -38,7 +38,7 @@ void MeshGrid::Create()
 	vertices = new MeshVertex[v.size()];
 	vertexCount = v.size();
 
-	copy(v.begin(), v.end(), stdext::checked_array_iterator<MeshVertex *>(vertices, vertexCount));
+	copy(v.begin(), v.end(), stdext::checked_array_iterator<MeshVertex*>(vertices, vertexCount));
 
 
 	vector<UINT> i;
@@ -59,5 +59,5 @@ void MeshGrid::Create()
 	indices = new UINT[i.size()];
 	indexCount = i.size();
 
-	copy(i.begin(), i.end(), stdext::checked_array_iterator<UINT *>(indices, indexCount));
+	copy(i.begin(), i.end(), stdext::checked_array_iterator<UINT*>(indices, indexCount));
 }

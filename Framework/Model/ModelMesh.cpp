@@ -1,5 +1,5 @@
-#include"Framework.h"
-#include"ModelMesh.h"
+#include "Framework.h"
+#include "ModelMesh.h"
 
 ModelBone::ModelBone()
 {
@@ -8,9 +8,10 @@ ModelBone::ModelBone()
 
 ModelBone::~ModelBone()
 {
+
 }
 
-/////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
 
 ModelMesh::ModelMesh()
 {
@@ -19,7 +20,6 @@ ModelMesh::ModelMesh()
 
 ModelMesh::~ModelMesh()
 {
-	SafeDelete(transform);
 	SafeDelete(perFrame);
 
 	SafeDelete(material);
@@ -49,14 +49,10 @@ void ModelMesh::SetShader(Shader* shader)
 {
 	this->shader = shader;
 
-	SafeDelete(transform);
-	transform = new Transform(shader); //Shader가 연속해서 새로생기므로 삭제후 다시생성
-
 	SafeDelete(perFrame);
 	perFrame = new PerFrame(shader);
 
 	sBoneBuffer = shader->AsConstantBuffer("CB_Bone");
-
 
 	material->SetShader(shader);
 
@@ -68,16 +64,14 @@ void ModelMesh::Update()
 	boneDesc.Index = boneIndex;
 
 	perFrame->Update();
-	transform->Update();
 }
 
-void ModelMesh::Render()
+void ModelMesh::Render(UINT drawCount)
 {
 	boneBuffer->Render();
 	sBoneBuffer->SetConstantBuffer(boneBuffer->Buffer());
 
 	perFrame->Render();
-	transform->Render();
 	material->Render();
 
 	vertexBuffer->Render();
@@ -88,15 +82,5 @@ void ModelMesh::Render()
 
 	D3D::GetDC()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
-	shader->DrawIndexed(0, pass, indexCount);
-}
-
-void ModelMesh::Transforms(Matrix* transforms)
-{
-	memcpy(boneDesc.Transforms, transforms, sizeof(Matrix) * MAX_MODEL_TRANSFORMS);
-}
-
-void ModelMesh::SetTransform(Transform* transform)
-{
-	this->transform->Set(transform);
+	shader->DrawIndexedInstanced(0, pass, indexCount, drawCount);
 }

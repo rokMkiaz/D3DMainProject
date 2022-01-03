@@ -1,48 +1,49 @@
 #include "Framework.h"
 #include "Mesh.h"
 
-Mesh::Mesh(Shader* shader)
-	: Renderer(shader)
+Mesh::Mesh()
 {
-	sDiffuseMap = shader->AsSRV("DiffuseMap");
+
 }
 
 Mesh::~Mesh()
 {
+	SafeDelete(perFrame);
+
+	SafeDelete(vertexBuffer);
+	SafeDelete(indexBuffer);
+
 	SafeDeleteArray(vertices);
 	SafeDeleteArray(indices);
+}
 
-	SafeDelete(diffuseMap);
+void Mesh::SetShader(Shader* shader)
+{
+	this->shader = shader;
+
+	SafeDelete(perFrame);
+	perFrame = new PerFrame(shader);
 }
 
 void Mesh::Update()
 {
-	Super::Update(); //부모클래스 호출하는 매크로
+	perFrame->Update();
 }
 
-void Mesh::Render()
+void Mesh::Render(UINT drawCount)
 {
-	if (vertexBuffer == NULL && indexBuffer == NULL)
+	if (vertexBuffer == NULL || indexBuffer == NULL)
 	{
 		Create();
+
 		vertexBuffer = new VertexBuffer(vertices, vertexCount, sizeof(MeshVertex));
 		indexBuffer = new IndexBuffer(indices, indexCount);
 	}
 
-	Super::Render();
+	perFrame->Render();
+	vertexBuffer->Render();
+	indexBuffer->Render();
 
-
-	if (diffuseMap != NULL)
-		sDiffuseMap->SetResource(diffuseMap->SRV());
-
-	shader->DrawIndexed(0, Pass(), indexCount);
+	D3D::GetDC()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	shader->DrawIndexedInstanced(0, pass, indexCount, drawCount);
 }
-
-
-void Mesh::DiffuseMap(wstring file)
-{
-	SafeDelete(diffuseMap);
-
-	diffuseMap = new Texture(file);
-}
-

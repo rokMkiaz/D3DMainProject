@@ -1,5 +1,5 @@
 #pragma once
-#include"Systems\IExecute.h"
+#include "Systems/IExecute.h"
 
 class AnimationDemo : public IExecute
 {
@@ -16,13 +16,8 @@ public:
 private:
 	void Kachujin();
 
-
-
 private:
 	Shader* shader;
 
 	ModelAnimator* kachujin = NULL;
-
-	Vector3 direction = Vector3(-1, -1, +1);
-
 };

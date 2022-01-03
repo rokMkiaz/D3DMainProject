@@ -13,22 +13,32 @@ public:
 	void ReadMesh(wstring file);
 	void ReadMaterial(wstring file);
 
-	Transform* GetTransform() { return transform; }
 	Model* GetModel() { return model; }
+
+
+	Transform* AddTransform();
+	Transform* GetTransform(UINT index) { return transforms[index]; }
+	void UpdateTransforms();
 
 	void Pass(UINT pass);
 
-	void UpdateTransform(ModelBone* bone = NULL, Matrix& matrix = Matrix());
+	void UpdateTransform(UINT instanceId, UINT boneIndex, Transform& transform);
 
 private:
-	void UpdateBones(ModelBone* bone, Matrix& matrix);
+	void CreateTexture();
 
 private:
-	bool bRead = false;
-
 	Shader* shader;
 	Model* model;
-	Transform* transform;
 
-	Matrix transforms[MAX_MODEL_TRANSFORMS];
+	vector<Transform*> transforms;
+	Matrix worlds[MAX_MODEL_INSTANCE];
+
+	VertexBuffer* instanceBuffer;
+
+
+	Matrix boneTransforms[MAX_MODEL_INSTANCE][MAX_MODEL_TRANSFORMS];
+
+	ID3D11Texture2D* texture = NULL;
+	ID3D11ShaderResourceView* srv;
 };

@@ -5,12 +5,15 @@
 #include"ExportFile.h"
 #include"Demo/ModelDemo.h"
 #include"Demo/AnimationDemo.h"
+#include"Demo/MeshDemo.h"
 
 void Main::Initialize()
 {
+
 	Push(new ExportFile());
-	Push(new ModelDemo());
+	//Push(new ModelDemo());
 	Push(new AnimationDemo);
+	Push(new MeshDemo);
 }
 
 void Main::Ready()
