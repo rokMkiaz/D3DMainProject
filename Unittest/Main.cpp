@@ -2,6 +2,8 @@
 #include "Main.h"
 #include "Systems/Window.h"
 
+
+
 #include"Instancing/InstancingDemo.h"
 #include"World\GridDemo.h"
 #include"World\WorldDemo3.h"
@@ -20,14 +22,14 @@
 #include"Terrain/NormalVectorDemo.h"
 #include"Terrain/GetHeightDemo.h"
 #include"Terrain/GetVerticalRaycast.h"
-#include"Objects/CubeMapDemo.h"
 #include"Objects/CubeSkyDemo.h"
+#include"DirectCompute/ThreadDemo.h"
 
 void Main::Initialize()
 {
-	Push(new InstancingDemo);
-	//Push(new CubeSkyDemo);
-	//Push(new CubeMapDemo);
+	//Push(new ThreadDemo);
+	//Push(new InstancingDemo);
+	Push(new CubeSkyDemo);
 	//Push(new MeshDemo);
 	//Push(new GetVerticalRaycast);
 	//Push(new GetHeightDemo);

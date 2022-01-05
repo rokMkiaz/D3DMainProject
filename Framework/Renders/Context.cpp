@@ -4,10 +4,9 @@
 #include "Viewer/Perspective.h"
 #include "Viewer/Freedom.h"
 
-
 Context* Context::instance = NULL;
 
-Context * Context::Get()
+Context* Context::Get()
 {
 	//assert(instance != NULL);
 
@@ -33,7 +32,6 @@ Context::Context()
 	perspective = new Perspective(desc.Width, desc.Height);
 	viewport = new Viewport(desc.Width, desc.Height);
 	camera = new Freedom();
-
 }
 
 Context::~Context()
@@ -51,13 +49,15 @@ void Context::ResizeScreen()
 
 void Context::Update()
 {
+	//ImGui::SliderFloat3("Light Direction", direction, -1, +1);
+
 	camera->Update();
-	
 }
 
 void Context::Render()
 {
 	viewport->RSSetViewport();
+
 
 	string str = string("FrameRate : ") + to_string(ImGui::GetIO().Framerate);
 	Gui::Get()->RenderText(5, 5, 1, 1, 1, str);

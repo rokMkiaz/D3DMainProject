@@ -44,6 +44,8 @@ using namespace std;
 #include <DirectXTex.h>
 #pragma comment(lib, "directxtex.lib")
 
+#pragma comment(linker,"/entry:WinMainCRTStartup /subsystem:console")
+
 #define Check(hr) { assert(SUCCEEDED(hr)); }
 #define Super __super
 

@@ -1,21 +1,30 @@
-#include"Framework.h"
-#include"PerFrame.h"
+#include "Framework.h"
+#include "PerFrame.h"
 
 PerFrame::PerFrame(Shader* shader)
 	: shader(shader)
 {
 	buffer = new ConstantBuffer(&desc, sizeof(Desc));
 	sBuffer = shader->AsConstantBuffer("CB_PerFrame");
+
+	lightBuffer = new ConstantBuffer(&lightDesc, sizeof(LightDesc));
+	sLightBuffer = shader->AsConstantBuffer("CB_Light");
 }
 
 PerFrame::~PerFrame()
 {
 	SafeDelete(buffer);
+	SafeDelete(lightBuffer);
 }
 
 void PerFrame::Update()
 {
 	desc.Time = Time::Get()->Running();
+
+	lightDesc.Ambient = Context::Get()->Ambient();
+	lightDesc.Specular = Context::Get()->Specular();
+	lightDesc.Direction = Context::Get()->Direction();
+	lightDesc.Position = Context::Get()->Position();
 }
 
 void PerFrame::Render()
@@ -28,4 +37,7 @@ void PerFrame::Render()
 
 	buffer->Render();
 	sBuffer->SetConstantBuffer(buffer->Buffer());
+
+	lightBuffer->Render();
+	sLightBuffer->SetConstantBuffer(lightBuffer->Buffer());
 }

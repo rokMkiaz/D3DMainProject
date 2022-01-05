@@ -153,11 +153,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DirectCompute\ThreadDemo.cpp" />
     <ClCompile Include="Instancing\InstancingDemo.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Mesh\CubeDemo.cpp" />
     <ClCompile Include="Mesh\MeshDemo.cpp" />
-    <ClCompile Include="Objects\CubeMapDemo.cpp" />
     <ClCompile Include="Objects\CubeSkyDemo.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -183,11 +183,11 @@
     <ClCompile Include="World\WorldDemo3.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DirectCompute\ThreadDemo.h" />
     <ClInclude Include="Instancing\InstancingDemo.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="Mesh\CubeDemo.h" />
     <ClInclude Include="Mesh\MeshDemo.h" />
-    <ClInclude Include="Objects\CubeMapDemo.h" />
     <ClInclude Include="Objects\CubeSkyDemo.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Terrain\GetHeightDemo.h" />

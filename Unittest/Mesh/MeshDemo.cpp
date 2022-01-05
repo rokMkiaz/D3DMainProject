@@ -7,109 +7,121 @@ void MeshDemo::Initialize()
 	Context::Get()->GetCamera()->Position(1, 36, -85);
 
 
-	shader = new Shader(L"25_Mesh_Old.fx");
-	sDirection = shader->AsVector("Direction");
+	shader = new Shader(L"55_Render.fx");
 
 	CreateMesh();
-}
-
-void MeshDemo::Destroy()
-{
-	SafeDelete(shader);
-
-	SafeDelete(cube);
-	SafeDelete(grid);
-
-	for (int i = 0; i < 10; i++)
-	{
-		SafeDelete(cylinder[i]);
-		SafeDelete(sphere[i]);
-	}
 }
 
 void MeshDemo::Update()
 {
 	cube->Update();
 	grid->Update();
-
-	for (int i = 0; i < 10; i++)
-	{
-		cylinder[i]->Update();
-		sphere[i]->Update();
-	}
+	cylinder->Update();
+	sphere->Update();
 }
 
 void MeshDemo::Render()
 {
-	ImGui::SliderFloat3("Direction", direction, -1, +1);
-	sDirection->SetFloatVector(direction);
+	Pass(0, 1, 2);
 
-	static int pass = 0;
-	ImGui::InputInt("Pass", &pass);
-	pass %= 2;
+	wall->Render();
+	sphere->Render();
 
+	brick->Render();
+	cylinder->Render();
 
+	stone->Render();
 	cube->Render();
-	cube->Pass(pass);
-	
+
+	floor->Render();
 	grid->Render();
-	grid->Pass(pass);
-
-	//static int Num = 0;
-	//ImGui::InputInt("sphere", &Num);
-	//static Vector3 Size(5, 5, 5);
-	//ImGui::SliderFloat3("Size", Size, 5, +10);
-	//sDirection->SetFloatVector(direction);
-	//
-	//sphere[Num]->Scale(Size);
-	//Num %= 9;
-
-	for (int i = 0; i < 10; i++)
-	{
-		cylinder[i]->Pass(pass);
-		cylinder[i]->Render();
-
-
-		sphere[i]->Pass(pass);
-		sphere[i]->Render();
-
-	}
-
 }
 
 void MeshDemo::CreateMesh()
 {
-	cube = new MeshCube(shader);
-	cube->GetTransform()->Position(0, 5, 0);
-	cube->GetTransform()->Scale(20, 10, 20);
-	cube->DiffuseMap(L"Stones.png");
-
-	grid = new MeshGrid(shader, 6, 6);
-	grid->GetTransform()->Scale(12, 1, 12);
-	grid->DiffuseMap(L"Floor.png");
-
-
-	for (UINT i = 0; i < 5; i++)
+	//Create Material
 	{
-		cylinder[i * 2] = new MeshCylinder(shader, 0.5f, 3.0f, 20, 20);
-		cylinder[i * 2]->GetTransform()->Position(-30, 6, (float)i * 15.0f - 15.0f);
-		cylinder[i * 2]->GetTransform()->Scale(5, 5, 5);
-		cylinder[i * 2]->DiffuseMap(L"Bricks.png");
+		floor = new Material(shader);
+		floor->DiffuseMap("Floor.png");
+		//floor->SpecularMap("Floor_Specular.png");
+		//floor->NormalMap("Floor_Normal.png");
+		//floor->Specular(1, 1, 1, 20);
 
-		cylinder[i * 2 + 1] = new MeshCylinder(shader, 0.5f, 3.0f, 20, 20);
-		cylinder[i * 2 + 1]->GetTransform()->Position(30, 6, (float)i * 15.0f - 15.0f);
-		cylinder[i * 2 + 1]->GetTransform()->Scale(5, 5, 5);
-		cylinder[i * 2 + 1]->DiffuseMap(L"Bricks.png");
+		stone = new Material(shader);
+		stone->DiffuseMap("Stones.png");
+		//stone->SpecularMap("Stones_Specular.png");
+		//stone->NormalMap("Stones_Normal.png");
+		//stone->Specular(1, 1, 1, 20);
 
+		brick = new Material(shader);
+		brick->DiffuseMap("Bricks.png");
+		//brick->SpecularMap("Bricks_Specular.png");
+		//brick->NormalMap("Bricks_Normal.png");
+		//brick->Specular(1, 0.3f, 0.3f, 20);
 
-		sphere[i * 2] = new MeshSphere(shader, 0.5f, 20, 20);
-		sphere[i * 2]->GetTransform()->Position(-30, 15.5f, (float)i * 15.0f - 15.0f);
-		sphere[i * 2]->GetTransform()->Scale(5, 5, 5);
-		sphere[i * 2]->DiffuseMap(L"Wall.png");
-
-		sphere[i * 2 + 1] = new MeshSphere(shader, 0.5f, 20, 20);
-		sphere[i * 2 + 1]->GetTransform()->Position(30, 15.5f, (float)i * 15.0f - 15.0f);
-		sphere[i * 2 + 1]->GetTransform()->Scale(5, 5, 5);
-		sphere[i * 2 + 1]->DiffuseMap(L"Wall.png");
+		wall = new Material(shader);
+		wall->DiffuseMap("Wall.png");
+		//wall->SpecularMap("Wall_Specular.png");
+		//wall->NormalMap("Wall_Normal.png");
+		//wall->Specular(1, 1, 1, 20);
 	}
+
+	//Create Mesh
+	{
+		Transform* transform = NULL;
+
+		cube = new MeshRender(shader, new MeshCube());
+		transform = cube->AddTransform();
+		transform->Position(0, 5, 0);
+		transform->Scale(20, 10, 20);
+
+		grid = new MeshRender(shader, new MeshGrid(5, 5));
+		transform = grid->AddTransform();
+		transform->Position(0, 0, 0);
+		transform->Scale(12, 1, 12);
+
+		cylinder = new MeshRender(shader, new MeshCylinder(0.5f, 3.0f, 20, 20));
+		sphere = new MeshRender(shader, new MeshSphere(0.5f, 20, 20));
+		for (UINT i = 0; i < 5; i++)
+		{
+			transform = cylinder->AddTransform();
+			transform->Position(-30, 6, -15.0f + (float)i * 15.0f);
+			transform->Scale(5, 5, 5);
+
+			transform = cylinder->AddTransform();
+			transform->Position(30, 6, -15.0f + (float)i * 15.0f);
+			transform->Scale(5, 5, 5);
+
+
+			transform = sphere->AddTransform();
+			transform->Position(-30, 15.5f, -15.0f + (float)i * 15.0f);
+			transform->Scale(5, 5, 5);
+
+			transform = sphere->AddTransform();
+			transform->Position(30, 15.5f, -15.0f + (float)i * 15.0f);
+			transform->Scale(5, 5, 5);
+		}
+	}
+
+	sphere->UpdateTransforms();
+	cylinder->UpdateTransforms();
+	cube->UpdateTransforms();
+	grid->UpdateTransforms();
+
+	meshes.push_back(sphere);
+	meshes.push_back(cylinder);
+	meshes.push_back(cube);
+	meshes.push_back(grid);
+}
+
+void MeshDemo::Pass(UINT mesh, UINT model, UINT anim)
+{
+	for (MeshRender* temp : meshes)
+		temp->Pass(mesh);
+
+	for (ModelRender* temp : models)
+		temp->Pass(model);
+
+	for (ModelAnimator* temp : animators)
+		temp->Pass(anim);
 }
