@@ -23,4 +23,18 @@ private:
 	void MultiThread2();
 
 	void Join();
+
+	void Mutex();
+	void MutexUpdate();
+
+	void RaceCondition(int& counter);
+	void Execute();
+	void ExcuteTimer();
+	void ExcutePerfomance();
+private:
+	mutex m;
+	float progress = 0.0f;
+
+	Timer timer;
+	Timer timer2;
 };

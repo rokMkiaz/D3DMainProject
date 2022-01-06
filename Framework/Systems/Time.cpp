@@ -145,7 +145,7 @@ void Timer::Stop()
 
 Performance::Performance()
 {
-	QueryPerformanceFrequency((LARGE_INTEGER *)&tick);
+	QueryPerformanceFrequency((LARGE_INTEGER *)&tick); //성능비교를 위한 함수
 }
 
 void Performance::Start()

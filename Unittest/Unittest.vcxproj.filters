@@ -26,6 +26,7 @@
     <ClCompile Include="Objects\CubeSkyDemo.cpp" />
     <ClCompile Include="Instancing\InstancingDemo.cpp" />
     <ClCompile Include="DirectCompute\ThreadDemo.cpp" />
+    <ClCompile Include="DirectCompute\RawBufferDemo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main.h" />
@@ -53,5 +54,6 @@
     <ClInclude Include="Objects\CubeSkyDemo.h" />
     <ClInclude Include="Instancing\InstancingDemo.h" />
     <ClInclude Include="DirectCompute\ThreadDemo.h" />
+    <ClInclude Include="DirectCompute\RawBufferDemo.h" />
   </ItemGroup>
 </Project>

@@ -27,9 +27,9 @@
 
 void Main::Initialize()
 {
-	//Push(new ThreadDemo);
+	Push(new ThreadDemo);
 	//Push(new InstancingDemo);
-	Push(new CubeSkyDemo);
+	//Push(new CubeSkyDemo);
 	//Push(new MeshDemo);
 	//Push(new GetVerticalRaycast);
 	//Push(new GetHeightDemo);
