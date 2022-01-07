@@ -24,10 +24,14 @@
 #include"Terrain/GetVerticalRaycast.h"
 #include"Objects/CubeSkyDemo.h"
 #include"DirectCompute/ThreadDemo.h"
+#include"DirectCompute/RawBufferDemo.h"
+#include"DirectCompute/TextureBufferDemo.h"
 
 void Main::Initialize()
 {
-	Push(new ThreadDemo);
+	Push(new TextureBufferDemo);
+	//Push(new RawBufferDemo);
+	//Push(new ThreadDemo);
 	//Push(new InstancingDemo);
 	//Push(new CubeSkyDemo);
 	//Push(new MeshDemo);

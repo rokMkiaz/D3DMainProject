@@ -42,6 +42,7 @@
     <ClCompile Include="Model\ModelClip.cpp" />
     <ClCompile Include="Model\ModelAnimator.cpp" />
     <ClCompile Include="Meshes\MeshRender.cpp" />
+    <ClCompile Include="Renders\Render2D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Renders">
@@ -101,5 +102,6 @@
     <ClInclude Include="Model\ModelClip.h" />
     <ClInclude Include="Model\ModelAnimator.h" />
     <ClInclude Include="Meshes\MeshRender.h" />
+    <ClInclude Include="Renders\Render2D.h" />
   </ItemGroup>
 </Project>

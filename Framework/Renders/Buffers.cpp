@@ -158,11 +158,11 @@ void RawBuffer::CreateInput()
 
 	desc.ByteWidth = inputByte;
 	desc.BindFlags = D3D11_BIND_SHADER_RESOURCE;
-	desc.MiscFlags = D3D11_RESOURCE_MISC_BUFFER_ALLOW_RAW_VIEWS; //버퍼 용도
+	desc.MiscFlags = D3D11_RESOURCE_MISC_BUFFER_ALLOW_RAW_VIEWS;//버퍼 용도
 	desc.Usage = D3D11_USAGE_DYNAMIC;
 	desc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
 
-	D3D11_SUBRESOURCE_DATA   subResource = { 0 };
+	D3D11_SUBRESOURCE_DATA subResource = { 0 };
 	subResource.pSysMem = inputData;
 
 	Check(D3D::GetDevice()->CreateBuffer(&desc, inputData != NULL ? &subResource : NULL, &buffer));
@@ -185,7 +185,7 @@ void RawBuffer::CreateSRV()
 	ZeroMemory(&srvDesc, sizeof(D3D11_SHADER_RESOURCE_VIEW_DESC));
 	srvDesc.Format = DXGI_FORMAT_R32_TYPELESS; //프로그램에 맡기겠다.
 	srvDesc.ViewDimension = D3D11_SRV_DIMENSION_BUFFEREX;
-	srvDesc.BufferEx.Flags = D3D11_BUFFEREX_SRV_FLAG_RAW; //Raw버퍼용도로 사용한다.
+	srvDesc.BufferEx.Flags = D3D11_BUFFEREX_SRV_FLAG_RAW;//Raw버퍼용도로 사용한다
 	srvDesc.BufferEx.NumElements = desc.ByteWidth / 4;
 
 	Check(D3D::GetDevice()->CreateShaderResourceView(buffer, &srvDesc, &srv));
@@ -230,14 +230,15 @@ void RawBuffer::CreateResult()
 	ID3D11Buffer* buffer;
 
 	D3D11_BUFFER_DESC desc;
-	((ID3D11Buffer*)output)->GetDesc(&desc);
+	((ID3D11Buffer *)output)->GetDesc(&desc);
 	desc.Usage = D3D11_USAGE_STAGING;
-	desc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
-	desc.BindFlags = 0; //0이안되면 UNORDERED_ACCESS에서 디폴트가 아니면 fail시켜버린다.
+	desc.CPUAccessFlags = D3D11_CPU_ACCESS_READ; 
+	desc.BindFlags = D3D11_USAGE_DEFAULT;//0이안되면 UNORDERED_ACCESS에서 디폴트가 아니면 fail시켜버린다.
 	desc.MiscFlags = 0;
+
 	Check(D3D::GetDevice()->CreateBuffer(&desc, NULL, &buffer));
 
-	result = (ID3D11Resource*)buffer;
+	result = (ID3D11Resource *)buffer;
 
 }
 
@@ -253,10 +254,119 @@ void RawBuffer::CopyToInput(void* data)
 
 void RawBuffer::CopyFromOuput(void* data)
 {
+	D3D::GetDC()->CopyResource(result, output);
+
 	D3D11_MAPPED_SUBRESOURCE subResource;
-	D3D::GetDC()->Map(output, 0, D3D11_MAP_READ, 0, &subResource);
+	D3D::GetDC()->Map(result, 0, D3D11_MAP_READ, 0, &subResource);
 	{
 		memcpy(data, subResource.pData, outputByte);
 	}
-	D3D::GetDC()->Unmap(output, 0);
+	D3D::GetDC()->Unmap(result, 0);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+TextureBuffer::TextureBuffer(ID3D11Texture2D* src)
+{
+	D3D11_TEXTURE2D_DESC srcDesc;
+	src->GetDesc(&srcDesc);
+
+	width = srcDesc.Width;
+	height = srcDesc.Height;
+	arraySize = srcDesc.ArraySize;
+	format = srcDesc.Format;
+
+
+	D3D11_TEXTURE2D_DESC desc;
+	ZeroMemory(&desc, sizeof(D3D11_TEXTURE2D_DESC));
+	desc.Width = width;
+	desc.Height = height;
+	desc.ArraySize = arraySize;
+	desc.Format = format;
+	desc.BindFlags = D3D11_BIND_SHADER_RESOURCE;
+	desc.MipLevels = 1;
+	desc.SampleDesc.Count = 1;
+
+	ID3D11Texture2D* texture = NULL;
+	Check(D3D::GetDevice()->CreateTexture2D(&desc, NULL, &texture));
+	D3D::GetDC()->CopyResource(texture, src);
+
+	input = (ID3D11Resource*)texture;
+
+	CreateBuffer();
+}
+
+TextureBuffer::~TextureBuffer()
+{
+
+}
+
+void TextureBuffer::CreateSRV()
+{
+	ID3D11Texture2D* texture = (ID3D11Texture2D*)input;
+
+	D3D11_TEXTURE2D_DESC desc;
+	texture->GetDesc(&desc);
+
+	D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc;
+	ZeroMemory(&srvDesc, sizeof(D3D11_SHADER_RESOURCE_VIEW_DESC));
+	srvDesc.Format = desc.Format;
+	srvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2DARRAY;
+	srvDesc.Texture2DArray.MipLevels = 1;
+	srvDesc.Texture2DArray.ArraySize = arraySize; //텍스처 2D Array
+
+	Check(D3D::GetDevice()->CreateShaderResourceView(texture, &srvDesc, &srv));
+}
+
+void TextureBuffer::CreateOutput()
+{
+	ID3D11Texture2D* texture = NULL;
+
+	D3D11_TEXTURE2D_DESC desc;
+	ZeroMemory(&desc, sizeof(D3D11_TEXTURE2D_DESC));
+	desc.Width = width;
+	desc.Height = height;
+	desc.ArraySize = arraySize;
+	desc.Format = format;
+	desc.BindFlags = D3D11_BIND_UNORDERED_ACCESS | D3D11_BIND_SHADER_RESOURCE;
+	desc.MipLevels = 1;
+	desc.SampleDesc.Count = 1;
+	Check(D3D::GetDevice()->CreateTexture2D(&desc, NULL, &texture));
+
+	output = (ID3D11Resource*)texture;
+}
+
+void TextureBuffer::CreateUAV()
+{
+	ID3D11Texture2D* texture = (ID3D11Texture2D*)output;
+
+	D3D11_TEXTURE2D_DESC desc;
+	texture->GetDesc(&desc);
+
+
+	D3D11_UNORDERED_ACCESS_VIEW_DESC uavDesc;
+	ZeroMemory(&uavDesc, sizeof(D3D11_UNORDERED_ACCESS_VIEW_DESC));
+	uavDesc.Format = DXGI_FORMAT_UNKNOWN;
+	uavDesc.ViewDimension = D3D11_UAV_DIMENSION_TEXTURE2DARRAY;
+	uavDesc.Texture2DArray.ArraySize = arraySize;
+
+	Check(D3D::GetDevice()->CreateUnorderedAccessView(texture, &uavDesc, &uav));
+}
+
+void TextureBuffer::CreateResult()
+{
+	ID3D11Texture2D* texture = (ID3D11Texture2D*)output;
+
+	D3D11_TEXTURE2D_DESC desc;
+	texture->GetDesc(&desc);
+
+
+	D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc;
+	ZeroMemory(&srvDesc, sizeof(D3D11_SHADER_RESOURCE_VIEW_DESC));
+	srvDesc.Format = desc.Format;
+	srvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2DARRAY;
+	srvDesc.Texture2DArray.MipLevels = 1;
+	srvDesc.Texture2DArray.ArraySize = arraySize;
+
+	Check(D3D::GetDevice()->CreateShaderResourceView(texture, &srvDesc, &outputSRV));
 }

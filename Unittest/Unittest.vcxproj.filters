@@ -27,6 +27,7 @@
     <ClCompile Include="Instancing\InstancingDemo.cpp" />
     <ClCompile Include="DirectCompute\ThreadDemo.cpp" />
     <ClCompile Include="DirectCompute\RawBufferDemo.cpp" />
+    <ClCompile Include="DirectCompute\TextureBufferDemo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main.h" />
@@ -55,5 +56,6 @@
     <ClInclude Include="Instancing\InstancingDemo.h" />
     <ClInclude Include="DirectCompute\ThreadDemo.h" />
     <ClInclude Include="DirectCompute\RawBufferDemo.h" />
+    <ClInclude Include="DirectCompute\TextureBufferDemo.h" />
   </ItemGroup>
 </Project>

@@ -44,7 +44,7 @@ using namespace std;
 #include <DirectXTex.h>
 #pragma comment(lib, "directxtex.lib")
 
-#pragma comment(linker,"/entry:WinMainCRTStartup /subsystem:console")
+//#pragma comment(linker,"/entry:WinMainCRTStartup /subsystem:console")
 
 #define Check(hr) { assert(SUCCEEDED(hr)); }
 #define Super __super
@@ -87,6 +87,7 @@ typedef D3DXPLANE Plane;
 #include "Renders/PerFrame.h"
 #include "Renders/Renderer.h"
 #include "Renders/Material.h"
+#include"Renders/Render2D.h"
 
 #include "Meshes/Mesh.h"
 #include "Meshes/MeshQuad.h"

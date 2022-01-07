@@ -42,6 +42,7 @@
     <ClCompile Include="Renders\DebugLine.cpp" />
     <ClCompile Include="Renders\Material.cpp" />
     <ClCompile Include="Renders\PerFrame.cpp" />
+    <ClCompile Include="Renders\Render2D.cpp" />
     <ClCompile Include="Renders\Renderer.cpp" />
     <ClCompile Include="Renders\Shader.cpp" />
     <ClCompile Include="Renders\Texture.cpp" />
@@ -85,6 +86,7 @@
     <ClInclude Include="Renders\DebugLine.h" />
     <ClInclude Include="Renders\Material.h" />
     <ClInclude Include="Renders\PerFrame.h" />
+    <ClInclude Include="Renders\Render2D.h" />
     <ClInclude Include="Renders\Renderer.h" />
     <ClInclude Include="Renders\Shader.h" />
     <ClInclude Include="Renders\Texture.h" />
