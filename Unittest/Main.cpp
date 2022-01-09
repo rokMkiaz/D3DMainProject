@@ -2,11 +2,11 @@
 #include "Main.h"
 #include "Systems/Window.h"
 
-
-
+#include"DirectCompute/GetAnimationBoneDemo.h"
+#include"Instancing/InstancingFrameworkDemo.h"
 #include"Instancing/InstancingDemo.h"
-#include"World\GridDemo.h"
-#include"World\WorldDemo3.h"
+#include"World/GridDemo.h"
+#include"World/WorldDemo3.h"
 #include"World/RotationDemo.h"
 #include"Vertex/UserInterfaceDemo.h"
 #include"Vertex/RectDemo.h"
@@ -29,7 +29,9 @@
 
 void Main::Initialize()
 {
-	Push(new TextureBufferDemo);
+	Push(new GetAnimationBoneDemo);
+	//Push(new InstancingFrameworkDemo);
+	//Push(new TextureBufferDemo);
 	//Push(new RawBufferDemo);
 	//Push(new ThreadDemo);
 	//Push(new InstancingDemo);

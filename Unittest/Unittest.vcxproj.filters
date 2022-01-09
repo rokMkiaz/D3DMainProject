@@ -28,6 +28,8 @@
     <ClCompile Include="DirectCompute\ThreadDemo.cpp" />
     <ClCompile Include="DirectCompute\RawBufferDemo.cpp" />
     <ClCompile Include="DirectCompute\TextureBufferDemo.cpp" />
+    <ClCompile Include="Instancing\InstancingFrameworkDemo.cpp" />
+    <ClCompile Include="DirectCompute\GetAnimationBoneDemo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main.h" />
@@ -57,5 +59,7 @@
     <ClInclude Include="DirectCompute\ThreadDemo.h" />
     <ClInclude Include="DirectCompute\RawBufferDemo.h" />
     <ClInclude Include="DirectCompute\TextureBufferDemo.h" />
+    <ClInclude Include="Instancing\InstancingFrameworkDemo.h" />
+    <ClInclude Include="DirectCompute\GetAnimationBoneDemo.h" />
   </ItemGroup>
 </Project>

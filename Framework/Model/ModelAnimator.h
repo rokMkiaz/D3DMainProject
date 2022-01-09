@@ -26,14 +26,19 @@ public:
 	Transform* AddTransform();
 	Transform* GetTransform(UINT index) { return transforms[index]; }
 	void UpdateTransforms();
+	UINT GetTransformCount() { return transforms.size(); }
 
 	void PlayTweenMode(UINT index, UINT clip, float speed = 1.0f, float takeTime = 1.0f);
 	void PlayBlendMode(UINT index, UINT clip, UINT clip1, UINT clip2);
 	void SetBlendAlpha(UINT index, float alpha);
 
+	void SetAttachTransform(UINT boneIndex);
+	void GetAttachTransform(UINT instance, Matrix* outResult);
+
 private:
 	void CreateTexture();
 	void CreateClipTransform(UINT index);
+	void CreateComputBuffer();
 
 private:
 	struct ClipTransform
@@ -77,8 +82,7 @@ private:
 		Vector2 Padding;
 	}; // keyframeDesc;
 
-	ConstantBuffer* frameBuffer;
-	ID3DX11EffectConstantBuffer* sFrameBuffer;
+
 
 	struct TweenDesc
 	{
@@ -96,6 +100,9 @@ private:
 			Next.Clip = -1;
 		}
 	} tweenDesc[MAX_MODEL_INSTANCE];
+
+	ConstantBuffer* tweenBuffer;
+	ID3DX11EffectConstantBuffer* sTweenBuffer;
 
 private:
 	struct BlendDesc
@@ -118,4 +125,41 @@ private:
 	Matrix worlds[MAX_MODEL_INSTANCE];
 
 	VertexBuffer* instanceBuffer;
+
+private:
+	struct CS_InputDesc
+	{
+		Matrix Bone;
+
+	};
+
+	struct CS_OutputDesc
+	{
+		Matrix Result;
+	};
+	struct AttachDesc
+	{
+		UINT BondeIndex = 0; 
+		float Padding[3];
+	}attachDesc;
+
+private:
+	Shader* computeShader;
+	StructuredBuffer* computeBuffer = NULL;
+
+	CS_InputDesc* csInput = NULL;
+	CS_OutputDesc* csOutput = NULL;
+
+	ID3DX11EffectShaderResourceVariable* sInputSRV;
+	ID3DX11EffectUnorderedAccessViewVariable* sOutputUAV;
+
+	ConstantBuffer* computeAttachBuffer;
+
+	ID3DX11EffectConstantBuffer* sComputeAttachBuffer;
+	ID3DX11EffectConstantBuffer* sComputeTweenBuffer;
+	ID3DX11EffectConstantBuffer* sComputeBlendBuffer;
+	
+
+
+
 };
