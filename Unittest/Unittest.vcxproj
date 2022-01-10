@@ -157,6 +157,8 @@
     <ClCompile Include="DirectCompute\RawBufferDemo.cpp" />
     <ClCompile Include="DirectCompute\TextureBufferDemo.cpp" />
     <ClCompile Include="DirectCompute\ThreadDemo.cpp" />
+    <ClCompile Include="Projection\ProjectionDemo.cpp" />
+    <ClCompile Include="Projection\ViewportDemo.cpp" />
     <ClCompile Include="Instancing\InstancingDemo.cpp" />
     <ClCompile Include="Instancing\InstancingFrameworkDemo.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -168,6 +170,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Terrain\GetHeightDemo.cpp" />
+    <ClCompile Include="Terrain\GetRaycastDemo.cpp" />
     <ClCompile Include="Terrain\GetVerticalRaycast.cpp" />
     <ClCompile Include="Terrain\HeightMapDemo.cpp" />
     <ClCompile Include="Terrain\NormalVectorDemo.cpp" />
@@ -191,6 +194,8 @@
     <ClInclude Include="DirectCompute\RawBufferDemo.h" />
     <ClInclude Include="DirectCompute\TextureBufferDemo.h" />
     <ClInclude Include="DirectCompute\ThreadDemo.h" />
+    <ClInclude Include="Projection\ProjectionDemo.h" />
+    <ClInclude Include="Projection\ViewportDemo.h" />
     <ClInclude Include="Instancing\InstancingDemo.h" />
     <ClInclude Include="Instancing\InstancingFrameworkDemo.h" />
     <ClInclude Include="Main.h" />
@@ -199,6 +204,7 @@
     <ClInclude Include="Objects\CubeSkyDemo.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Terrain\GetHeightDemo.h" />
+    <ClInclude Include="Terrain\GetRaycastDemo.h" />
     <ClInclude Include="Terrain\GetVerticalRaycast.h" />
     <ClInclude Include="Terrain\HeightMapDemo.h" />
     <ClInclude Include="Terrain\NormalVectorDemo.h" />

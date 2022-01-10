@@ -10,6 +10,8 @@ Terrain::Terrain(Shader* shader, wstring heightFile)
 	CreateIndexData();
 	CreateNormalData();
 	CreateBuffer();
+
+	D3DXMatrixIdentity(&world);
 }
 
 Terrain::~Terrain()
@@ -29,8 +31,8 @@ void Terrain::Update()
 	ImGui::SliderFloat3("Direction", direction, -1, 1);
 	shader->AsVector("Direction")->SetFloatVector(direction);
 
-	Matrix world;
-	D3DXMatrixIdentity(&world);
+
+
 
 	shader->AsMatrix("World")->SetMatrix(world);
 	shader->AsMatrix("View")->SetMatrix(Context::Get()->View());
@@ -127,6 +129,55 @@ float Terrain::GetVerticalRaycast(Vector3& position)
 		result = p[3] + (p[1] - p[3]) * u + (p[2] - p[3]) * v;
 
 	return result.y;
+}
+
+Vector3 Terrain::GetRaycastPosition()
+{
+	Matrix V = Context::Get()->View();
+	Matrix P = Context::Get()->Projection();
+	Viewport* vp = Context::Get()->GetViewport();
+
+	Vector3 mouse = Mouse::Get()->GetPosition();
+
+
+	Vector3 n, f;
+	mouse.z = 0.0f;
+	vp->Unproject(&n, mouse, world, V, P);
+
+	mouse.z = 1.0f;
+	vp->Unproject(&f, mouse, world, V, P);
+
+	Vector3 start = n;
+	Vector3 direction = f - n;
+
+
+	for (UINT z = 0; z < height - 1; z++)
+	{
+		for (UINT x = 0; x < width - 1; x++)
+		{
+			UINT index[4];
+			index[0] = width * z + x;
+			index[1] = width * (z + 1) + x;
+			index[2] = width * z + x + 1;
+			index[3] = width * (z + 1) + x + 1;
+
+
+			Vector3 p[4];
+			for (int i = 0; i < 4; i++)
+				p[i] = vertices[index[i]].Position;
+
+
+			float u, v, distance;
+
+			if (D3DXIntersectTri(&p[0], &p[1], &p[2], &start, &direction, &u, &v, &distance) == TRUE)
+				return p[0] + (p[1] - p[0]) * u + (p[2] - p[0]) * v;
+
+			if (D3DXIntersectTri(&p[3], &p[1], &p[2], &start, &direction, &u, &v, &distance) == TRUE)
+				return p[3] + (p[1] - p[3]) * u + (p[2] - p[3]) * v;
+		}
+	}
+
+	return Vector3(-1, FLT_MIN, -1); //지형 어느 곳에도 충돌 x
 }
 
 void Terrain::CreateVertexData()

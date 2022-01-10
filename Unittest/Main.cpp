@@ -26,10 +26,16 @@
 #include"DirectCompute/ThreadDemo.h"
 #include"DirectCompute/RawBufferDemo.h"
 #include"DirectCompute/TextureBufferDemo.h"
+#include"Projection/ViewportDemo.h"
+#include"Projection/ProjectionDemo.h"
+#include"Terrain/GetRaycastDemo.h"
 
 void Main::Initialize()
 {
-	Push(new GetAnimationBoneDemo);
+	Push(new GetRaycastDemo);
+	//Push(new ProjectionDemo);
+	//Push(new ViewportDemo);
+	//Push(new GetAnimationBoneDemo);
 	//Push(new InstancingFrameworkDemo);
 	//Push(new TextureBufferDemo);
 	//Push(new RawBufferDemo);

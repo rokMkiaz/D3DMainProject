@@ -16,6 +16,7 @@ public:
 
 	float GetHeight(Vector3& position);
 	float GetVerticalRaycast(Vector3& position);
+	Vector3 GetRaycastPosition();
 
 private:
 	void CreateVertexData();
@@ -39,4 +40,6 @@ private:
 	UINT indexCount;
 	UINT* indices;
 	ID3D11Buffer* indexBuffer;
+
+	Matrix world;
 };

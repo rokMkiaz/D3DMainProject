@@ -30,6 +30,9 @@
     <ClCompile Include="DirectCompute\TextureBufferDemo.cpp" />
     <ClCompile Include="Instancing\InstancingFrameworkDemo.cpp" />
     <ClCompile Include="DirectCompute\GetAnimationBoneDemo.cpp" />
+    <ClCompile Include="Projection\ViewportDemo.cpp" />
+    <ClCompile Include="Projection\ProjectionDemo.cpp" />
+    <ClCompile Include="Terrain\GetRaycastDemo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main.h" />
@@ -61,5 +64,8 @@
     <ClInclude Include="DirectCompute\TextureBufferDemo.h" />
     <ClInclude Include="Instancing\InstancingFrameworkDemo.h" />
     <ClInclude Include="DirectCompute\GetAnimationBoneDemo.h" />
+    <ClInclude Include="Projection\ViewportDemo.h" />
+    <ClInclude Include="Projection\ProjectionDemo.h" />
+    <ClInclude Include="Terrain\GetRaycastDemo.h" />
   </ItemGroup>
 </Project>
