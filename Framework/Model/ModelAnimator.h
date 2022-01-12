@@ -32,13 +32,12 @@ public:
 	void PlayBlendMode(UINT index, UINT clip, UINT clip1, UINT clip2);
 	void SetBlendAlpha(UINT index, float alpha);
 
-	void SetAttachTransform(UINT boneIndex);
 	void GetAttachTransform(UINT instance, Matrix* outResult);
 
 private:
 	void CreateTexture();
 	void CreateClipTransform(UINT index);
-	void CreateComputBuffer();
+
 
 private:
 	struct ClipTransform
@@ -137,29 +136,27 @@ private:
 	{
 		Matrix Result;
 	};
-	struct AttachDesc
-	{
-		UINT BondeIndex = 0; 
-		float Padding[3];
-	}attachDesc;
+
 
 private:
+	const float frameRate = 30.0f;//30fps¡¶«—
+	float frameTime = 0.0f;
+
 	Shader* computeShader;
-	StructuredBuffer* computeBuffer = NULL;
+	ID3DX11EffectShaderResourceVariable* sTransformsSRV;
 
-	CS_InputDesc* csInput = NULL;
-	CS_OutputDesc* csOutput = NULL;
+	StructuredBuffer* inputWorldBuffer;
+	ID3DX11EffectShaderResourceVariable* sInputWorldSRV;
 
-	ID3DX11EffectShaderResourceVariable* sInputSRV;
+	StructuredBuffer* inputBoneBuffer;
+	ID3DX11EffectShaderResourceVariable* sInputBoneSRV;
+
+	TextureBuffer* outputBuffer;
 	ID3DX11EffectUnorderedAccessViewVariable* sOutputUAV;
 
-	ConstantBuffer* computeAttachBuffer;
 
-	ID3DX11EffectConstantBuffer* sComputeAttachBuffer;
 	ID3DX11EffectConstantBuffer* sComputeTweenBuffer;
 	ID3DX11EffectConstantBuffer* sComputeBlendBuffer;
 	
-
-
 
 };

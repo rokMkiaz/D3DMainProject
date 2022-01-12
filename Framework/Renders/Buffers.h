@@ -147,13 +147,16 @@ public:
 	ID3D11Texture2D* Output() { return (ID3D11Texture2D*)output; }
 	ID3D11ShaderResourceView* OutputSRV() { return outputSRV; }
 
+	void CopyToInput(ID3D11Texture2D* texture);
+	ID3D11Texture2D* CopyFromOutput();
+	ID3D11Texture2D* Result() { return (ID3D11Texture2D*)result; }
+
 private:
 	UINT width, height, arraySize;
 	DXGI_FORMAT format;
 
 	ID3D11ShaderResourceView* outputSRV;
 };
-
 ///////////////////////////////////////////////////////////////////////////////
 
 class StructuredBuffer : public CsResource

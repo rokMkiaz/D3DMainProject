@@ -33,6 +33,8 @@
     <ClCompile Include="Projection\ViewportDemo.cpp" />
     <ClCompile Include="Projection\ProjectionDemo.cpp" />
     <ClCompile Include="Terrain\GetRaycastDemo.cpp" />
+    <ClCompile Include="Objects\ObbRaycastDemo.cpp" />
+    <ClCompile Include="Objects\ObbCollisionDemo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main.h" />
@@ -67,5 +69,7 @@
     <ClInclude Include="Projection\ViewportDemo.h" />
     <ClInclude Include="Projection\ProjectionDemo.h" />
     <ClInclude Include="Terrain\GetRaycastDemo.h" />
+    <ClInclude Include="Objects\ObbRaycastDemo.h" />
+    <ClInclude Include="Objects\ObbCollisionDemo.h" />
   </ItemGroup>
 </Project>

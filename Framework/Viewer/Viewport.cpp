@@ -1,6 +1,5 @@
 #include "Framework.h"
 #include "Viewport.h"
-
 Viewport::Viewport(float width, float height, float x, float y, float minDepth, float maxDepth)
 {
 	Set(width, height, x, y, minDepth, maxDepth);

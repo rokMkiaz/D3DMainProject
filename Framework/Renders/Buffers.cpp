@@ -313,7 +313,7 @@ void TextureBuffer::CreateSRV()
 	srvDesc.Format = desc.Format;
 	srvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2DARRAY;
 	srvDesc.Texture2DArray.MipLevels = 1;
-	srvDesc.Texture2DArray.ArraySize = arraySize; //텍스처 2D Array
+	srvDesc.Texture2DArray.ArraySize = arraySize;//텍스처 2D Array
 
 	Check(D3D::GetDevice()->CreateShaderResourceView(texture, &srvDesc, &srv));
 }
@@ -334,6 +334,16 @@ void TextureBuffer::CreateOutput()
 	Check(D3D::GetDevice()->CreateTexture2D(&desc, NULL, &texture));
 
 	output = (ID3D11Resource*)texture;
+
+
+	D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc;
+	ZeroMemory(&srvDesc, sizeof(D3D11_SHADER_RESOURCE_VIEW_DESC));
+	srvDesc.Format = desc.Format;
+	srvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2DARRAY;
+	srvDesc.Texture2DArray.MipLevels = 1;
+	srvDesc.Texture2DArray.ArraySize = arraySize;
+
+	Check(D3D::GetDevice()->CreateShaderResourceView(texture, &srvDesc, &outputSRV));
 }
 
 void TextureBuffer::CreateUAV()
@@ -355,21 +365,32 @@ void TextureBuffer::CreateUAV()
 
 void TextureBuffer::CreateResult()
 {
-	ID3D11Texture2D* texture = (ID3D11Texture2D*)output;
+	ID3D11Texture2D* texture;
 
 	D3D11_TEXTURE2D_DESC desc;
-	texture->GetDesc(&desc);
+	((ID3D11Texture2D*)output)->GetDesc(&desc);
+	desc.Usage = D3D11_USAGE_STAGING;
+	desc.CPUAccessFlags = D3D11_CPU_ACCESS_READ;
+	desc.BindFlags = 0;
+	desc.MiscFlags = 0;
 
+	Check(D3D::GetDevice()->CreateTexture2D(&desc, NULL, &texture));
 
-	D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc;
-	ZeroMemory(&srvDesc, sizeof(D3D11_SHADER_RESOURCE_VIEW_DESC));
-	srvDesc.Format = desc.Format;
-	srvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2DARRAY;
-	srvDesc.Texture2DArray.MipLevels = 1;
-	srvDesc.Texture2DArray.ArraySize = arraySize;
-
-	Check(D3D::GetDevice()->CreateShaderResourceView(texture, &srvDesc, &outputSRV));
+	result = (ID3D11Resource*)texture;
 }
+
+void TextureBuffer::CopyToInput(ID3D11Texture2D* texture)
+{
+	D3D::GetDC()->CopyResource(input, texture);
+}
+
+ID3D11Texture2D* TextureBuffer::CopyFromOutput()
+{
+	D3D::GetDC()->CopyResource(result, output);
+
+	return (ID3D11Texture2D*)result;
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////
 

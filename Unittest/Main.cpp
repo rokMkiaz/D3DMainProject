@@ -29,10 +29,14 @@
 #include"Projection/ViewportDemo.h"
 #include"Projection/ProjectionDemo.h"
 #include"Terrain/GetRaycastDemo.h"
+#include"Objects/ObbRaycastDemo.h"
+#include"Objects/ObbCollisionDemo.h"
 
 void Main::Initialize()
 {
-	Push(new GetRaycastDemo);
+	Push(new ObbCollisionDemo);
+	//Push(new ObbRaycastDemo);
+	//Push(new GetRaycastDemo);
 	//Push(new ProjectionDemo);
 	//Push(new ViewportDemo);
 	//Push(new GetAnimationBoneDemo);
