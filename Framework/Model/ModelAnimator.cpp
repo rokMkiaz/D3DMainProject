@@ -14,6 +14,17 @@ ModelAnimator::ModelAnimator(Shader* shader)
 
 	instanceBuffer = new VertexBuffer(worlds, MAX_MODEL_INSTANCE, sizeof(Matrix), 1, true);
 
+
+	for (UINT i = 0; i < MAX_MODEL_INSTANCE; i++)
+	{
+		colors[i] = Color(1, 1, 1, 1);
+
+		colors[i] = Math::RandomColor3();
+		colors[i].a = 1.0f;
+	}
+	instanceBuffer2 = new VertexBuffer(colors, MAX_MODEL_INSTANCE, sizeof(Color), 2, true);
+
+
 	//Create Compute Shader
 	{
 		computeShader = new Shader(L"71_GetMultiBones.fx");
@@ -61,6 +72,7 @@ ModelAnimator::~ModelAnimator()
 	SafeDelete(blendBuffer);
 
 	SafeDelete(instanceBuffer);
+	SafeDelete(instanceBuffer2);
 
 
 	SafeDelete(computeShader);
@@ -240,6 +252,7 @@ void ModelAnimator::Render()
 
 
 	instanceBuffer->Render();
+	instanceBuffer2->Render();
 
 	for (ModelMesh* mesh : model->Meshes())
 		mesh->Render(transforms.size());

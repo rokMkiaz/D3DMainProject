@@ -30,9 +30,60 @@ Shader::~Shader()
 
 void Shader::CreateEffect()
 {
-	ID3DBlob* fxBlob;
+	if (Path::ExistFile(file) == false)
+	{
+		MessageBox(NULL, file.c_str(), L"파일을 찾을 수 없음", MB_OK);
+		assert(false);
+	}
 
-	Shaders::GetEffect(file, &fxBlob, &effect);
+	ID3DBlob* fxBlob;
+	if (Path::GetExtension(file) == L"fx")
+	{
+		ID3DBlob* error;
+		INT flag = D3D10_SHADER_ENABLE_BACKWARDS_COMPATIBILITY | D3D10_SHADER_PACK_MATRIX_ROW_MAJOR;
+
+		HRESULT hr = D3DCompileFromFile(file.c_str(), NULL, D3D_COMPILE_STANDARD_FILE_INCLUDE, NULL, "fx_5_0", flag, NULL, &fxBlob, &error);
+		if (FAILED(hr))
+		{
+			if (error != NULL)
+			{
+				string str = (const char*)error->GetBufferPointer();
+				MessageBoxA(NULL, str.c_str(), "Shader Error", MB_OK);
+			}
+			assert(false);
+		}
+	}
+	else if (Path::GetExtension(file) == L"fxo")
+	{
+		HANDLE fileHandle = CreateFile(file.c_str(), GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+
+		bool bChecked = fileHandle != INVALID_HANDLE_VALUE;
+		assert(bChecked);
+
+
+
+		DWORD dataSize = GetFileSize(fileHandle, NULL);
+		assert(dataSize != 0xFFFFFFFF);
+
+		void* data = malloc(dataSize);
+		DWORD readSize;
+		Check(ReadFile(fileHandle, data, dataSize, &readSize, NULL));
+
+		CloseHandle(fileHandle);
+		fileHandle = NULL;
+
+		D3DCreateBlob(dataSize, &fxBlob);
+		memcpy(fxBlob->GetBufferPointer(), data, dataSize);
+	}
+	else
+	{
+		wstring errorMsg = wstring(L"이펙트 파일이 아님 : ") + file;
+		MessageBox(NULL, errorMsg.c_str(), L"Shader Error", MB_OK);
+
+		assert(false);
+	}
+	Check(D3DX11CreateEffectFromMemory(fxBlob->GetBufferPointer(), fxBlob->GetBufferSize(), 0, D3D::GetDevice(), &effect));
+
 
 	effect->GetDesc(&effectDesc);
 	for (UINT t = 0; t < effectDesc.Techniques; t++)
@@ -92,10 +143,10 @@ void Shader::CreateEffect()
 		int a = 0;
 	}
 
-	//SafeRelease(fxBlob);
+	SafeRelease(fxBlob);
 }
 
-ID3D11InputLayout * Shader::CreateInputLayout(ID3DBlob * fxBlob, D3DX11_EFFECT_SHADER_DESC* effectVsDesc, vector<D3D11_SIGNATURE_PARAMETER_DESC>& params)
+ID3D11InputLayout* Shader::CreateInputLayout(ID3DBlob* fxBlob, D3DX11_EFFECT_SHADER_DESC* effectVsDesc, vector<D3D11_SIGNATURE_PARAMETER_DESC>& params)
 {
 	std::vector<D3D11_INPUT_ELEMENT_DESC> inputLayoutDesc;
 	for (D3D11_SIGNATURE_PARAMETER_DESC& paramDesc : params)
@@ -157,13 +208,17 @@ ID3D11InputLayout * Shader::CreateInputLayout(ID3DBlob * fxBlob, D3DX11_EFFECT_S
 
 		if (String::StartsWith(name, "INST") == true)
 		{
-			elementDesc.InputSlot = 1;
+			String::Replace(&name, "INST", "");
+			string start = name.substr(0, 1);
+			int slot = atoi(start.c_str());
+
+			elementDesc.InputSlot = slot;
 			elementDesc.AlignedByteOffset = D3D11_APPEND_ALIGNED_ELEMENT;
 			elementDesc.InputSlotClass = D3D11_INPUT_PER_INSTANCE_DATA;
 			elementDesc.InstanceDataStepRate = 1;
 		}
 
-		if(String::StartsWith(name, "SV_") == false)
+		if (String::StartsWith(name, "SV_") == false)
 			inputLayoutDesc.push_back(elementDesc);
 	}
 
@@ -315,132 +370,77 @@ void Shader::Dispatch(UINT technique, UINT pass, UINT x, UINT y, UINT z)
 	techniques[technique].Passes[pass].Dispatch(x, y, z);
 }
 
-ID3DX11EffectVariable * Shader::Variable(string name)
+ID3DX11EffectVariable* Shader::Variable(string name)
 {
 	return effect->GetVariableByName(name.c_str());
 }
 
-ID3DX11EffectScalarVariable * Shader::AsScalar(string name)
+ID3DX11EffectScalarVariable* Shader::AsScalar(string name)
 {
 	return effect->GetVariableByName(name.c_str())->AsScalar();
 }
 
-ID3DX11EffectVectorVariable * Shader::AsVector(string name)
+ID3DX11EffectVectorVariable* Shader::AsVector(string name)
 {
 	return effect->GetVariableByName(name.c_str())->AsVector();
 }
 
-ID3DX11EffectMatrixVariable * Shader::AsMatrix(string name)
+ID3DX11EffectMatrixVariable* Shader::AsMatrix(string name)
 {
 	return effect->GetVariableByName(name.c_str())->AsMatrix();
 }
 
-ID3DX11EffectStringVariable * Shader::AsString(string name)
+ID3DX11EffectStringVariable* Shader::AsString(string name)
 {
 	return effect->GetVariableByName(name.c_str())->AsString();
 }
 
-ID3DX11EffectShaderResourceVariable * Shader::AsSRV(string name)
+ID3DX11EffectShaderResourceVariable* Shader::AsSRV(string name)
 {
 	return effect->GetVariableByName(name.c_str())->AsShaderResource();
 }
 
-ID3DX11EffectRenderTargetViewVariable * Shader::AsRTV(string name)
+ID3DX11EffectRenderTargetViewVariable* Shader::AsRTV(string name)
 {
 	return effect->GetVariableByName(name.c_str())->AsRenderTargetView();
 }
 
-ID3DX11EffectDepthStencilViewVariable * Shader::AsDSV(string name)
+ID3DX11EffectDepthStencilViewVariable* Shader::AsDSV(string name)
 {
 	return effect->GetVariableByName(name.c_str())->AsDepthStencilView();
 }
 
-ID3DX11EffectConstantBuffer * Shader::AsConstantBuffer(string name)
+ID3DX11EffectConstantBuffer* Shader::AsConstantBuffer(string name)
 {
 	return effect->GetConstantBufferByName(name.c_str());
 }
 
-ID3DX11EffectShaderVariable * Shader::AsShader(string name)
+ID3DX11EffectShaderVariable* Shader::AsShader(string name)
 {
 	return effect->GetVariableByName(name.c_str())->AsShader();
 }
 
-ID3DX11EffectBlendVariable * Shader::AsBlend(string name)
+ID3DX11EffectBlendVariable* Shader::AsBlend(string name)
 {
 	return effect->GetVariableByName(name.c_str())->AsBlend();
 }
 
-ID3DX11EffectDepthStencilVariable * Shader::AsDepthStencil(string name)
+ID3DX11EffectDepthStencilVariable* Shader::AsDepthStencil(string name)
 {
 	return effect->GetVariableByName(name.c_str())->AsDepthStencil();
 }
 
-ID3DX11EffectRasterizerVariable * Shader::AsRasterizer(string name)
+ID3DX11EffectRasterizerVariable* Shader::AsRasterizer(string name)
 {
 	return effect->GetVariableByName(name.c_str())->AsRasterizer();
 }
 
-ID3DX11EffectSamplerVariable * Shader::AsSampler(string name)
+ID3DX11EffectSamplerVariable* Shader::AsSampler(string name)
 {
 	return effect->GetVariableByName(name.c_str())->AsSampler();
 }
 
-ID3DX11EffectUnorderedAccessViewVariable * Shader::AsUAV(string name)
+ID3DX11EffectUnorderedAccessViewVariable* Shader::AsUAV(string name)
 {
 	return effect->GetVariableByName(name.c_str())->AsUnorderedAccessView();
-}
-
-///////////////////////////////////////////////////////////////////////////////
-
-unordered_map<wstring, Shaders::ShaderDesc> Shaders::shaders;
-
-void Shaders::Delete()
-{
-	for (Pair p : shaders)
-	{
-		SafeRelease(p.second.blob);
-		SafeRelease(p.second.effect);
-	}
-}
-
-void Shaders::GetEffect(wstring fileName, ID3DBlob** blob, ID3DX11Effect** effect)
-{
-	bool isFind = false;
-
-	if (shaders.count(fileName) < 1)
-	{
-		Pair p;
-
-		// 못찾았을 경우.
-		ID3DBlob* error;
-		INT flag = D3D10_SHADER_ENABLE_BACKWARDS_COMPATIBILITY | D3D10_SHADER_PACK_MATRIX_ROW_MAJOR;
-
-		HRESULT hr = D3DCompileFromFile(fileName.c_str(), NULL, D3D_COMPILE_STANDARD_FILE_INCLUDE, NULL, "fx_5_0", flag, NULL, &p.second.blob, &error);
-		if (FAILED(hr))
-		{
-			if (error != NULL)
-			{
-				string str = (const char *)error->GetBufferPointer();
-				MessageBoxA(NULL, str.c_str(), "Shader Error", MB_OK);
-			}
-			assert(false);
-		}
-
-		hr = D3DX11CreateEffectFromMemory(p.second.blob->GetBufferPointer(), p.second.blob->GetBufferSize(), 0, D3D::GetDevice(), &p.second.effect);
-		Check(hr);
-
-		p.first = fileName;
-
-		shaders.insert(p);
-
-		*blob = p.second.blob;
-		p.second.effect->CloneEffect(D3DX11_EFFECT_CLONE_FORCE_NONSINGLE, effect);
-	}
-	else
-	{
-		ShaderDesc desc = shaders.at(fileName);
-
-		*blob = desc.blob;
-		desc.effect->CloneEffect(D3DX11_EFFECT_CLONE_FORCE_NONSINGLE, effect);
-	}
 }

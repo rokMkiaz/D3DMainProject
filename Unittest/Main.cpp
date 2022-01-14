@@ -2,6 +2,7 @@
 #include "Main.h"
 #include "Systems/Window.h"
 
+#include"DirectCompute/GetMultiBoneDemo.h"
 #include"DirectCompute/GetAnimationBoneDemo.h"
 #include"Instancing/InstancingFrameworkDemo.h"
 #include"Instancing/InstancingDemo.h"
@@ -34,7 +35,8 @@
 
 void Main::Initialize()
 {
-	Push(new ObbCollisionDemo);
+	Push(new GetMultiBoneDemo);
+	//Push(new ObbCollisionDemo);
 	//Push(new ObbRaycastDemo);
 	//Push(new GetRaycastDemo);
 	//Push(new ProjectionDemo);

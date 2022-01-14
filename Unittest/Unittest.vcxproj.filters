@@ -35,6 +35,7 @@
     <ClCompile Include="Terrain\GetRaycastDemo.cpp" />
     <ClCompile Include="Objects\ObbRaycastDemo.cpp" />
     <ClCompile Include="Objects\ObbCollisionDemo.cpp" />
+    <ClCompile Include="DirectCompute\GetMultiBoneDemo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main.h" />
@@ -71,5 +72,6 @@
     <ClInclude Include="Terrain\GetRaycastDemo.h" />
     <ClInclude Include="Objects\ObbRaycastDemo.h" />
     <ClInclude Include="Objects\ObbCollisionDemo.h" />
+    <ClInclude Include="DirectCompute\GetMultiBoneDemo.h" />
   </ItemGroup>
 </Project>

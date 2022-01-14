@@ -20,6 +20,8 @@ public:
 
 	void Dispatch(UINT technique, UINT pass, UINT x, UINT y, UINT z);
 
+	UINT PassCount(UINT techIndex = 0) { return techniques[techIndex].Passes.size(); }
+
 
 	ID3DX11EffectVariable* Variable(string name);
 	ID3DX11EffectScalarVariable* AsScalar(string name);
@@ -51,7 +53,7 @@ private:
 private:
 	struct StateBlock
 	{
-		ID3D11RasterizerState * RSRasterizerState;
+		ID3D11RasterizerState* RSRasterizerState;
 
 		ID3D11BlendState* OMBlendState;
 		FLOAT OMBlendFactor[4];
@@ -103,24 +105,4 @@ private:
 		void Dispatch(UINT pass, UINT x, UINT y, UINT z);
 	};
 	vector<Technique> techniques;
-};
-
-class Shaders
-{
-public:
-	friend class Shader;
-	struct ShaderDesc
-	{
-		ID3DBlob* blob;
-		ID3DX11Effect* effect;
-	};
-
-	typedef pair<wstring, ShaderDesc> Pair;
-
-public:
-	static void Delete();
-	static void GetEffect(wstring fileName, ID3DBlob** blob, ID3DX11Effect** effect);
-
-private:
-	static unordered_map<wstring, ShaderDesc> shaders;
 };

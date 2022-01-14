@@ -38,7 +38,6 @@ private:
 	void CreateTexture();
 	void CreateClipTransform(UINT index);
 
-
 private:
 	struct ClipTransform
 	{
@@ -80,8 +79,6 @@ private:
 
 		Vector2 Padding;
 	}; // keyframeDesc;
-
-
 
 	struct TweenDesc
 	{
@@ -126,10 +123,14 @@ private:
 	VertexBuffer* instanceBuffer;
 
 private:
+	Color colors[MAX_MODEL_INSTANCE];
+	VertexBuffer* instanceBuffer2;
+
+
+private:
 	struct CS_InputDesc
 	{
 		Matrix Bone;
-
 	};
 
 	struct CS_OutputDesc
@@ -137,10 +138,10 @@ private:
 		Matrix Result;
 	};
 
-
 private:
-	const float frameRate = 30.0f;//30fps제한
+	const float frameRate = 30.0f; //30fps제한
 	float frameTime = 0.0f;
+
 
 	Shader* computeShader;
 	ID3DX11EffectShaderResourceVariable* sTransformsSRV;
@@ -157,6 +158,4 @@ private:
 
 	ID3DX11EffectConstantBuffer* sComputeTweenBuffer;
 	ID3DX11EffectConstantBuffer* sComputeBlendBuffer;
-	
-
 };
