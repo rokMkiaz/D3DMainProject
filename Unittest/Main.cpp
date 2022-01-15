@@ -2,6 +2,8 @@
 #include "Main.h"
 #include "Systems/Window.h"
 
+#include"Lighting/LightingDemo.h"
+/*
 #include"DirectCompute/GetMultiBoneDemo.h"
 #include"DirectCompute/GetAnimationBoneDemo.h"
 #include"Instancing/InstancingFrameworkDemo.h"
@@ -32,36 +34,40 @@
 #include"Terrain/GetRaycastDemo.h"
 #include"Objects/ObbRaycastDemo.h"
 #include"Objects/ObbCollisionDemo.h"
+*/
 
 void Main::Initialize()
 {
+	Push(new LightingDemo);
+	/*
 	Push(new GetMultiBoneDemo);
-	//Push(new ObbCollisionDemo);
-	//Push(new ObbRaycastDemo);
-	//Push(new GetRaycastDemo);
-	//Push(new ProjectionDemo);
-	//Push(new ViewportDemo);
-	//Push(new GetAnimationBoneDemo);
-	//Push(new InstancingFrameworkDemo);
-	//Push(new TextureBufferDemo);
-	//Push(new RawBufferDemo);
-	//Push(new ThreadDemo);
-	//Push(new InstancingDemo);
-	//Push(new CubeSkyDemo);
-	//Push(new MeshDemo);
-	//Push(new GetVerticalRaycast);
-	//Push(new GetHeightDemo);
-	//Push(new NormalVectorDemo);
-	//Push(new HeightMapDemo);
-	//Push(new TextureSamplerDemo);
-	//Push(new TextureLoadDemo);
-	//Push(new TextureDemo);
-	//Push(new RotationDemo);
-	//Push(new  GridDemo);
-	//Push(new CubeDemo);
-	//Push(new UserInterfaceDemo);
-	//Push(new RectDemo());
-	//Push(new TriangleList());
+	Push(new ObbCollisionDemo);
+	Push(new ObbRaycastDemo);
+	Push(new GetRaycastDemo);
+	Push(new ProjectionDemo);
+	Push(new ViewportDemo);
+	Push(new GetAnimationBoneDemo);
+	Push(new InstancingFrameworkDemo);
+	Push(new TextureBufferDemo);
+	Push(new RawBufferDemo);
+	Push(new ThreadDemo);
+	Push(new InstancingDemo);
+	Push(new CubeSkyDemo);
+	Push(new MeshDemo);
+	Push(new GetVerticalRaycast);
+	Push(new GetHeightDemo);
+	Push(new NormalVectorDemo);
+	Push(new HeightMapDemo);
+	Push(new TextureSamplerDemo);
+	Push(new TextureLoadDemo);
+	Push(new TextureDemo);
+	Push(new RotationDemo);
+	Push(new  GridDemo);
+	Push(new CubeDemo);
+	Push(new UserInterfaceDemo);
+	Push(new RectDemo());
+	Push(new TriangleList());
+	*/
 }
 
 void Main::Ready()

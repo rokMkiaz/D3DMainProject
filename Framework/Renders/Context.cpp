@@ -49,7 +49,7 @@ void Context::ResizeScreen()
 
 void Context::Update()
 {
-	//ImGui::SliderFloat3("Light Direction", direction, -1, +1);
+	ImGui::SliderFloat3("Light Direction", direction, -1, +1);
 
 	camera->Update();
 }
