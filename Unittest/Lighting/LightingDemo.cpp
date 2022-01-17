@@ -125,18 +125,21 @@ void LightingDemo::Mesh()
 		stone->DiffuseMap("Stones.png");
 		stone->Specular(1, 1, 1, 20);
 		stone->SpecularMap("Stones_Specular.png");
+		stone->Emissive(0.15f, 0.15f, 0.15f, 0.3f);
 		//stone->NormalMap("Stones_Normal.png");
 
 		brick = new Material(shader);
 		brick->DiffuseMap("Bricks.png");
 		brick->Specular(1, 0.3f, 0.3f, 20);
 		brick->SpecularMap("Bricks_Specular.png");
+		brick->Emissive(0.15f, 0.15f, 0.15f, 0.3f);
 		//brick->NormalMap("Bricks_Normal.png");
 
 		wall = new Material(shader);
 		wall->DiffuseMap("Wall.png");
 		wall->Specular(1, 1, 1, 20);
 		wall->SpecularMap("Wall_Specular.png");
+		wall->Emissive(0.15f, 0.15f, 0.15f, 0.3f);
 		//wall->NormalMap("Wall_Normal.png");
 	}
 
