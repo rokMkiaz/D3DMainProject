@@ -159,6 +159,8 @@
     <ClCompile Include="DirectCompute\TextureBufferDemo.cpp" />
     <ClCompile Include="DirectCompute\ThreadDemo.cpp" />
     <ClCompile Include="Lighting\LightingDemo.cpp" />
+    <ClCompile Include="Lighting\PointLightingDemo.cpp" />
+    <ClCompile Include="Lighting\SpotLightingDemo.cpp" />
     <ClCompile Include="Objects\ObbCollisionDemo.cpp" />
     <ClCompile Include="Objects\ObbRaycastDemo.cpp" />
     <ClCompile Include="Projection\ProjectionDemo.cpp" />
@@ -200,6 +202,8 @@
     <ClInclude Include="DirectCompute\TextureBufferDemo.h" />
     <ClInclude Include="DirectCompute\ThreadDemo.h" />
     <ClInclude Include="Lighting\LightingDemo.h" />
+    <ClInclude Include="Lighting\PointLightingDemo.h" />
+    <ClInclude Include="Lighting\SpotLightingDemo.h" />
     <ClInclude Include="Objects\ObbCollisionDemo.h" />
     <ClInclude Include="Objects\ObbRaycastDemo.h" />
     <ClInclude Include="Projection\ProjectionDemo.h" />

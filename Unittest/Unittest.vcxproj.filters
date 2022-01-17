@@ -37,6 +37,8 @@
     <ClCompile Include="Objects\ObbCollisionDemo.cpp" />
     <ClCompile Include="DirectCompute\GetMultiBoneDemo.cpp" />
     <ClCompile Include="Lighting\LightingDemo.cpp" />
+    <ClCompile Include="Lighting\PointLightingDemo.cpp" />
+    <ClCompile Include="Lighting\SpotLightingDemo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main.h" />
@@ -75,5 +77,7 @@
     <ClInclude Include="Objects\ObbCollisionDemo.h" />
     <ClInclude Include="DirectCompute\GetMultiBoneDemo.h" />
     <ClInclude Include="Lighting\LightingDemo.h" />
+    <ClInclude Include="Lighting\PointLightingDemo.h" />
+    <ClInclude Include="Lighting\SpotLightingDemo.h" />
   </ItemGroup>
 </Project>

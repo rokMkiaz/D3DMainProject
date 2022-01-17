@@ -41,15 +41,24 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Shaders", "_Shaders", "{85
 		..\_Shaders\51_InstancingMesh.fx = ..\_Shaders\51_InstancingMesh.fx
 		..\_Shaders\52_InstancingModel.fx = ..\_Shaders\52_InstancingModel.fx
 		..\_Shaders\53_InstancingAnimation.fx = ..\_Shaders\53_InstancingAnimation.fx
+		..\_Shaders\53_InstancingAnimation.fxo = ..\_Shaders\53_InstancingAnimation.fxo
 		..\_Shaders\55_Render.fx = ..\_Shaders\55_Render.fx
 		..\_Shaders\55_Render.fxo = ..\_Shaders\55_Render.fxo
 		..\_Shaders\60_RawBuffer.fx = ..\_Shaders\60_RawBuffer.fx
+		..\_Shaders\60_RawBuffer.fxo = ..\_Shaders\60_RawBuffer.fxo
 		..\_Shaders\62_Render2D.fx = ..\_Shaders\62_Render2D.fx
+		..\_Shaders\62_Render2D.fxo = ..\_Shaders\62_Render2D.fxo
 		..\_Shaders\62_TextureBuffer.fx = ..\_Shaders\62_TextureBuffer.fx
+		..\_Shaders\62_TextureBuffer.fxo = ..\_Shaders\62_TextureBuffer.fxo
 		..\_Shaders\63_GetAnimationBone.fx = ..\_Shaders\63_GetAnimationBone.fx
+		..\_Shaders\63_GetAnimationBone.fxo = ..\_Shaders\63_GetAnimationBone.fxo
 		..\_Shaders\71_GetMultiBones.fx = ..\_Shaders\71_GetMultiBones.fx
+		..\_Shaders\71_GetMultiBones.fxo = ..\_Shaders\71_GetMultiBones.fxo
 		..\_Shaders\75_Lighting.fx = ..\_Shaders\75_Lighting.fx
 		..\_Shaders\75_Lighting.fxo = ..\_Shaders\75_Lighting.fxo
+		..\_Shaders\78_PointLighting.fx = ..\_Shaders\78_PointLighting.fx
+		..\_Shaders\78_PointLighting.fxo = ..\_Shaders\78_PointLighting.fxo
+		..\_Shaders\ShaderCompiler.exe = ..\_Shaders\ShaderCompiler.exe
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ModelEditor", "ModelEditor\ModelEditor.vcxproj", "{94F9A1BF-0789-467C-9076-5D2E260D8DC6}"

@@ -84,10 +84,11 @@ typedef D3DXPLANE Plane;
 #include "Renders/DebugLine.h"
 #include "Renders/Buffers.h"
 #include "Renders/Transform.h"
+#include "Renders/Lighting.h"
 #include "Renders/PerFrame.h"
 #include "Renders/Renderer.h"
 #include "Renders/Material.h"
-#include"Renders/Render2D.h"
+#include "Renders/Render2D.h"
 
 #include "Meshes/Mesh.h"
 #include "Meshes/MeshQuad.h"

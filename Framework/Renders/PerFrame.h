@@ -10,7 +10,7 @@ public:
 	void Render();
 
 private:
-	struct Desc  //Shader Global과 동일하게 만든다.
+	struct Desc//Shader Global과 동일하게 만든다.
 	{
 		Matrix View;
 		Matrix ViewInverse;
@@ -35,6 +35,22 @@ private:
 		float Padding2;
 	} lightDesc;
 
+	struct PointLightDesc
+	{
+		UINT Count = 0;
+		float Padding[3];
+
+		PointLight Lights[MAX_POINT_LIGHTS];
+	} pointLightDesc;
+
+	struct SpotLightDesc
+	{
+		UINT Count = 0;
+		float Padding[3];
+
+		SpotLight Lights[MAX_SPOT_LIGHTS];
+	} spotLightDesc;
+
 private:
 	Shader* shader;
 
@@ -43,4 +59,10 @@ private:
 
 	ConstantBuffer* lightBuffer;
 	ID3DX11EffectConstantBuffer* sLightBuffer;
+
+	ConstantBuffer* pointLightBuffer;
+	ID3DX11EffectConstantBuffer* sPointLightBuffer;
+
+	ConstantBuffer* spotLightBuffer;
+	ID3DX11EffectConstantBuffer* sSpotLightBuffer;
 };

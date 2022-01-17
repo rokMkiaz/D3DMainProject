@@ -2,6 +2,8 @@
 #include "Main.h"
 #include "Systems/Window.h"
 
+#include"Lighting/SpotLightingDemo.h"
+#include"Lighting/PointLightingDemo.h"
 #include"Lighting/LightingDemo.h"
 /*
 #include"DirectCompute/GetMultiBoneDemo.h"
@@ -38,7 +40,9 @@
 
 void Main::Initialize()
 {
-	Push(new LightingDemo);
+	Push(new SpotLightingDemo);
+	//Push(new PointLightingDemo);
+	//Push(new LightingDemo);
 	/*
 	Push(new GetMultiBoneDemo);
 	Push(new ObbCollisionDemo);
