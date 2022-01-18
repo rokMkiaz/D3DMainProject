@@ -51,6 +51,8 @@ void MeshCylinder::Create()
 			D3DXVec3Cross(&vertex.Normal, &tangent, &biTangent);
 			D3DXVec3Normalize(&vertex.Normal, &vertex.Normal);
 
+			vertex.Tangent = tangent;
+
 			v.push_back(vertex);
 		}
 	}
@@ -98,9 +100,9 @@ void MeshCylinder::BuildTopCap(vector<MeshVertex>& vertices, vector<UINT>& indic
 		float u = x / height + 0.5f;
 		float v = z / height + 0.5f;
 
-		vertices.push_back(MeshVertex(x, y, z, u, v, 0, 1, 0));
+		vertices.push_back(MeshVertex(x, y, z, u, v, 0, 1, 0,1,0,0));
 	}
-	vertices.push_back(MeshVertex(0, y, 0, 0.5f, 0.5f, 0, 1, 0));
+	vertices.push_back(MeshVertex(0, y, 0, 0.5f, 0.5f, 0, 1, 0,1,0,0));
 
 
 	UINT baseIndex = vertices.size() - sliceCount - 2;
@@ -127,9 +129,9 @@ void MeshCylinder::BuildBottomCap(vector<MeshVertex>& vertices, vector<UINT>& in
 		float u = x / height + 0.5f;
 		float v = z / height + 0.5f;
 
-		vertices.push_back(MeshVertex(x, y, z, u, v, 0, -1, 0));
+		vertices.push_back(MeshVertex(x, y, z, u, v, 0, -1, 0,-1,0,0));
 	}
-	vertices.push_back(MeshVertex(0, y, 0, 0.5f, 0.5f, 0, -1, 0));
+	vertices.push_back(MeshVertex(0, y, 0, 0.5f, 0.5f, 0, -1, 0,-1,0,0));
 
 
 	UINT baseIndex = vertices.size() - sliceCount - 2;

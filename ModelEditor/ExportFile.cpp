@@ -9,8 +9,8 @@ void ExportFile::Initialize()
 	//Tower();
 	//Tank();
     //Kachujin();
-	//IronMan();
-	Weapon();
+	////IronMan();
+	//Weapon();
 }
 
 void ExportFile::Airplane()

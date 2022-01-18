@@ -39,6 +39,7 @@
     <ClCompile Include="Lighting\LightingDemo.cpp" />
     <ClCompile Include="Lighting\PointLightingDemo.cpp" />
     <ClCompile Include="Lighting\SpotLightingDemo.cpp" />
+    <ClCompile Include="Lighting\NormalMappingDemo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main.h" />
@@ -79,5 +80,6 @@
     <ClInclude Include="Lighting\LightingDemo.h" />
     <ClInclude Include="Lighting\PointLightingDemo.h" />
     <ClInclude Include="Lighting\SpotLightingDemo.h" />
+    <ClInclude Include="Lighting\NormalMappingDemo.h" />
   </ItemGroup>
 </Project>

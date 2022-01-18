@@ -3,7 +3,7 @@
 class Mesh 
 {
 public:
-	typedef VertexTextureNormal MeshVertex;
+	typedef VertexTextureNormalTangent MeshVertex;
 
 public:
 	Mesh();
