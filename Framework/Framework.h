@@ -111,6 +111,7 @@ typedef D3DXPLANE Plane;
 
 
 #include"Objects/Collider.h"
+#include"Objects/Billboard.h"
 
 //TODO::
 #include"Environment\Terrain.h"

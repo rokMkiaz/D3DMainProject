@@ -162,6 +162,7 @@
     <ClCompile Include="Lighting\NormalMappingDemo.cpp" />
     <ClCompile Include="Lighting\PointLightingDemo.cpp" />
     <ClCompile Include="Lighting\SpotLightingDemo.cpp" />
+    <ClCompile Include="Objects\BillboardDemo.cpp" />
     <ClCompile Include="Objects\ObbCollisionDemo.cpp" />
     <ClCompile Include="Objects\ObbRaycastDemo.cpp" />
     <ClCompile Include="Projection\ProjectionDemo.cpp" />
@@ -206,6 +207,7 @@
     <ClInclude Include="Lighting\NormalMappingDemo.h" />
     <ClInclude Include="Lighting\PointLightingDemo.h" />
     <ClInclude Include="Lighting\SpotLightingDemo.h" />
+    <ClInclude Include="Objects\BillboardDemo.h" />
     <ClInclude Include="Objects\ObbCollisionDemo.h" />
     <ClInclude Include="Objects\ObbRaycastDemo.h" />
     <ClInclude Include="Projection\ProjectionDemo.h" />

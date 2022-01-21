@@ -45,6 +45,7 @@
     <ClCompile Include="Renders\Render2D.cpp" />
     <ClCompile Include="Objects\Collider.cpp" />
     <ClCompile Include="Renders\Lighting.cpp" />
+    <ClCompile Include="Objects\Billboard.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Renders">
@@ -107,5 +108,6 @@
     <ClInclude Include="Renders\Render2D.h" />
     <ClInclude Include="Objects\Collider.h" />
     <ClInclude Include="Renders\Lighting.h" />
+    <ClInclude Include="Objects\Billboard.h" />
   </ItemGroup>
 </Project>

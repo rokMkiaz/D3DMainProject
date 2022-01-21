@@ -58,6 +58,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Shaders", "_Shaders", "{85
 		..\_Shaders\75_Lighting.fxo = ..\_Shaders\75_Lighting.fxo
 		..\_Shaders\78_PointLighting.fx = ..\_Shaders\78_PointLighting.fx
 		..\_Shaders\78_PointLighting.fxo = ..\_Shaders\78_PointLighting.fxo
+		..\_Shaders\80_SpotLighting.fx = ..\_Shaders\80_SpotLighting.fx
+		..\_Shaders\82_NormalMapping.fx = ..\_Shaders\82_NormalMapping.fx
+		..\_Shaders\83_Billboard.fx = ..\_Shaders\83_Billboard.fx
 		..\_Shaders\ShaderCompiler.exe = ..\_Shaders\ShaderCompiler.exe
 	EndProjectSection
 EndProject

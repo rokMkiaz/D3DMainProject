@@ -6,6 +6,7 @@
 #include"Lighting/SpotLightingDemo.h"
 #include"Lighting/PointLightingDemo.h"
 #include"Lighting/LightingDemo.h"
+#include"Objects/BillboardDemo.h"
 /*
 #include"DirectCompute/GetMultiBoneDemo.h"
 #include"DirectCompute/GetAnimationBoneDemo.h"
@@ -41,7 +42,8 @@
 
 void Main::Initialize()
 {
-	Push(new NormalMappingDemo);
+	Push(new BillboardDemo);
+	//Push(new NormalMappingDemo);
 	//Push(new SpotLightingDemo);
 	//Push(new PointLightingDemo);
 	//Push(new LightingDemo);
