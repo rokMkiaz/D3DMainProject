@@ -7,6 +7,7 @@
 #include"Lighting/PointLightingDemo.h"
 #include"Lighting/LightingDemo.h"
 #include"Objects/BillboardDemo.h"
+#include"Terrain/WeatherDemo.h"
 /*
 #include"DirectCompute/GetMultiBoneDemo.h"
 #include"DirectCompute/GetAnimationBoneDemo.h"
@@ -42,7 +43,8 @@
 
 void Main::Initialize()
 {
-	Push(new BillboardDemo);
+	Push(new WeatherDemo);
+	//Push(new BillboardDemo);
 	//Push(new NormalMappingDemo);
 	//Push(new SpotLightingDemo);
 	//Push(new PointLightingDemo);

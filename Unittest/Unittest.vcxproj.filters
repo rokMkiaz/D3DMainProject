@@ -41,6 +41,7 @@
     <ClCompile Include="Lighting\SpotLightingDemo.cpp" />
     <ClCompile Include="Lighting\NormalMappingDemo.cpp" />
     <ClCompile Include="Objects\BillboardDemo.cpp" />
+    <ClCompile Include="Terrain\WeatherDemo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main.h" />
@@ -83,5 +84,6 @@
     <ClInclude Include="Lighting\SpotLightingDemo.h" />
     <ClInclude Include="Lighting\NormalMappingDemo.h" />
     <ClInclude Include="Objects\BillboardDemo.h" />
+    <ClInclude Include="Terrain\WeatherDemo.h" />
   </ItemGroup>
 </Project>

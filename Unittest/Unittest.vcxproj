@@ -182,6 +182,7 @@
     <ClCompile Include="Terrain\GetVerticalRaycast.cpp" />
     <ClCompile Include="Terrain\HeightMapDemo.cpp" />
     <ClCompile Include="Terrain\NormalVectorDemo.cpp" />
+    <ClCompile Include="Terrain\WeatherDemo.cpp" />
     <ClCompile Include="Texture\TextureDemo.cpp" />
     <ClCompile Include="Texture\TextureLoadDemo.cpp" />
     <ClCompile Include="Texture\TextureSamplerDemo.cpp" />
@@ -224,6 +225,7 @@
     <ClInclude Include="Terrain\GetVerticalRaycast.h" />
     <ClInclude Include="Terrain\HeightMapDemo.h" />
     <ClInclude Include="Terrain\NormalVectorDemo.h" />
+    <ClInclude Include="Terrain\WeatherDemo.h" />
     <ClInclude Include="Texture\TextureDemo.h" />
     <ClInclude Include="Texture\TextureLoadDemo.h" />
     <ClInclude Include="Texture\TextureSamplerDemo.h" />

@@ -46,6 +46,7 @@
     <ClCompile Include="Objects\Collider.cpp" />
     <ClCompile Include="Renders\Lighting.cpp" />
     <ClCompile Include="Objects\Billboard.cpp" />
+    <ClCompile Include="Environment\Rain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Renders">
@@ -109,5 +110,6 @@
     <ClInclude Include="Objects\Collider.h" />
     <ClInclude Include="Renders\Lighting.h" />
     <ClInclude Include="Objects\Billboard.h" />
+    <ClInclude Include="Environment\Rain.h" />
   </ItemGroup>
 </Project>
