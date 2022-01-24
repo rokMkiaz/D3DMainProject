@@ -13,7 +13,7 @@ void WeatherDemo::Initialize()
 	sky = new CubeSky(L"Environment/GrassCube1024.dds");
 
 	rain = new Rain(Vector3(300, 100, 500), (UINT)1e+4f, L"Environment/Rain.png");
-	//snow = new Snow(Vector3(300, 100, 500), (UINT)1e+5f, L"Environment/Snow.png");
+	snow = new Snow(Vector3(300, 100, 500), (UINT)1e+5f, L"Environment/Snow.png");
 
 	Billboards();
 
@@ -64,7 +64,7 @@ void WeatherDemo::Update()
 	switch (weatherType)
 	{
 	case WeatherType::Rain: rain->Update(); break;
-	//case WeatherType::Snow: snow->Update(); break;
+	case WeatherType::Snow: snow->Update(); break;
 	}
 }
 
@@ -97,7 +97,7 @@ void WeatherDemo::Render()
 	switch (weatherType)
 	{
 	case WeatherType::Rain: rain->Render(); break;
-	//case WeatherType::Snow: snow->Render(); break;
+	case WeatherType::Snow: snow->Render(); break;
 	}
 }
 

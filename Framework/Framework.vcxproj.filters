@@ -47,6 +47,7 @@
     <ClCompile Include="Renders\Lighting.cpp" />
     <ClCompile Include="Objects\Billboard.cpp" />
     <ClCompile Include="Environment\Rain.cpp" />
+    <ClCompile Include="Environment\Snow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Renders">
@@ -111,5 +112,6 @@
     <ClInclude Include="Renders\Lighting.h" />
     <ClInclude Include="Objects\Billboard.h" />
     <ClInclude Include="Environment\Rain.h" />
+    <ClInclude Include="Environment\Snow.h" />
   </ItemGroup>
 </Project>

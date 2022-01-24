@@ -39,7 +39,7 @@ private:
 	} weatherType;
 
 	Rain* rain;
-	//Snow* snow;
+	Snow* snow;
 
 	Material* floor;
 	Material* stone;
