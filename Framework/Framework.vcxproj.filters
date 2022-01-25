@@ -48,6 +48,7 @@
     <ClCompile Include="Objects\Billboard.cpp" />
     <ClCompile Include="Environment\Rain.cpp" />
     <ClCompile Include="Environment\Snow.cpp" />
+    <ClCompile Include="Particle\Particlesystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Renders">
@@ -113,5 +114,7 @@
     <ClInclude Include="Objects\Billboard.h" />
     <ClInclude Include="Environment\Rain.h" />
     <ClInclude Include="Environment\Snow.h" />
+    <ClInclude Include="Particle\ParticleData.h" />
+    <ClInclude Include="Particle\ParticleSystem.h" />
   </ItemGroup>
 </Project>

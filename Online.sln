@@ -71,6 +71,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ModelEditor", "ModelEditor\
 		{AAE3CB6B-997E-4AB4-8B9B-B031996B7D9B} = {AAE3CB6B-997E-4AB4-8B9B-B031996B7D9B}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ParticleEditor", "ParticleEditor\ParticleEditor.vcxproj", "{54E040F1-7678-4380-A160-6CED5D90C5DC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AAE3CB6B-997E-4AB4-8B9B-B031996B7D9B} = {AAE3CB6B-997E-4AB4-8B9B-B031996B7D9B}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -89,6 +94,10 @@ Global
 		{94F9A1BF-0789-467C-9076-5D2E260D8DC6}.Debug|x86.Build.0 = Debug|Win32
 		{94F9A1BF-0789-467C-9076-5D2E260D8DC6}.Release|x86.ActiveCfg = Release|Win32
 		{94F9A1BF-0789-467C-9076-5D2E260D8DC6}.Release|x86.Build.0 = Release|Win32
+		{54E040F1-7678-4380-A160-6CED5D90C5DC}.Debug|x86.ActiveCfg = Debug|Win32
+		{54E040F1-7678-4380-A160-6CED5D90C5DC}.Debug|x86.Build.0 = Debug|Win32
+		{54E040F1-7678-4380-A160-6CED5D90C5DC}.Release|x86.ActiveCfg = Release|Win32
+		{54E040F1-7678-4380-A160-6CED5D90C5DC}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
