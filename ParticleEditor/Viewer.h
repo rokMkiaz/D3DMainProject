@@ -19,6 +19,8 @@ private:
 	Shader* shader;
 	CubeSky* sky;
 
+	ParticleSystem* particleSystem;
+
 	Material* floor;
 	Material* stone;
 
