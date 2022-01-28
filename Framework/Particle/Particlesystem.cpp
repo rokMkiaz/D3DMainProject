@@ -3,7 +3,7 @@
 #include"Utilities/Xml.h"
 
 ParticleSystem::ParticleSystem(wstring file)
-	:Renderer(L"89_Particle.fxo")
+	: Renderer(L"89_Particle.fxo")
 {
 	ReadFile(L"../../_Textures/Particles/" + file + L".xml");
 
@@ -69,16 +69,16 @@ void ParticleSystem::Add(Vector3& position)
 
 	if (count >= data.MaxParticles)
 	{
+		if (data.bLoop == true)
+		{
 			count = 0;
-		//if (data.bLoop == true)
-		//{
-		//}
-		//else
-		//{
-		//	count = data.MaxParticles;
-		//
-		//	return;
-		//}
+		}
+		else
+		{
+			count = data.MaxParticles;
+
+			return;
+		}
 	}
 
 
@@ -96,8 +96,9 @@ void ParticleSystem::Add(Vector3& position)
 	velocity.y += horizontalVelocity * sinf(horizontalAngle);
 	velocity.z += Math::Lerp(data.MinHorizontalVelocity, data.MaxHorizontalVelocity, Math::Random(0.0f, 1.0f));
 
+
 	Vector4 random = Math::RandomVec4(0.0f, 1.0f);
-	
+
 	for (UINT i = 0; i < 4; i++)
 	{
 		vertices[leadCount * 4 + i].Position = position;
@@ -118,6 +119,24 @@ void ParticleSystem::Update()
 	MapVertices();
 	Activate();
 	Deactivate();
+
+	if (activeCount == leadCount)
+		currentTime = 0.0f;
+
+
+	desc.MinColor = data.MinColor;
+	desc.MaxColor = data.MaxColor;
+	desc.ColorAmount = data.ColorAmount;
+
+	desc.Gravity = data.Gravity;
+	desc.EndVelocity = data.EndVelocity;
+
+	desc.RotateSpeed = Vector2(data.MinRotateSpeed, data.MaxRotateSpeed);
+	desc.StartSize = Vector2(data.MinStartSize, data.MaxStartSize);
+	desc.EndSize = Vector2(data.MinEndSize, data.MaxEndSize);
+
+	desc.ReadyTime = data.ReadyTime;
+	desc.ReadyRandomTime = data.ReadyRandomTime;
 }
 
 void ParticleSystem::MapVertices()
@@ -128,7 +147,7 @@ void ParticleSystem::MapVertices()
 
 	if (leadCount > gpuCount)
 	{
-		D3D::GetDC()->Map(vertexBuffer->Buffer(), 0, D3D11_MAP_WRITE_NO_OVERWRITE,0,&subResource); //이전데이터를 유지
+		D3D::GetDC()->Map(vertexBuffer->Buffer(), 0, D3D11_MAP_WRITE_NO_OVERWRITE, 0, &subResource);
 		{
 			UINT start = gpuCount * 4;
 			UINT size = (leadCount - gpuCount) * sizeof(VertexParticle) * 4;
@@ -136,52 +155,48 @@ void ParticleSystem::MapVertices()
 
 			BYTE* p = (BYTE*)subResource.pData + offset;
 			memcpy(p, vertices + start, size);
-
 		}
-		D3D::GetDC()->Unmap(vertexBuffer->Buffer(),0);
+		D3D::GetDC()->Unmap(vertexBuffer->Buffer(), 0);
 	}
 	else
 	{
-		D3D::GetDC()->Map(vertexBuffer->Buffer(), 0, D3D11_MAP_WRITE_NO_OVERWRITE, 0, &subResource); //이전데이터를 유지
+		D3D::GetDC()->Map(vertexBuffer->Buffer(), 0, D3D11_MAP_WRITE_NO_OVERWRITE, 0, &subResource);
 		{
 			UINT start = gpuCount * 4;
-			UINT size = (data.MaxParticles- gpuCount) * sizeof(VertexParticle) * 4;
+			UINT size = (data.MaxParticles - gpuCount) * sizeof(VertexParticle) * 4;
 			UINT offset = gpuCount * sizeof(VertexParticle) * 4;
 
 			BYTE* p = (BYTE*)subResource.pData + offset;
 			memcpy(p, vertices + start, size);
-
 		}
 
 		if (leadCount > 0)
 		{
 			UINT size = leadCount * sizeof(VertexParticle) * 4;
+
 			memcpy(subResource.pData, vertices, size);
 		}
 
 		D3D::GetDC()->Unmap(vertexBuffer->Buffer(), 0);
-
-
 	}
 
 	gpuCount = leadCount;
-
 }
 
 void ParticleSystem::Activate()
 {
 	while (activeCount != gpuCount)
 	{
-		float age = currentTime - vertices[activeCount * 4].Time; 
+		float age = currentTime - vertices[activeCount * 4].Time;
 
-		if (age < data.ReadyTime) //준비가 안끝난상태
+		if (age < data.ReadyTime)//준비가 안끝난상태
 			return;
 
 		vertices[activeCount * 4].Time = currentTime;
 		activeCount++;
 
 		if (activeCount >= data.MaxParticles)
-			activeCount = 0;
+			activeCount = (data.bLoop == true) ? 0 : data.MaxParticles;
 	}
 }
 
@@ -197,7 +212,37 @@ void ParticleSystem::Deactivate()
 		deactiveCount++;
 
 		if (deactiveCount >= data.MaxParticles)
-			deactiveCount = 0;
+			deactiveCount = (data.bLoop == true) ? 0 : data.MaxParticles;
+	}
+}
+
+void ParticleSystem::Render()
+{
+	Super::Render();
+
+
+	desc.CurrentTime = currentTime;
+
+	buffer->Render();
+	sBuffer->SetConstantBuffer(buffer->Buffer());
+
+	sMap->SetResource(map->SRV());
+
+	if (leadCount == activeCount)
+		return;
+
+
+	UINT pass = (UINT)data.Type;
+	if (leadCount > activeCount)
+	{
+		shader->DrawIndexed(0, pass, (leadCount - activeCount) * 6, activeCount * 6);//lead-active두개의 차이만큼 그리기
+	}
+	else
+	{
+		shader->DrawIndexed(0, pass, (data.MaxParticles - activeCount) * 6, activeCount * 6);
+
+		if (leadCount > 0)
+			shader->DrawIndexed(0, pass, leadCount * 6);
 	}
 }
 
@@ -213,9 +258,13 @@ void ParticleSystem::ReadFile(wstring file)
 	data.Type = (ParticleData::BlendType)node->IntText();
 
 	node = node->NextSiblingElement();
+	data.bLoop = node->BoolText();
+
+	node = node->NextSiblingElement();
 	wstring textureFile = String::ToWString(node->GetText());
 	data.TextureFile = L"Particles/" + textureFile;
 	map = new Texture(data.TextureFile);
+
 
 	node = node->NextSiblingElement();
 	data.MaxParticles = node->IntText();
@@ -250,7 +299,7 @@ void ParticleSystem::ReadFile(wstring file)
 	data.Gravity.z = node->FloatAttribute("Z");
 
 	node = node->NextSiblingElement();
-	//data.ColorAmount = node->FloatText();
+	data.ColorAmount = node->FloatText();
 
 	node = node->NextSiblingElement();
 	data.MinColor.r = node->FloatAttribute("R");
