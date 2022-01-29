@@ -11,7 +11,7 @@ ParticleSystem::ParticleSystem(wstring file)
 	sBuffer = shader->AsConstantBuffer("CB_Particle");
 
 	sMap = shader->AsSRV("ParticleMap");
-
+	int i = 0;
 	Reset();
 }
 
@@ -72,6 +72,7 @@ void ParticleSystem::Add(Vector3& position)
 		if (data.bLoop == true)
 		{
 			count = 0;
+		
 		}
 		else
 		{
@@ -303,14 +304,14 @@ void ParticleSystem::ReadFile(wstring file)
 
 	node = node->NextSiblingElement();
 	data.MinColor.r = node->FloatAttribute("R");
-	data.MinColor.b = node->FloatAttribute("G");
-	data.MinColor.g = node->FloatAttribute("B");
+	data.MinColor.g = node->FloatAttribute("G");
+	data.MinColor.b = node->FloatAttribute("B");
 	data.MinColor.a = node->FloatAttribute("A");
 
 	node = node->NextSiblingElement();
 	data.MaxColor.r = node->FloatAttribute("R");
-	data.MaxColor.b = node->FloatAttribute("G");
-	data.MaxColor.g = node->FloatAttribute("B");
+	data.MaxColor.g = node->FloatAttribute("G");
+	data.MaxColor.b = node->FloatAttribute("B");
 	data.MaxColor.a = node->FloatAttribute("A");
 
 	node = node->NextSiblingElement();
@@ -330,6 +331,8 @@ void ParticleSystem::ReadFile(wstring file)
 
 	node = node->NextSiblingElement();
 	data.MaxEndSize = node->FloatText();
+
+
 
 	SafeDelete(document);
 }

@@ -2,14 +2,11 @@
 #include "Main.h"
 #include "Systems/Window.h"
 
-#include"Viewer.h"
-
-
+#include "Viewer.h"
 
 void Main::Initialize()
 {
 	Push(new Viewer());
-
 }
 
 void Main::Ready()
@@ -56,7 +53,7 @@ void Main::ResizeScreen()
 		exe->ResizeScreen();
 }
 
-void Main::Push(IExecute * execute)
+void Main::Push(IExecute* execute)
 {
 	executes.push_back(execute);
 

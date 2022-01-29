@@ -1,15 +1,16 @@
-#include"Framework.h"
-#include"Billboard.h"
+#include "Framework.h"
+#include "Billboard.h"
 
 Billboard::Billboard(wstring file)
-	:Renderer(L"83_BILLboard.fxo")
+	: Renderer(L"83_Billboard.fxo")
 {
-	UINT vertexCount = MAX_BILLBOARD_COUNT * 4;
+	vertexCount = MAX_BILLBOARD_COUNT * 4;
 	vertices = new VertexBillboard[vertexCount];
+
 	vertexBuffer = new VertexBuffer(vertices, vertexCount, sizeof(VertexBillboard), 0, true);
 
 
-	UINT indexCount = MAX_BILLBOARD_COUNT * 6;
+	indexCount = MAX_BILLBOARD_COUNT * 6;
 	indices = new UINT[indexCount];
 
 	for (UINT i = 0; i < MAX_BILLBOARD_COUNT; i++)
@@ -23,9 +24,9 @@ Billboard::Billboard(wstring file)
 	}
 	indexBuffer = new IndexBuffer(indices, indexCount);
 
+
 	texture = new Texture(file);
 	sDiffuseMap = shader->AsSRV("DiffuseMap");
-	
 }
 
 Billboard::~Billboard()
@@ -81,4 +82,3 @@ void Billboard::Add(Vector3& position, Vector2& scale)
 
 	drawCount++;
 }
-

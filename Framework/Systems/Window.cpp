@@ -47,6 +47,7 @@ WPARAM Window::Run(IExecute* main)
 	}
 	mainExecute->Destroy();
 
+
 	Lighting::Delete();
 	DebugLine::Delete();
 	Context::Delete();

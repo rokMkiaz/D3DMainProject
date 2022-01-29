@@ -58,7 +58,8 @@ D3DXVECTOR4 Math::RandomVec4(float r1, float r2)
 	result.z = Random(r1, r2);
 	result.w = Random(r1, r2);
 
-	return D3DXVECTOR4();
+	return result;
+
 }
 
 D3DXCOLOR Math::RandomColor3()

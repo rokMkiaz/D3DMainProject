@@ -93,7 +93,7 @@ bool String::Contain(wstring str, wstring comp)
 ///@param comp : 비교문자열
 ///@param rep : 바꿀문자열
 //////////////////////////////////////////////////////////////////////////
-void String::Replace(string * str, string comp, string rep)
+void String::Replace(string* str, string comp, string rep)
 {
 	string temp = *str;
 

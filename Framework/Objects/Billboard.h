@@ -29,5 +29,4 @@ private:
 
 	Texture* texture;
 	ID3DX11EffectShaderResourceVariable* sDiffuseMap;
-
 };

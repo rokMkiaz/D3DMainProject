@@ -37,7 +37,7 @@ private:
 	bool bCreateShader = false;
 
 	D3D11_PRIMITIVE_TOPOLOGY topology = D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST;
-	UINT pass = 0;  
+	UINT pass = 0;
 
 	PerFrame* perFrame;
 };

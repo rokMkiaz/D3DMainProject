@@ -102,7 +102,7 @@ void BinaryWriter::Matrix(const D3DXMATRIX& data)
 	WriteFile(fileHandle, &data, sizeof(D3DXMATRIX), &size, NULL);
 }
 
-void BinaryWriter::String(const string & data)
+void BinaryWriter::String(const string& data)
 {
 	UInt(data.size());
 
@@ -110,7 +110,7 @@ void BinaryWriter::String(const string & data)
 	WriteFile(fileHandle, str, data.size(), &size, NULL);
 }
 
-void BinaryWriter::Byte(void * data, UINT dataSize)
+void BinaryWriter::Byte(void* data, UINT dataSize)
 {
 	WriteFile(fileHandle, data, dataSize, &size, NULL);
 }
@@ -272,7 +272,7 @@ string BinaryReader::String()
 	return temp;
 }
 
-void BinaryReader::Byte(void ** data, UINT dataSize)
+void BinaryReader::Byte(void** data, UINT dataSize)
 {
 	ReadFile(fileHandle, *data, dataSize, &size, NULL);
 }

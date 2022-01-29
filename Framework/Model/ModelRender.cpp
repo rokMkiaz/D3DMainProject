@@ -140,7 +140,7 @@ void ModelRender::UpdateTransforms()
 	D3D::GetDC()->Unmap(instanceBuffer->Buffer(), 0);
 }
 
-void ModelRender::UpdateTransform(UINT instanceId, UINT boneIndex, Transform& transform) 
+void ModelRender::UpdateTransform(UINT instanceId, UINT boneIndex, Transform& transform)
 {
 	Matrix destMatrix = transform.World();
 

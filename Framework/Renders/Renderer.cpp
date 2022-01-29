@@ -52,5 +52,5 @@ void Renderer::Render()
 	D3D::GetDC()->IASetPrimitiveTopology(topology);
 
 	perFrame->Render();
-	transform->Render();
+	transform->Render(); 
 }

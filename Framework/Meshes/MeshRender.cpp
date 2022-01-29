@@ -10,7 +10,7 @@ MeshRender::MeshRender(Shader* shader, Mesh* mesh)
 	for (UINT i = 0; i < MAX_MESH_INSTANCE; i++)
 		D3DXMatrixIdentity(&worlds[i]);
 
-	instanceBuffer = new VertexBuffer(worlds, MAX_MESH_INSTANCE, sizeof(Matrix), 1, true/*CPU ¾²±â on*/);
+	instanceBuffer = new VertexBuffer(worlds, MAX_MESH_INSTANCE, sizeof(Matrix), 1, true);
 }
 
 MeshRender::~MeshRender()

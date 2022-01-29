@@ -1,9 +1,9 @@
 #pragma once
 
-class ParticleSystem  : public Renderer
+class ParticleSystem : public Renderer
 {
 public:
-	ParticleSystem(wstring file); //파티클이 있는 파일 명
+	ParticleSystem(wstring file);
 	~ParticleSystem();
 
 	void Reset();
@@ -19,6 +19,7 @@ private:
 
 public:
 	void Render();
+
 
 private:
 	void ReadFile(wstring file);
@@ -62,6 +63,7 @@ private:
 
 	ConstantBuffer* buffer;
 	ID3DX11EffectConstantBuffer* sBuffer;
+
 
 	VertexParticle* vertices = NULL;
 	UINT* indices = NULL;

@@ -1,5 +1,5 @@
-#include"stdafx.h"
-#include"Viewer.h"
+#include "stdafx.h"
+#include "Viewer.h"
 
 void Viewer::Initialize()
 {
@@ -7,20 +7,18 @@ void Viewer::Initialize()
 	Context::Get()->GetCamera()->Position(1, 36, -85);
 	((Freedom*)Context::Get()->GetCamera())->Speed(50, 2);
 
+
 	shader = new Shader(L"82_NormalMapping.fxo");
 	sky = new CubeSky(L"Environment/GrassCube1024.dds");
 
 	particleSystem = new ParticleSystem(L"Fire");
+	//particleSystem = new ParticleSystem(L"Explosion");
 
 	Mesh();
 }
 
-
 void Viewer::Destroy()
 {
-
-
-
 
 }
 
@@ -32,7 +30,7 @@ void Viewer::Update()
 	grid->Update();
 
 
-	Vector3 position;
+     Vector3 position;
 	sphere->GetTransform(0)->Position(&position);
 
 	if (Keyboard::Get()->Press('L'))
@@ -53,6 +51,7 @@ void Viewer::Update()
 	sphere->GetTransform(0)->Position(position);
 	sphere->UpdateTransforms();
 
+	int i = 0;
 	particleSystem->Add(position);
 	particleSystem->Update();
 }
@@ -100,5 +99,3 @@ void Viewer::Mesh()
 	transform->Scale(5, 5, 5);
 	sphere->UpdateTransforms();
 }
-
-

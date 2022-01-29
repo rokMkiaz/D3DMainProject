@@ -15,8 +15,8 @@ public:
 public:
 	Texture(wstring file, D3DX11_IMAGE_LOAD_INFO* loadInfo = NULL);
 	~Texture();
-	
-	operator ID3D11ShaderResourceView*(){ return view; }
+
+	operator ID3D11ShaderResourceView* () { return view; }
 
 
 	wstring GetFile() { return file; }
@@ -82,7 +82,7 @@ public:
 	ID3D11ShaderResourceView* SRV() { return srv; }
 
 private:
-	vector<ID3D11Texture2D *> CreateTextures(vector<wstring>& names, UINT width, UINT height, UINT mipLevels);
+	vector<ID3D11Texture2D*> CreateTextures(vector<wstring>& names, UINT width, UINT height, UINT mipLevels);
 
 private:
 	ID3D11ShaderResourceView* srv;
@@ -112,7 +112,7 @@ private:
 	ID3D11Texture2D* dsvTexture;
 	ID3D11DepthStencilView* dsv;
 
-	
+
 	Matrix view[6];
 
 	Perspective* perspective;

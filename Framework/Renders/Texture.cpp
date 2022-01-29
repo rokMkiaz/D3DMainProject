@@ -18,26 +18,26 @@ Texture::Texture(wstring file, D3DX11_IMAGE_LOAD_INFO* loadInfo)
 
 Texture::~Texture()
 {
-	
+
 }
 
 void Texture::SaveFile(wstring file)
 {
 	ID3D11Texture2D* srcTexture;
-	view->GetResource((ID3D11Resource **)&srcTexture);
+	view->GetResource((ID3D11Resource**)&srcTexture);
 
 	SaveFile(file, srcTexture);
 }
 
-ID3D11Texture2D * Texture::GetTexture()
+ID3D11Texture2D* Texture::GetTexture()
 {
 	ID3D11Texture2D* texture;
-	view->GetResource((ID3D11Resource **)&texture);
+	view->GetResource((ID3D11Resource**)&texture);
 
 	return texture;
 }
 
-void Texture::SaveFile(wstring file, ID3D11Texture2D * src)
+void Texture::SaveFile(wstring file, ID3D11Texture2D* src)
 {
 	D3D11_TEXTURE2D_DESC srcDesc;
 	src->GetDesc(&srcDesc);
@@ -65,7 +65,7 @@ void Texture::SaveFile(wstring file, ID3D11Texture2D * src)
 	wstring ext = Path::GetExtension(file);
 	transform(ext.begin(), ext.end(), ext.begin(), toupper);
 
-	if(ext == L"BMP")
+	if (ext == L"BMP")
 		hr = D3DX11SaveTextureToFile(D3D::GetDC(), dest, D3DX11_IFF_BMP, file.c_str());
 	else
 		hr = D3DX11SaveTextureToFile(D3D::GetDC(), dest, D3DX11_IFF_PNG, file.c_str());
@@ -79,12 +79,12 @@ void Texture::SaveFile(wstring file, ID3D11Texture2D * src)
 D3D11_TEXTURE2D_DESC Texture::ReadPixel(DXGI_FORMAT readFormat, vector<Color>* pixels)
 {
 	ID3D11Texture2D* srcTexture;
-	view->GetResource((ID3D11Resource **)&srcTexture);
+	view->GetResource((ID3D11Resource**)&srcTexture);
 
 	return ReadPixel(srcTexture, readFormat, pixels);
 }
 
-D3D11_TEXTURE2D_DESC Texture::ReadPixel(ID3D11Texture2D * src, DXGI_FORMAT readFormat, vector<Color>* pixels)
+D3D11_TEXTURE2D_DESC Texture::ReadPixel(ID3D11Texture2D* src, DXGI_FORMAT readFormat, vector<Color>* pixels)
 {
 	D3D11_TEXTURE2D_DESC srcDesc;
 	src->GetDesc(&srcDesc);
@@ -148,7 +148,7 @@ void Textures::Delete()
 		SafeRelease(desc.view);
 }
 
-void Textures::Load(Texture * texture, D3DX11_IMAGE_LOAD_INFO * loadInfo)
+void Textures::Load(Texture* texture, D3DX11_IMAGE_LOAD_INFO* loadInfo)
 {
 	HRESULT hr;
 
@@ -254,12 +254,12 @@ void Textures::Load(Texture * texture, D3DX11_IMAGE_LOAD_INFO * loadInfo)
 //-----------------------------------------------------------------------------
 // TextureArray
 //-----------------------------------------------------------------------------
-TextureArray::TextureArray(vector<wstring> & names, UINT width, UINT height, UINT mipLevels)
+TextureArray::TextureArray(vector<wstring>& names, UINT width, UINT height, UINT mipLevels)
 {
 	for (UINT i = 0; i < names.size(); i++)
 		names[i] = L"../../_Textures/" + names[i];
 
-	vector<ID3D11Texture2D *> textures;
+	vector<ID3D11Texture2D*> textures;
 	textures = CreateTextures(names, width, height, mipLevels);
 
 
@@ -330,7 +330,7 @@ TextureArray::~TextureArray()
 
 vector<ID3D11Texture2D*> TextureArray::CreateTextures(vector<wstring>& names, UINT width, UINT height, UINT mipLevels)
 {
-	vector<ID3D11Texture2D *> returnTextures;
+	vector<ID3D11Texture2D*> returnTextures;
 	returnTextures.resize(names.size());
 
 	for (UINT index = 0; index < returnTextures.size(); index++)
@@ -408,7 +408,7 @@ vector<ID3D11Texture2D*> TextureArray::CreateTextures(vector<wstring>& names, UI
 				, D3D11_CPU_ACCESS_READ | D3D11_CPU_ACCESS_WRITE
 				, 0
 				, false
-				, (ID3D11Resource **)&returnTextures[index]
+				, (ID3D11Resource**)&returnTextures[index]
 			);
 			Check(hr);
 
@@ -427,7 +427,7 @@ vector<ID3D11Texture2D*> TextureArray::CreateTextures(vector<wstring>& names, UI
 				, D3D11_CPU_ACCESS_READ | D3D11_CPU_ACCESS_WRITE
 				, 0
 				, false
-				, (ID3D11Resource **)&returnTextures[index]
+				, (ID3D11Resource**)&returnTextures[index]
 			);
 			Check(hr);
 		}
@@ -441,7 +441,7 @@ vector<ID3D11Texture2D*> TextureArray::CreateTextures(vector<wstring>& names, UI
 
 ///////////////////////////////////////////////////////////////////////////////
 
-TextureCube::TextureCube(Vector3 & position, UINT width, UINT height)
+TextureCube::TextureCube(Vector3& position, UINT width, UINT height)
 	: position(position), width(width), height(height), sView(NULL), sProjection(NULL)
 {
 	DXGI_FORMAT rtvFormat = DXGI_FORMAT_R8G8B8A8_UNORM;
@@ -485,7 +485,7 @@ TextureCube::TextureCube(Vector3 & position, UINT width, UINT height)
 		Check(D3D::GetDevice()->CreateShaderResourceView(rtvTexture, &desc, &srv));
 	}
 
-	
+
 	DXGI_FORMAT dsvFormat = DXGI_FORMAT_D32_FLOAT;
 	//Create Texture - DSV
 	{
@@ -530,7 +530,7 @@ TextureCube::~TextureCube()
 	SafeDelete(viewport);
 }
 
-void TextureCube::Position(Vector3 & position)
+void TextureCube::Position(Vector3& position)
 {
 	this->position = position;
 
@@ -561,21 +561,21 @@ void TextureCube::Position(Vector3 & position)
 	perspective = new Perspective(1, 1, 0.1f, 500, Math::PI * 0.5f);
 }
 
-void TextureCube::Set(Shader * shader)
+void TextureCube::Set(Shader* shader)
 {
 	if (sView == NULL)
 		sView = shader->AsMatrix("CubeViews");
 
-	if(sProjection == NULL)
+	if (sProjection == NULL)
 		sProjection = shader->AsMatrix("CubeProjection");
 
-	sView->SetMatrixArray((float *)view, 0, 6);
+	sView->SetMatrixArray((float*)view, 0, 6);
 
 
 	Matrix matrix;
 	perspective->GetMatrix(&matrix);
 	sProjection->SetMatrix(matrix);
-	
+
 	D3D::Get()->SetRenderTarget(rtv, dsv);
 	D3D::Get()->Clear(Color(0, 0, 0, 1), rtv, dsv);
 
