@@ -17,7 +17,11 @@ ParticleSystem::ParticleSystem(wstring file)
 
 ParticleSystem::~ParticleSystem()
 {
+	SafeDelete(map);
+	SafeDelete(buffer);
 
+	SafeDeleteArray(vertices);
+	SafeDeleteArray(indices);
 }
 
 void ParticleSystem::Reset()
@@ -245,6 +249,13 @@ void ParticleSystem::Render()
 		if (leadCount > 0)
 			shader->DrawIndexed(0, pass, leadCount * 6);
 	}
+}
+
+void ParticleSystem::SetTexture(wstring file)
+{
+	SafeDelete(map);
+	map = new Texture(file);
+
 }
 
 void ParticleSystem::ReadFile(wstring file)

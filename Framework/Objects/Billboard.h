@@ -4,7 +4,7 @@
 class Billboard : public Renderer
 {
 public:
-	Billboard(wstring file);
+	Billboard(Shader* shader);
 	~Billboard();
 
 	void Update();
@@ -16,16 +16,11 @@ private:
 	struct VertexBillboard
 	{
 		Vector3 Position;
-		Vector2 Uv;
 		Vector2 Scale;
 	};
 
 private:
-	VertexBillboard* vertices;
-	UINT* indices;
-
-	UINT drawCount = 0;
-	UINT prevCount = 0;
+	vector<VertexBillboard> vertices;
 
 	Texture* texture;
 	ID3DX11EffectShaderResourceVariable* sDiffuseMap;

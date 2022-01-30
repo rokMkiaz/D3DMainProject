@@ -20,6 +20,9 @@ private:
 public:
 	void Render();
 
+	ParticleData& GetData() { return data; }
+	void SetTexture(wstring file);
+
 
 private:
 	void ReadFile(wstring file);
@@ -58,7 +61,7 @@ private:
 private:
 	ParticleData data;
 
-	Texture* map;
+	Texture* map = NULL;
 	ID3DX11EffectShaderResourceVariable* sMap;
 
 	ConstantBuffer* buffer;
