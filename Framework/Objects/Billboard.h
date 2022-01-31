@@ -10,18 +10,21 @@ public:
 	void Update();
 	void Render();
 
-	void Add(Vector3& position, Vector2& scale);
+	void Add(Vector3& position, Vector2& scale, UINT mapIndex);
+	void AddTexture(wstring file);
 
 private:
 	struct VertexBillboard
 	{
 		Vector3 Position;
 		Vector2 Scale;
+		UINT MapIndex;
 	};
 
 private:
 	vector<VertexBillboard> vertices;
 
-	Texture* texture;
+	vector<wstring> textureNames;
+	TextureArray* textureArray = NULL;
 	ID3DX11EffectShaderResourceVariable* sDiffuseMap;
 };

@@ -43,8 +43,8 @@
 
 void Main::Initialize()
 {
-	Push(new WeatherDemo);
-	//Push(new BillboardDemo);
+	//Push(new WeatherDemo);
+	Push(new BillboardDemo);
 	//Push(new NormalMappingDemo);
 	//Push(new SpotLightingDemo);
 	//Push(new PointLightingDemo);
