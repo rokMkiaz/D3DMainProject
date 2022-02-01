@@ -197,13 +197,13 @@ void Window::MainRender()
 
 	mainExecute->Update();
 
-	mainExecute->PreRender();
+	mainExecute->PreRender(); //·»´õÅ¸°ÙÈ­¸éÀ» ¾²±âÀ§ÇÑ ·»´õ
 
 
 	D3DDesc desc = D3D::GetDesc();
 
 	D3D::Get()->SetRenderTarget();
-	D3D::Get()->Clear(desc.Background);
+	D3D::Get()->Clear(desc.Background); 
 	{
 		Context::Get()->Render();
 

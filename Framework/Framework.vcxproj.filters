@@ -49,6 +49,8 @@
     <ClCompile Include="Environment\Rain.cpp" />
     <ClCompile Include="Environment\Snow.cpp" />
     <ClCompile Include="Particle\Particlesystem.cpp" />
+    <ClCompile Include="Viewer\RenderTarget.cpp" />
+    <ClCompile Include="Viewer\DepthStencil.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Renders">
@@ -116,5 +118,7 @@
     <ClInclude Include="Environment\Snow.h" />
     <ClInclude Include="Particle\ParticleData.h" />
     <ClInclude Include="Particle\ParticleSystem.h" />
+    <ClInclude Include="Viewer\RenderTarget.h" />
+    <ClInclude Include="Viewer\DepthStencil.h" />
   </ItemGroup>
 </Project>

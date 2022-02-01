@@ -32,7 +32,7 @@ void D3D::Delete()
 
 void D3D::SetRenderTarget(ID3D11RenderTargetView* rtv, ID3D11DepthStencilView* dsv)
 {
-	if (rtv == nullptr)
+	if (rtv == nullptr)//널이들어오면 시스템, 아니면 사용자
 		rtv = renderTargetView;
 
 	if (dsv == nullptr)
@@ -50,7 +50,7 @@ void D3D::Clear(D3DXCOLOR color, ID3D11RenderTargetView* rtv, ID3D11DepthStencil
 		dsv = depthStencilView;
 
 	deviceContext->ClearRenderTargetView(rtv, color);
-	deviceContext->ClearDepthStencilView(dsv, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1, 0);
+	deviceContext->ClearDepthStencilView(dsv, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1, 0); //깊이를 가지고 클리어 하느냐
 }
 
 void D3D::Present()

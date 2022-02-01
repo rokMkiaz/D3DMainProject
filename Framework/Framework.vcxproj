@@ -65,10 +65,12 @@
     <ClCompile Include="Utilities\String.cpp" />
     <ClCompile Include="Utilities\Xml.cpp" />
     <ClCompile Include="Viewer\Camera.cpp" />
+    <ClCompile Include="Viewer\DepthStencil.cpp" />
     <ClCompile Include="Viewer\Freedom.cpp" />
     <ClCompile Include="Viewer\Orthographic.cpp" />
     <ClCompile Include="Viewer\Perspective.cpp" />
     <ClCompile Include="Viewer\Projection.cpp" />
+    <ClCompile Include="Viewer\RenderTarget.cpp" />
     <ClCompile Include="Viewer\Viewport.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -118,10 +120,12 @@
     <ClInclude Include="Utilities\String.h" />
     <ClInclude Include="Utilities\Xml.h" />
     <ClInclude Include="Viewer\Camera.h" />
+    <ClInclude Include="Viewer\DepthStencil.h" />
     <ClInclude Include="Viewer\Freedom.h" />
     <ClInclude Include="Viewer\Orthographic.h" />
     <ClInclude Include="Viewer\Perspective.h" />
     <ClInclude Include="Viewer\Projection.h" />
+    <ClInclude Include="Viewer\RenderTarget.h" />
     <ClInclude Include="Viewer\Viewport.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
