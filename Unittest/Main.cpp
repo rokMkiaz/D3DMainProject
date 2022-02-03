@@ -2,6 +2,7 @@
 #include "Main.h"
 #include "Systems/Window.h"
 
+#include"PostEffects/ColorToneDemo.h"
 #include"Lighting/NormalMappingDemo.h"
 #include"Lighting/SpotLightingDemo.h"
 #include"Lighting/PointLightingDemo.h"
@@ -43,8 +44,9 @@
 
 void Main::Initialize()
 {
+	Push(new ColorToneDemo);
 	//Push(new WeatherDemo);
-	Push(new BillboardDemo);
+	//Push(new BillboardDemo);
 	//Push(new NormalMappingDemo);
 	//Push(new SpotLightingDemo);
 	//Push(new PointLightingDemo);

@@ -51,6 +51,7 @@
     <ClCompile Include="Particle\Particlesystem.cpp" />
     <ClCompile Include="Viewer\RenderTarget.cpp" />
     <ClCompile Include="Viewer\DepthStencil.cpp" />
+    <ClCompile Include="Objects\PostEffect.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Renders">
@@ -120,5 +121,6 @@
     <ClInclude Include="Particle\ParticleSystem.h" />
     <ClInclude Include="Viewer\RenderTarget.h" />
     <ClInclude Include="Viewer\DepthStencil.h" />
+    <ClInclude Include="Objects\PostEffect.h" />
   </ItemGroup>
 </Project>
