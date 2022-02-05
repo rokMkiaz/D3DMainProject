@@ -166,6 +166,7 @@
     <ClCompile Include="Objects\ObbCollisionDemo.cpp" />
     <ClCompile Include="Objects\ObbRaycastDemo.cpp" />
     <ClCompile Include="PostEffects\ColorToneDemo.cpp" />
+    <ClCompile Include="PostEffects\MrtDemo.cpp" />
     <ClCompile Include="Projection\ProjectionDemo.cpp" />
     <ClCompile Include="Projection\ViewportDemo.cpp" />
     <ClCompile Include="Instancing\InstancingDemo.cpp" />
@@ -213,6 +214,7 @@
     <ClInclude Include="Objects\ObbCollisionDemo.h" />
     <ClInclude Include="Objects\ObbRaycastDemo.h" />
     <ClInclude Include="PostEffects\ColorToneDemo.h" />
+    <ClInclude Include="PostEffects\MrtDemo.h" />
     <ClInclude Include="Projection\ProjectionDemo.h" />
     <ClInclude Include="Projection\ViewportDemo.h" />
     <ClInclude Include="Instancing\InstancingDemo.h" />

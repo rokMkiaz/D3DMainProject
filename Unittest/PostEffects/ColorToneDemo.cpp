@@ -69,10 +69,85 @@ void ColorToneDemo::Update()
 		postEffect->GetShader()->AsScalar("Sharpness")->SetFloat(Sharpness);
 	}
 
+	//Vignette
+	{
+		ImGui::Separator();
 
+		static float Power = 1.0f;
+		ImGui::InputFloat("Vignette Power", &Power, 0.1f);
+		postEffect->GetShader()->AsScalar("Power")->SetFloat(Power);
+
+		static float ScaleX = 1.0f;
+		ImGui::InputFloat("ScaleX", &ScaleX, 0.1f);
+
+		static float ScaleY = 1.0f;
+		ImGui::InputFloat("ScaleY", &ScaleY, 0.1f);
+		postEffect->GetShader()->AsVector("Scale")->SetFloatVector(Vector2(ScaleX, ScaleY));
+	}
+
+	//LensDistortion
+	{
+		ImGui::Separator();
+
+		static float LensPower = 1.0f;
+		ImGui::InputFloat("LensPower", &LensPower, 0.01f);
+		postEffect->GetShader()->AsScalar("LensPower")->SetFloat(LensPower);
+
+		static Vector3 Distortion = Vector3(-0.02f, -0.02f, -0.02f);
+		ImGui::InputFloat("DistortionX", &Distortion.x, 0.001f);
+		ImGui::InputFloat("DistortionY", &Distortion.y, 0.001f);
+		ImGui::InputFloat("DistortionZ", &Distortion.z, 0.001f);
+		postEffect->GetShader()->AsVector("Distortion")->SetFloatVector(Distortion);
+	}
+
+	//Interace
+	{
+		ImGui::Separator();
+
+		static float Strength = 1.0f;
+		ImGui::InputFloat("Strength", &Strength, 0.01f);
+		postEffect->GetShader()->AsScalar("Strength")->SetFloat(Strength);
+
+		static int InteraceValue = 2;
+		ImGui::InputInt("InteraceValue", &InteraceValue);
+		postEffect->GetShader()->AsScalar("interaceValue")->SetInt(InteraceValue);
+	}
+
+	//Down Scale
+	{
+		ImGui::Separator();
+
+		static float ScaleX = D3D::Width();
+		ImGui::InputFloat("DownScaleX", &ScaleX, 1.0f);
+
+		static float ScaleY = D3D::Height();
+		ImGui::InputFloat("DownScaleY", &ScaleY, 1.0f);
+		postEffect->GetShader()->AsVector("ScaleSourceSize")->SetFloatVector(Vector2(ScaleX, ScaleY));
+	}
+
+	//Wiggle
+	{
+		ImGui::Separator();
+
+		static float OffsetX = 10;
+		ImGui::InputFloat("OffsetX", &OffsetX, 0.1f);
+
+		static float OffsetY = 10;
+		ImGui::InputFloat("OffsetY", &OffsetY, 0.1f);
+		postEffect->GetShader()->AsVector("WiggleOffset")->SetFloatVector(Vector2(OffsetX, OffsetY));
+
+		static float AmountX = 0.01f;
+		ImGui::InputFloat("AmountX", &AmountX, 0.001f);
+
+		static float AmountY = 0.01f;
+		ImGui::InputFloat("AmountY", &AmountY, 0.001f);
+		postEffect->GetShader()->AsVector("WiggleAmount")->SetFloatVector(Vector2(AmountX, AmountY));
+	}
 
 	//SpotLight
 	{
+		ImGui::Separator();
+
 		static UINT spotIndex = 0;
 		ImGui::InputInt("SpotLight Index", (int*)&spotIndex);
 		spotIndex %= Lighting::Get()->SpotLightCount();
@@ -119,6 +194,7 @@ void ColorToneDemo::Update()
 	billboard->Update();
 
 	render2D->Update();
+	postEffect->Update();
 }
 
 void ColorToneDemo::PreRender()

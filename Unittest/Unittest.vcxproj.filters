@@ -43,6 +43,7 @@
     <ClCompile Include="Objects\BillboardDemo.cpp" />
     <ClCompile Include="Terrain\WeatherDemo.cpp" />
     <ClCompile Include="PostEffects\ColorToneDemo.cpp" />
+    <ClCompile Include="PostEffects\MrtDemo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main.h" />
@@ -87,5 +88,6 @@
     <ClInclude Include="Objects\BillboardDemo.h" />
     <ClInclude Include="Terrain\WeatherDemo.h" />
     <ClInclude Include="PostEffects\ColorToneDemo.h" />
+    <ClInclude Include="PostEffects\MrtDemo.h" />
   </ItemGroup>
 </Project>

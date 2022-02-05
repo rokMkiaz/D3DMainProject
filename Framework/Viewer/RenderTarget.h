@@ -12,6 +12,7 @@ public:
 	void SaveTexture(wstring file);
 
 	void PreRender(class DepthStencil* depthStencil); //OM에서 Rtv와 DSV의 텍스처 크기가 다르면 렌더링되지 않으므로 받아둬야함
+	static void PreRender(RenderTarget** targets, UINT count, class DepthStencil* depthStencil);
 
 private:
 	UINT width, height;
