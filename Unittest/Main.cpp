@@ -2,6 +2,9 @@
 #include "Main.h"
 #include "Systems/Window.h"
 
+#include"PostEffects/GaussianBlurDemo2.h"
+#include"PostEffects/GaussianBlurDemo.h"
+#include"PostEffects/BlurDemo.h"
 #include"PostEffects/MrtDemo.h"
 #include"PostEffects/ColorToneDemo.h"
 #include"Lighting/NormalMappingDemo.h"
@@ -45,7 +48,10 @@
 
 void Main::Initialize()
 {
-	Push(new MrtDemo);
+	Push(new GaussianBlurDemo2);
+	//Push(new GaussianBlurDemo);
+	//Push(new BlurDemo);
+	//Push(new MrtDemo);
 	//Push(new ColorToneDemo);
 	//Push(new WeatherDemo);
 	//Push(new BillboardDemo);

@@ -165,7 +165,10 @@
     <ClCompile Include="Objects\BillboardDemo.cpp" />
     <ClCompile Include="Objects\ObbCollisionDemo.cpp" />
     <ClCompile Include="Objects\ObbRaycastDemo.cpp" />
+    <ClCompile Include="PostEffects\BlurDemo.cpp" />
     <ClCompile Include="PostEffects\ColorToneDemo.cpp" />
+    <ClCompile Include="PostEffects\GaussianBlurDemo.cpp" />
+    <ClCompile Include="PostEffects\GaussianBlurDemo2.cpp" />
     <ClCompile Include="PostEffects\MrtDemo.cpp" />
     <ClCompile Include="Projection\ProjectionDemo.cpp" />
     <ClCompile Include="Projection\ViewportDemo.cpp" />
@@ -213,7 +216,10 @@
     <ClInclude Include="Objects\BillboardDemo.h" />
     <ClInclude Include="Objects\ObbCollisionDemo.h" />
     <ClInclude Include="Objects\ObbRaycastDemo.h" />
+    <ClInclude Include="PostEffects\BlurDemo.h" />
     <ClInclude Include="PostEffects\ColorToneDemo.h" />
+    <ClInclude Include="PostEffects\GaussianBlurDemo.h" />
+    <ClInclude Include="PostEffects\GaussianBlurDemo2.h" />
     <ClInclude Include="PostEffects\MrtDemo.h" />
     <ClInclude Include="Projection\ProjectionDemo.h" />
     <ClInclude Include="Projection\ViewportDemo.h" />
