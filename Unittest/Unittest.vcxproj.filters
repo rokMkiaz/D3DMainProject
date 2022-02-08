@@ -47,6 +47,7 @@
     <ClCompile Include="PostEffects\BlurDemo.cpp" />
     <ClCompile Include="PostEffects\GaussianBlurDemo.cpp" />
     <ClCompile Include="PostEffects\GaussianBlurDemo2.cpp" />
+    <ClCompile Include="PostEffects\BloomDemo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main.h" />
@@ -95,5 +96,6 @@
     <ClInclude Include="PostEffects\BlurDemo.h" />
     <ClInclude Include="PostEffects\GaussianBlurDemo.h" />
     <ClInclude Include="PostEffects\GaussianBlurDemo2.h" />
+    <ClInclude Include="PostEffects\BloomDemo.h" />
   </ItemGroup>
 </Project>

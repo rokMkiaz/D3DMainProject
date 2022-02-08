@@ -2,6 +2,7 @@
 #include "Main.h"
 #include "Systems/Window.h"
 
+#include"PostEffects/BloomDemo.h"
 #include"PostEffects/GaussianBlurDemo2.h"
 #include"PostEffects/GaussianBlurDemo.h"
 #include"PostEffects/BlurDemo.h"
@@ -48,7 +49,8 @@
 
 void Main::Initialize()
 {
-	Push(new GaussianBlurDemo2);
+	Push(new BloomDemo);
+	//Push(new GaussianBlurDemo2);
 	//Push(new GaussianBlurDemo);
 	//Push(new BlurDemo);
 	//Push(new MrtDemo);
