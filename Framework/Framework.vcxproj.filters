@@ -52,6 +52,7 @@
     <ClCompile Include="Viewer\RenderTarget.cpp" />
     <ClCompile Include="Viewer\DepthStencil.cpp" />
     <ClCompile Include="Objects\PostEffect.cpp" />
+    <ClCompile Include="Objects\DynamicCubeMap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Renders">
@@ -122,5 +123,6 @@
     <ClInclude Include="Viewer\RenderTarget.h" />
     <ClInclude Include="Viewer\DepthStencil.h" />
     <ClInclude Include="Objects\PostEffect.h" />
+    <ClInclude Include="Objects\DynamicCubeMap.h" />
   </ItemGroup>
 </Project>
