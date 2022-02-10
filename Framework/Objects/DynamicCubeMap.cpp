@@ -1,8 +1,8 @@
-#include"Framework.h"
-#include"DynamicCubeMap.h"
+#include "Framework.h"
+#include "DynamicCubeMap.h"
 
 DynamicCubeMap::DynamicCubeMap(Shader* shader, UINT width, UINT height)
-	:shader(shader), position(0,0,0), width (width), height(height)
+	: shader(shader), position(0, 0, 0), width(width), height(height)
 {
 	DXGI_FORMAT rtvFormat = DXGI_FORMAT_R8G8B8A8_UNORM;
 
@@ -15,7 +15,7 @@ DynamicCubeMap::DynamicCubeMap(Shader* shader, UINT width, UINT height)
 		desc.ArraySize = 6;
 		desc.Format = rtvFormat;
 		desc.BindFlags = D3D11_BIND_SHADER_RESOURCE | D3D11_BIND_RENDER_TARGET;
-		desc.MiscFlags = D3D11_RESOURCE_MISC_TEXTURECUBE; //큐브형태로 만들어줘야함
+		desc.MiscFlags = D3D11_RESOURCE_MISC_TEXTURECUBE;
 		desc.MipLevels = 1;
 		desc.SampleDesc.Count = 1;
 
@@ -27,21 +27,23 @@ DynamicCubeMap::DynamicCubeMap(Shader* shader, UINT width, UINT height)
 		D3D11_RENDER_TARGET_VIEW_DESC desc;
 		ZeroMemory(&desc, sizeof(D3D11_RENDER_TARGET_VIEW_DESC));
 		desc.Format = rtvFormat;
-		desc.ViewDimension = D3D11_RTV_DIMENSION_TEXTURE2DARRAY;//OM
+		desc.ViewDimension = D3D11_RTV_DIMENSION_TEXTURE2DARRAY;
 		desc.Texture2DArray.ArraySize = 6;
 
 		Check(D3D::GetDevice()->CreateRenderTargetView(rtvTexture, &desc, &rtv));
 	}
+
 	//Create SRV
 	{
 		D3D11_SHADER_RESOURCE_VIEW_DESC desc;
 		ZeroMemory(&desc, sizeof(D3D11_SHADER_RESOURCE_VIEW_DESC));
 		desc.Format = rtvFormat;
-		desc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURECUBE;  //Shader
+		desc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURECUBE;
 		desc.TextureCube.MipLevels = 1;
 
 		Check(D3D::GetDevice()->CreateShaderResourceView(rtvTexture, &desc, &srv));
 	}
+
 
 	DXGI_FORMAT dsvFormat = DXGI_FORMAT_D32_FLOAT;
 	//Create Texture - DSV
@@ -53,11 +55,22 @@ DynamicCubeMap::DynamicCubeMap(Shader* shader, UINT width, UINT height)
 		desc.ArraySize = 6;
 		desc.Format = dsvFormat;
 		desc.BindFlags = D3D11_BIND_DEPTH_STENCIL;
-		desc.MiscFlags = D3D11_RESOURCE_MISC_TEXTURECUBE; 
+		desc.MiscFlags = D3D11_RESOURCE_MISC_TEXTURECUBE;
 		desc.MipLevels = 1;
 		desc.SampleDesc.Count = 1;
 
 		Check(D3D::GetDevice()->CreateTexture2D(&desc, NULL, &dsvTexture));
+	}
+
+	//CreateDSV
+	{
+		D3D11_DEPTH_STENCIL_VIEW_DESC desc;
+		ZeroMemory(&desc, sizeof(D3D11_DEPTH_STENCIL_VIEW_DESC));
+		desc.Format = dsvFormat;
+		desc.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2DARRAY;
+		desc.Texture2DArray.ArraySize = 6;
+
+		Check(D3D::GetDevice()->CreateDepthStencilView(dsvTexture, &desc, &dsv));
 	}
 
 	viewport = new Viewport((float)width, (float)height);
@@ -95,14 +108,12 @@ void DynamicCubeMap::PreRender(Vector3& position, Vector3& scale, float zNear, f
 			Vector3 Up;
 		} lookAt[6];
 
-
 		lookAt[0] = { Vector3(x + scale.x, y, z), Vector3(0, 1, 0) };
 		lookAt[1] = { Vector3(x - scale.x, y, z), Vector3(0, 1, 0) };
-		lookAt[2] = { Vector3(x, y + scale.y, z), Vector3(0, 0, -1) }; //위방향 바뀜
+		lookAt[2] = { Vector3(x, y + scale.y, z), Vector3(0, 0, -1) };
 		lookAt[3] = { Vector3(x, y - scale.y, z), Vector3(0, 0, +1) };
 		lookAt[4] = { Vector3(x, y, z + scale.z), Vector3(0, 1, 0) };
 		lookAt[5] = { Vector3(x, y, z - scale.z), Vector3(0, 1, 0) };
-
 
 		for (UINT i = 0; i < 6; i++)
 			D3DXMatrixLookAtLH(&desc.Views[i], &position, &lookAt[i].LookAt, &lookAt[i].Up);
@@ -111,7 +122,7 @@ void DynamicCubeMap::PreRender(Vector3& position, Vector3& scale, float zNear, f
 	perspective = new Perspective(1, 1, zNear, zFar, Math::PI * fov);
 	perspective->GetMatrix(&desc.Projection);
 
-	buffer->Render(); 
+	buffer->Render();
 	sBuffer->SetConstantBuffer(buffer->Buffer());
 
 
@@ -119,7 +130,4 @@ void DynamicCubeMap::PreRender(Vector3& position, Vector3& scale, float zNear, f
 	D3D::Get()->Clear(Color(0, 0, 0, 1), rtv, dsv);
 
 	viewport->RSSetViewport();
-
-
-
 }

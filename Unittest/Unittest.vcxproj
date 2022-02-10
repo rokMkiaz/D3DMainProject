@@ -163,6 +163,7 @@
     <ClCompile Include="Lighting\PointLightingDemo.cpp" />
     <ClCompile Include="Lighting\SpotLightingDemo.cpp" />
     <ClCompile Include="Objects\BillboardDemo.cpp" />
+    <ClCompile Include="Objects\DynamicCubeMapDemo.cpp" />
     <ClCompile Include="Objects\ObbCollisionDemo.cpp" />
     <ClCompile Include="Objects\ObbRaycastDemo.cpp" />
     <ClCompile Include="PostEffects\BloomDemo.cpp" />
@@ -215,6 +216,7 @@
     <ClInclude Include="Lighting\PointLightingDemo.h" />
     <ClInclude Include="Lighting\SpotLightingDemo.h" />
     <ClInclude Include="Objects\BillboardDemo.h" />
+    <ClInclude Include="Objects\DynamicCubeMapDemo.h" />
     <ClInclude Include="Objects\ObbCollisionDemo.h" />
     <ClInclude Include="Objects\ObbRaycastDemo.h" />
     <ClInclude Include="PostEffects\BloomDemo.h" />
