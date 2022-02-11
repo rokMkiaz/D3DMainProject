@@ -43,6 +43,7 @@
     <ClCompile Include="Objects\Collider.cpp" />
     <ClCompile Include="Objects\DynamicCubeMap.cpp" />
     <ClCompile Include="Objects\PostEffect.cpp" />
+    <ClCompile Include="Objects\Projector.cpp" />
     <ClCompile Include="Particle\Particlesystem.cpp" />
     <ClCompile Include="Renders\Buffers.cpp" />
     <ClCompile Include="Renders\Context.cpp" />
@@ -68,6 +69,7 @@
     <ClCompile Include="Utilities\Xml.cpp" />
     <ClCompile Include="Viewer\Camera.cpp" />
     <ClCompile Include="Viewer\DepthStencil.cpp" />
+    <ClCompile Include="Viewer\Fixity.cpp" />
     <ClCompile Include="Viewer\Freedom.cpp" />
     <ClCompile Include="Viewer\Orthographic.cpp" />
     <ClCompile Include="Viewer\Perspective.cpp" />
@@ -97,6 +99,7 @@
     <ClInclude Include="Objects\Collider.h" />
     <ClInclude Include="Objects\DynamicCubeMap.h" />
     <ClInclude Include="Objects\PostEffect.h" />
+    <ClInclude Include="Objects\Projector.h" />
     <ClInclude Include="Particle\ParticleData.h" />
     <ClInclude Include="Particle\ParticleSystem.h" />
     <ClInclude Include="Renders\Buffers.h" />
@@ -125,6 +128,7 @@
     <ClInclude Include="Utilities\Xml.h" />
     <ClInclude Include="Viewer\Camera.h" />
     <ClInclude Include="Viewer\DepthStencil.h" />
+    <ClInclude Include="Viewer\Fixity.h" />
     <ClInclude Include="Viewer\Freedom.h" />
     <ClInclude Include="Viewer\Orthographic.h" />
     <ClInclude Include="Viewer\Perspective.h" />

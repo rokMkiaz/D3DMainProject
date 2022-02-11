@@ -2,6 +2,7 @@
 #include "Main.h"
 #include "Systems/Window.h"
 
+#include"Objects/ProjectorDemo.h"
 #include"Objects/DynamicCubeMapDemo.h"
 #include"PostEffects/BloomDemo.h"
 #include"PostEffects/GaussianBlurDemo2.h"
@@ -50,7 +51,8 @@
 
 void Main::Initialize()
 {
-	Push(new DynamicCubeMapDemo);
+	Push(new ProjectorDemo);
+	//Push(new DynamicCubeMapDemo);
 	//Push(new BloomDemo);
 	//Push(new GaussianBlurDemo2);
 	//Push(new GaussianBlurDemo);

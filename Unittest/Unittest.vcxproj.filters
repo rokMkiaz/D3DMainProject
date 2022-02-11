@@ -49,6 +49,7 @@
     <ClCompile Include="PostEffects\GaussianBlurDemo2.cpp" />
     <ClCompile Include="PostEffects\BloomDemo.cpp" />
     <ClCompile Include="Objects\DynamicCubeMapDemo.cpp" />
+    <ClCompile Include="Objects\ProjectorDemo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main.h" />
@@ -99,5 +100,6 @@
     <ClInclude Include="PostEffects\GaussianBlurDemo2.h" />
     <ClInclude Include="PostEffects\BloomDemo.h" />
     <ClInclude Include="Objects\DynamicCubeMapDemo.h" />
+    <ClInclude Include="Objects\ProjectorDemo.h" />
   </ItemGroup>
 </Project>

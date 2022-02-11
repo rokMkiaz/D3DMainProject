@@ -33,6 +33,7 @@ void DynamicCubeMapDemo::Update()
 	static UINT cType = 0;
 	ImGui::InputInt("CubeMap Type", (int*)&cType);
 	cubeMap->Type(cType);
+	ImGui::Separator();
 
 	cType %= 5;
 
@@ -55,6 +56,31 @@ void DynamicCubeMapDemo::Update()
 	static float cubeMapScale = 0.75f;
 	ImGui::SliderFloat("Pass=4 CubeMapScale", &cubeMapScale, 0, 1);
 	shader->AsScalar("CubeMapScale")->SetFloat(cubeMapScale);
+
+	//SpotLight
+	{
+		ImGui::Separator();
+
+		static UINT spotIndex = 0;
+		ImGui::InputInt("SpotLight Index", (int*)&spotIndex);
+		spotIndex %= Lighting::Get()->SpotLightCount();
+
+
+		SpotLight& spotLight = Lighting::Get()->GetSpotLight(spotIndex);
+
+		ImGui::ColorEdit3("SpotLight Ambient", spotLight.Ambient);
+		ImGui::ColorEdit3("SpotLight Diffuse", spotLight.Diffuse);
+		ImGui::ColorEdit3("SpotLight Specular", spotLight.Specular);
+		ImGui::ColorEdit3("SpotLight Emissive", spotLight.Emissive);
+
+		ImGui::SliderFloat3("SpotLight Position", spotLight.Position, -50, 50);
+		ImGui::SliderFloat("SpotLight Range", &spotLight.Range, 0, 30);
+
+		ImGui::SliderFloat3("SpotLight Direciton", spotLight.Direction, -1, 1);
+		ImGui::SliderFloat("SpotLight Angle", &spotLight.Angle, 1, 90);
+
+		ImGui::SliderFloat("SpotLight Intensity", &spotLight.Intensity, 0, 1);
+	}
 
 
 	Vector3 position;

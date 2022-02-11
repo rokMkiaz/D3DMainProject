@@ -166,6 +166,7 @@
     <ClCompile Include="Objects\DynamicCubeMapDemo.cpp" />
     <ClCompile Include="Objects\ObbCollisionDemo.cpp" />
     <ClCompile Include="Objects\ObbRaycastDemo.cpp" />
+    <ClCompile Include="Objects\ProjectorDemo.cpp" />
     <ClCompile Include="PostEffects\BloomDemo.cpp" />
     <ClCompile Include="PostEffects\BlurDemo.cpp" />
     <ClCompile Include="PostEffects\ColorToneDemo.cpp" />
@@ -219,6 +220,7 @@
     <ClInclude Include="Objects\DynamicCubeMapDemo.h" />
     <ClInclude Include="Objects\ObbCollisionDemo.h" />
     <ClInclude Include="Objects\ObbRaycastDemo.h" />
+    <ClInclude Include="Objects\ProjectorDemo.h" />
     <ClInclude Include="PostEffects\BloomDemo.h" />
     <ClInclude Include="PostEffects\BlurDemo.h" />
     <ClInclude Include="PostEffects\ColorToneDemo.h" />
