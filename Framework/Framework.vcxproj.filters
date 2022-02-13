@@ -55,6 +55,7 @@
     <ClCompile Include="Objects\DynamicCubeMap.cpp" />
     <ClCompile Include="Viewer\Fixity.cpp" />
     <ClCompile Include="Objects\Projector.cpp" />
+    <ClCompile Include="Objects\Shadow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Renders">
@@ -128,5 +129,6 @@
     <ClInclude Include="Objects\DynamicCubeMap.h" />
     <ClInclude Include="Viewer\Fixity.h" />
     <ClInclude Include="Objects\Projector.h" />
+    <ClInclude Include="Objects\Shadow.h" />
   </ItemGroup>
 </Project>

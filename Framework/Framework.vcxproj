@@ -44,6 +44,7 @@
     <ClCompile Include="Objects\DynamicCubeMap.cpp" />
     <ClCompile Include="Objects\PostEffect.cpp" />
     <ClCompile Include="Objects\Projector.cpp" />
+    <ClCompile Include="Objects\Shadow.cpp" />
     <ClCompile Include="Particle\Particlesystem.cpp" />
     <ClCompile Include="Renders\Buffers.cpp" />
     <ClCompile Include="Renders\Context.cpp" />
@@ -100,6 +101,7 @@
     <ClInclude Include="Objects\DynamicCubeMap.h" />
     <ClInclude Include="Objects\PostEffect.h" />
     <ClInclude Include="Objects\Projector.h" />
+    <ClInclude Include="Objects\Shadow.h" />
     <ClInclude Include="Particle\ParticleData.h" />
     <ClInclude Include="Particle\ParticleSystem.h" />
     <ClInclude Include="Renders\Buffers.h" />
