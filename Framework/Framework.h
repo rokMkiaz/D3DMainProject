@@ -118,6 +118,7 @@ typedef D3DXPLANE Plane;
 #include"Objects/PostEffect.h"
 #include"Objects/DynamicCubeMap.h"
 #include"Objects/Projector.h"
+#include"Objects/Shadow.h"
 
 //TODO::
 #include"Environment/Terrain.h"

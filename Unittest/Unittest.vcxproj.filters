@@ -50,6 +50,7 @@
     <ClCompile Include="PostEffects\BloomDemo.cpp" />
     <ClCompile Include="Objects\DynamicCubeMapDemo.cpp" />
     <ClCompile Include="Objects\ProjectorDemo.cpp" />
+    <ClCompile Include="Objects\ShadowDemo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main.h" />
@@ -101,5 +102,6 @@
     <ClInclude Include="PostEffects\BloomDemo.h" />
     <ClInclude Include="Objects\DynamicCubeMapDemo.h" />
     <ClInclude Include="Objects\ProjectorDemo.h" />
+    <ClInclude Include="Objects\ShadowDemo.h" />
   </ItemGroup>
 </Project>
