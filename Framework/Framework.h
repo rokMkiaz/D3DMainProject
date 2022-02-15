@@ -128,3 +128,5 @@ typedef D3DXPLANE Plane;
 
 #include"Particle/ParticleData.h"
 #include"Particle/ParticleSystem.h"
+
+int i = 0;
