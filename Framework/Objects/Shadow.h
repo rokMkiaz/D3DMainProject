@@ -39,4 +39,6 @@ private:
 	ID3DX11EffectConstantBuffer* sBuffer;
 	ID3DX11EffectShaderResourceVariable* sShadowMap;//그림자 깊이를 렌더링 했을때 2Pass정보 전달할 변수
 
+	ID3D11SamplerState* pcfSampler;//PCF
+	ID3DX11EffectSamplerVariable* sPcfSampler;
 };

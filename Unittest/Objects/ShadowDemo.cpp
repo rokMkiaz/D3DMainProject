@@ -10,7 +10,7 @@ void ShadowDemo::Initialize()
 
 	shader = new Shader(L"113_Shadow.fxo");
 
-	UINT size = 1024;// * 8; * 16;
+	UINT size = 1024;// * 8; * 16; ÇØ»óµµ
 	shadow = new Shadow(shader, Vector3(0, 0, 0), 65, size, size);
 
 	render2D = new Render2D();
