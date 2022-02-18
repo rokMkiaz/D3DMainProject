@@ -2,6 +2,7 @@
 #include "Main.h"
 #include "Systems/Window.h"
 
+#include"Objects/PondWaterDemo.h"
 #include"Objects/ShadowDemo.h"
 #include"Objects/ProjectorDemo.h"
 #include"Objects/DynamicCubeMapDemo.h"
@@ -52,7 +53,8 @@
 
 void Main::Initialize()
 {
-	Push(new ShadowDemo);
+	Push(new PondWaterDemo);
+	//Push(new ShadowDemo);
 	//Push(new ProjectorDemo);
 	//Push(new DynamicCubeMapDemo);
 	//Push(new BloomDemo);

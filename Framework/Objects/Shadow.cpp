@@ -45,6 +45,8 @@ void Shadow::PreRender()
 	ImGui::InputInt("Quality", (int*)&desc.Quality);
 	desc.Quality %= 3;
 
+	
+	ImGui::Separator();
 	//1Pass Test
 	ImGui::SliderFloat3("Light Direction", Context::Get()->Direction(), -1, +1);
 	ImGui::SliderFloat("Bias", &desc.Bias, -0.0001f, +0.01f, "%.4f");
