@@ -1,18 +1,54 @@
 #pragma once
-#include"Material.h"
 
-class PondWater :public Material
+class PondWater 
 {
 public:
+	PondWater();
 	PondWater(Shader* shader);
 	~PondWater();
 
+	Shader* GetShader() { return shader; }
 	void SetShader(Shader* shader);
 
-	void NormalMap(string waveFile1,string waveFile2);
-	void NormalMap(wstring waveFile1,wstring waveFile2);
+
+	void CopyFrom(PondWater* material);
 
 
+	void Name(wstring val) { name = val; }
+	wstring Name() { return name; }
+
+	Color& Ambient() { return colorDesc.Ambient; }
+	void Ambient(Color& color);
+	void Ambient(float r, float g, float b, float a = 1.0f);
+
+	Color& Diffuse() { return colorDesc.Diffuse; }
+	void Diffuse(Color& color);
+	void Diffuse(float r, float g, float b, float a = 1.0f);
+
+	Color& Specular() { return colorDesc.Specular; }
+	void Specular(Color& color);
+	void Specular(float r, float g, float b, float a = 1.0f);
+
+	Color& Emissive() { return colorDesc.Emissive; }
+	void Emissive(Color& color);
+	void Emissive(float r, float g, float b, float a = 1.0f);
+
+
+	Texture* DiffuseMap() { return diffuseMap; }
+	void DiffuseMap(string file);
+	void DiffuseMap(wstring file);
+
+	Texture* SpecularMap() { return specularMap; }
+	void SpecularMap(string file);
+	void SpecularMap(wstring file);
+
+	Texture* NormalMap() { return waveMap; }
+	void NormalMap(string waveFile1, string waveFile2);
+	void NormalMap(wstring waveFile1, wstring waveFile2);
+
+	void Update();
+	void Render();
+	
 private:
 	void Initialize();
 
@@ -26,21 +62,26 @@ private:
 	} colorDesc;
 
 private:
+	float waveTimer=0.0f;
+
+private:
 	Shader* shader = NULL;
-	
+
 	wstring name;
 
 	Texture* diffuseMap;
 	Texture* specularMap;
-	Texture* wave1NormalMap;
-	Texture* wave2NormalMap;
+
+
+	Texture* waveMap;
+	Texture* normalMap1;
+	Texture* normalMap2;
 
 	ConstantBuffer* buffer;
 	ID3DX11EffectConstantBuffer* sBuffer;
 
 	ID3DX11EffectShaderResourceVariable* sDiffuseMap;
 	ID3DX11EffectShaderResourceVariable* sSpecularMap;
-	ID3DX11EffectShaderResourceVariable* sWaveNormalMap1;
-	ID3DX11EffectShaderResourceVariable* sWaveNormalMap2;
+	ID3DX11EffectShaderResourceVariable* sNormalMap;
 
 };

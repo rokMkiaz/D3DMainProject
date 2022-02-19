@@ -36,6 +36,8 @@ void PondWaterDemo::Update()
 
 	cube->Update();
 	grid->Update();
+	water->Update();
+
 	waterGrid->Update();
 
 	cylinder->Update();
@@ -94,10 +96,7 @@ void PondWaterDemo::Render()
 
 	water->Render();
 	waterGrid->Render();
-	static UINT wave = 0;
-	wave > 200 ? wave = 0 : wave = wave;
-	wave > 100 ? water->NormalMap("Waterwave0.dds") : water->NormalMap("Waterwave1.dds");
-	wave++;
+
 
 	airplane->Render();
 
@@ -118,11 +117,11 @@ void PondWaterDemo::Mesh()
 		floor->SpecularMap("Floor_Specular.png");
 		floor->NormalMap("Floor_Normal.png");
 
-		water = new Material(shader);
+		water = new PondWater(shader);
 		water ->DiffuseMap("White.png");
 		water ->Specular(1, 1, 1, 20);
 		//water ->SpecularMap("Waterwave0.dds");
-		//water ->NormalMap("Waterwave1.dds");
+		water ->NormalMap("Waterwave0.dds","Waterwave1.dds");
 		//water->NormalMap("Waterwave0.dds");
 
 		stone = new Material(shader);

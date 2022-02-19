@@ -30,7 +30,7 @@ private:
 	CubeSky* sky;
 
 	Material* floor;
-	Material* water;
+	PondWater* water;
 	Material* stone;
 	Material* brick;
 	Material* wall;
