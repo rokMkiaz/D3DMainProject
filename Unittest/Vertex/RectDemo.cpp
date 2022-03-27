@@ -3,6 +3,9 @@
 
 void RectDemo::Initialize()
 {
+	Context::Get()->GetCamera()->RotationDegree(0, 0, 0);
+	Context::Get()->GetCamera()->Position(0, 0, -17);
+
 	shader = new Shader(L"07_Rect.fx");
 
 	vertices[0].Position = Vector3(+0.0f, +0.0f, 0.0f);

@@ -51,7 +51,6 @@
     <ClCompile Include="Objects\DynamicCubeMapDemo.cpp" />
     <ClCompile Include="Objects\ProjectorDemo.cpp" />
     <ClCompile Include="Objects\ShadowDemo.cpp" />
-    <ClCompile Include="Objects\PondWaterDemo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main.h" />
@@ -104,6 +103,5 @@
     <ClInclude Include="Objects\DynamicCubeMapDemo.h" />
     <ClInclude Include="Objects\ProjectorDemo.h" />
     <ClInclude Include="Objects\ShadowDemo.h" />
-    <ClInclude Include="Objects\PondWaterDemo.h" />
   </ItemGroup>
 </Project>

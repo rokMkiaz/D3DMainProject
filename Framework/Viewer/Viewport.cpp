@@ -17,10 +17,10 @@ void Viewport::RSSetViewport()
 
 void Viewport::Set(float width, float height, float x, float y, float minDepth, float maxDepth)
 {
-	viewport.TopLeftX = this->x = x;
-	viewport.TopLeftY = this->y = y;
-	viewport.Width = this->width = width;
-	viewport.Height = this->height = height;
+	viewport.TopLeftX = this->x        = x;
+	viewport.TopLeftY = this->y        = y;
+	viewport.Width =    this->width    = width;
+	viewport.Height =   this->height   = height;
 	viewport.MinDepth = this->minDepth = minDepth;
 	viewport.MaxDepth = this->maxDepth = maxDepth;
 

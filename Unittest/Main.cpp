@@ -18,6 +18,7 @@
 #include"Lighting/LightingDemo.h"
 #include"Objects/BillboardDemo.h"
 #include"Terrain/WeatherDemo.h"
+#include"Vertex/RectDemo.h"
 /*
 #include"DirectCompute/GetMultiBoneDemo.h"
 #include"DirectCompute/GetAnimationBoneDemo.h"
@@ -27,7 +28,6 @@
 #include"World/WorldDemo3.h"
 #include"World/RotationDemo.h"
 #include"Vertex/UserInterfaceDemo.h"
-#include"Vertex/RectDemo.h"
 #include"Vertex/Vertex_Line.h"
 #include"Vertex/Vertex_Line2.h"
 #include"Vertex/TriangleList.h"
@@ -53,7 +53,7 @@
 
 void Main::Initialize()
 {
-	Push(new PondWaterDemo);
+	//Push(new PondWaterDemo);
 	//Push(new ShadowDemo);
 	//Push(new ProjectorDemo);
 	//Push(new DynamicCubeMapDemo);
@@ -95,9 +95,9 @@ void Main::Initialize()
 	Push(new  GridDemo);
 	Push(new CubeDemo);
 	Push(new UserInterfaceDemo);
-	Push(new RectDemo());
 	Push(new TriangleList());
 	*/
+	Push(new RectDemo());
 }
 
 void Main::Ready()

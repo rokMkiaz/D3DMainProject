@@ -89,13 +89,14 @@ private:
 private:
 	static vector<D3DEnumAdapterInfo*> apapterInfos;
 	static int selected_adapter_index;
-
+	
 	static D3D* instance;
-
+	
 	static D3DDesc d3dDesc;
 	static ID3D11Device* device;
 	static ID3D11DeviceContext* deviceContext;
 	static IDXGISwapChain* swapChain;
+
 
 
 	ID3D11Debug* debugDevice;

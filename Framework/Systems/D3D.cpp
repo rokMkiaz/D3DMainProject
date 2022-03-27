@@ -62,10 +62,10 @@ void D3D::ResizeScreen(float width, float height)
 {
 	if (width < 1 || height < 1)
 		return;
-
+	
 	d3dDesc.Width = width;
 	d3dDesc.Height = height;
-
+	
 	DeleteBackBuffer();
 	{
 		HRESULT hr = swapChain->ResizeBuffers(0, (UINT)width, (UINT)height, DXGI_FORMAT_UNKNOWN, 0);

@@ -73,3 +73,4 @@ private:
 	__int64 tick;
 	__int64 start, end;
 };
+
