@@ -111,8 +111,7 @@ void CubeDemo::Update()
 	static float speed = 10.0f;
 	ImGui::SliderFloat("Speed", &speed, 5, 20);
 
-	static float speed2 = 2.0f;
-	ImGui::SliderFloat("Speed2", &speed2, 1, 5);
+
 
 	if (Keyboard::Get()->Press(VK_SHIFT))
 	{
@@ -138,6 +137,7 @@ void CubeDemo::Update()
 		else if (Keyboard::Get()->Press(VK_DOWN))
 			position.z -= speed * Time::Delta();
 	}
+
 
 	Matrix R, T;
 	D3DXMatrixRotationYawPitchRoll(&R, rotation.y, rotation.x, rotation.z);

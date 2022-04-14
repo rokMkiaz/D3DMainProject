@@ -57,7 +57,7 @@ void Texture::SaveFile(wstring file, ID3D11Texture2D* src)
 	HRESULT hr;
 	hr = D3D::GetDevice()->CreateTexture2D(&destDesc, NULL, &dest);
 	Check(hr);
-
+	
 	hr = D3DX11LoadTextureFromTexture(D3D::GetDC(), src, NULL, dest);
 	Check(hr);
 

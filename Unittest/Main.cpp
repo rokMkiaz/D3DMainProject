@@ -18,7 +18,8 @@
 #include"Lighting/LightingDemo.h"
 #include"Objects/BillboardDemo.h"
 #include"Terrain/WeatherDemo.h"
-#include"Vertex/RectDemo.h"
+//#include"Vertex/RectDemo.h"
+#include"Mesh/CubeDemo.h"
 /*
 #include"DirectCompute/GetMultiBoneDemo.h"
 #include"DirectCompute/GetAnimationBoneDemo.h"
@@ -31,7 +32,6 @@
 #include"Vertex/Vertex_Line.h"
 #include"Vertex/Vertex_Line2.h"
 #include"Vertex/TriangleList.h"
-#include"Mesh/CubeDemo.h"
 #include"Mesh/MeshDemo.h"
 #include"Texture/TextureDemo.h"
 #include"Texture/TextureLoadDemo.h"
@@ -93,11 +93,11 @@ void Main::Initialize()
 	Push(new TextureDemo);
 	Push(new RotationDemo);
 	Push(new  GridDemo);
-	Push(new CubeDemo);
 	Push(new UserInterfaceDemo);
 	Push(new TriangleList());
 	*/
-	Push(new RectDemo());
+	Push(new CubeDemo);
+	//Push(new RectDemo());
 }
 
 void Main::Ready()

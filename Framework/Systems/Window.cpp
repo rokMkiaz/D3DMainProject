@@ -30,7 +30,6 @@ WPARAM Window::Run(IExecute* main)
 
 	MSG msg = { 0 };
 	while (true)
-
 	{
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
 		{
@@ -198,7 +197,6 @@ void Window::MainRender()
 	mainExecute->Update();
 
 	mainExecute->PreRender(); //∑ª¥ı≈∏∞Ÿ»≠∏È¿ª æ≤±‚¿ß«— ∑ª¥ı
-
 
 	D3DDesc desc = D3D::GetDesc();
 
