@@ -68,10 +68,10 @@ void CubeDemo::Initialize()
 		ZeroMemory(&desc, sizeof(D3D11_BUFFER_DESC));
 		desc.ByteWidth = sizeof(Vertex) * vertexCount;
 		desc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
-
+	
 		D3D11_SUBRESOURCE_DATA subResource = { 0 };
 		subResource.pSysMem = vertices;
-
+	
 		Check(D3D::GetDevice()->CreateBuffer(&desc, &subResource, &vertexBuffer));
 	}
 
@@ -84,10 +84,10 @@ void CubeDemo::Initialize()
 		ZeroMemory(&desc, sizeof(D3D11_BUFFER_DESC));
 		desc.ByteWidth = sizeof(UINT) * indexCount;
 		desc.BindFlags = D3D11_BIND_INDEX_BUFFER;
-
+	
 		D3D11_SUBRESOURCE_DATA subResource = { 0 };
 		subResource.pSysMem = indices;
-
+	
 		Check(D3D::GetDevice()->CreateBuffer(&desc, &subResource, &indexBuffer));
 	}
 	

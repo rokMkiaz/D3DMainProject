@@ -16,6 +16,7 @@ Billboard::~Billboard()
 
 void Billboard::Update()
 {
+
 	Super::Update();
 }
 

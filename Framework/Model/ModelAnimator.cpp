@@ -84,6 +84,8 @@ ModelAnimator::~ModelAnimator()
 
 void ModelAnimator::Update()
 {
+
+
 	if (texture == NULL)
 	{
 		for (ModelMesh* mesh : model->Meshes())

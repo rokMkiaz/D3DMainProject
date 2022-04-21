@@ -37,6 +37,8 @@ void Renderer::Update()
 {
 	perFrame->Update();
 	transform->Update();
+
+
 }
 
 void Renderer::Render()

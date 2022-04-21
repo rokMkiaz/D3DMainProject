@@ -85,7 +85,17 @@ typedef D3DXPLANE Plane;
 #include "Renders/VertexLayouts.h"
 #include "Renders/Context.h"
 #include "Renders/DebugLine.h"
-#include "Renders/Buffers.h"
+//Buffer
+#include "Renders/iBuffers.h"
+#include "Renders/Buffers/VertexBuffer.h"
+#include "Renders/Buffers/IndexBuffer.h"
+#include "Renders/Buffers/ConstantBuffer.h"
+//Csbuffer
+#include "Renders/Buffers/CsResource.h"
+#include "Renders/Buffers/RawBuffer.h"
+#include "Renders/Buffers/TextureBuffer.h"
+#include "Renders/Buffers/StructuredBuffer.h"
+
 #include "Renders/Transform.h"
 #include "Renders/Lighting.h"
 #include "Renders/PerFrame.h"

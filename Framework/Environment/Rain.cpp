@@ -68,6 +68,7 @@ Rain::~Rain()
 
 void Rain::Update()
 {
+
 	Super::Update();
 
 	//Context::Get()->GetCamera()->Position(&desc.Origin);

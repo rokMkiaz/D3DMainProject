@@ -27,6 +27,7 @@ PerFrame::~PerFrame()
 
 void PerFrame::Update()
 {
+	
 	desc.Time = Time::Get()->Running();
 
 	lightDesc.Ambient = Context::Get()->Ambient();

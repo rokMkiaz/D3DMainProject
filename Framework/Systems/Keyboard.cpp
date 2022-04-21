@@ -24,6 +24,8 @@ void Keyboard::Delete()
 
 void Keyboard::Update()
 {
+
+
 	memcpy(keyOldState, keyState, sizeof(keyOldState));
 
 	ZeroMemory(keyState, sizeof(keyState));

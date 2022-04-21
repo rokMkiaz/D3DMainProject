@@ -51,6 +51,7 @@ Mouse::~Mouse()
 
 void Mouse::Update()
 {
+
 	memcpy(buttonOldStatus, buttonStatus, sizeof(buttonOldStatus));
 
 	ZeroMemory(buttonStatus, sizeof(buttonStatus));

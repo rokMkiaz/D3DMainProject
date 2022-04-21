@@ -8,6 +8,7 @@ Shadow::Shadow(Shader* shader, Vector3& position, float radius, UINT width, UINT
 	depthStencil = new DepthStencil(width, height);
 	viewport = new Viewport((float)width, (float)height);
 
+
 	desc.MapSize = Vector2((float)width, (float)height); //한픽셀 크기 찾는
 
 	buffer = new ConstantBuffer(&desc, sizeof(Desc));
@@ -42,6 +43,7 @@ Shadow::~Shadow()
 
 void Shadow::PreRender()
 {
+
 	ImGui::InputInt("Quality", (int*)&desc.Quality);
 	desc.Quality %= 3;
 

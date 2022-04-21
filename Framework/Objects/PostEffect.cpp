@@ -29,6 +29,7 @@ PostEffect::~PostEffect()
 
 void PostEffect::Update()
 {
+
 	Super::Update();
 }
 

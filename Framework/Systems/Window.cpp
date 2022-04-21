@@ -41,6 +41,7 @@ WPARAM Window::Run(IExecute* main)
 		}
 		else
 		{
+		
 			MainRender();
 		}
 	}

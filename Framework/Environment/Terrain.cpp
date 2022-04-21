@@ -9,7 +9,11 @@ Terrain::Terrain(Shader* shader, wstring heightFile)
 	CreateVertexData();
 	CreateIndexData();
 	CreateNormalData();
-	CreateBuffer();
+
+	//Buffer Create
+	UINT stride = sizeof(TerrainVertex);
+	vertexBuffer = new VertexBuffer(vertices, vertexCount, stride);
+	indexBuffer = new IndexBuffer(indices, indexCount);
 
 	D3DXMatrixIdentity(&world);
 }
@@ -21,12 +25,13 @@ Terrain::~Terrain()
 	SafeDeleteArray(vertices);
 	SafeDeleteArray(indices);
 
-	SafeRelease(vertexBuffer);
-	SafeRelease(indexBuffer);
+	SafeDelete(vertexBuffer);
+	SafeDelete(indexBuffer);
 }
 
 void Terrain::Update()
 {
+
 	static Vector3 direction = Vector3(-1, -1, -1);
 	ImGui::SliderFloat3("Direction", direction, -1, 1);
 	shader->AsVector("Direction")->SetFloatVector(direction);
@@ -41,20 +46,12 @@ void Terrain::Update()
  
 void Terrain::Render()
 {
-	//for (int i = 0; i < vertexCount; i++)
-	//{
-	//	Vector3 start = vertices[i].Position;
-	//	Vector3 end = vertices[i].Position + vertices[i].Normal * 2;
-	//
-	//	DebugLine::Get()->RenderLine(start, end, Color(0, 1, 0, 1));
-	//}
-
 	UINT stride = sizeof(TerrainVertex);
 	UINT offset = 0;
 
 	D3D::GetDC()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-	D3D::GetDC()->IASetVertexBuffers(0, 1, &vertexBuffer, &stride, &offset);
-	D3D::GetDC()->IASetIndexBuffer(indexBuffer, DXGI_FORMAT_R32_UINT, 0);
+	vertexBuffer->Render();
+	indexBuffer->Render();
 
 	shader->DrawIndexed(0, pass, indexCount);
 }
@@ -256,31 +253,3 @@ void Terrain::CreateNormalData()
 		D3DXVec3Normalize(&vertices[i].Normal, &vertices[i].Normal);
 }
 
-void Terrain::CreateBuffer()
-{
-	//Create Vertex Buffer
-	{
-		D3D11_BUFFER_DESC desc;
-		ZeroMemory(&desc, sizeof(D3D11_BUFFER_DESC));
-		desc.ByteWidth = sizeof(TerrainVertex) * vertexCount;
-		desc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
-
-		D3D11_SUBRESOURCE_DATA subResource = { 0 };
-		subResource.pSysMem = vertices;
-
-		Check(D3D::GetDevice()->CreateBuffer(&desc, &subResource, &vertexBuffer));
-	}
-
-	//Create Index Buffer
-	{
-		D3D11_BUFFER_DESC desc;
-		ZeroMemory(&desc, sizeof(D3D11_BUFFER_DESC));
-		desc.ByteWidth = sizeof(UINT) * indexCount;
-		desc.BindFlags = D3D11_BIND_INDEX_BUFFER;
-
-		D3D11_SUBRESOURCE_DATA subResource = { 0 };
-		subResource.pSysMem = indices;
-
-		Check(D3D::GetDevice()->CreateBuffer(&desc, &subResource, &indexBuffer));
-	}
-}

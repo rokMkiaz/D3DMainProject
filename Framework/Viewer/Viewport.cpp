@@ -17,6 +17,7 @@ void Viewport::RSSetViewport()
 
 void Viewport::Set(float width, float height, float x, float y, float minDepth, float maxDepth)
 {
+
 	viewport.TopLeftX = this->x        = x;
 	viewport.TopLeftY = this->y        = y;
 	viewport.Width =    this->width    = width;
@@ -30,6 +31,7 @@ void Viewport::Set(float width, float height, float x, float y, float minDepth, 
 void Viewport::Project(Vector3* pOut, Vector3& source, Matrix& W, Matrix& V, Matrix& P)
 {
 	//W->V->P->Vp
+
 
 	Vector3 position = source;
 

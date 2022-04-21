@@ -36,6 +36,7 @@ Render2D::~Render2D()
 
 void Render2D::Update()
 {
+
 	Super::Update();
 }
 

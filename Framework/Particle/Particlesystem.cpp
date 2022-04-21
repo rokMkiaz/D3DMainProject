@@ -117,6 +117,8 @@ void ParticleSystem::Add(Vector3& position)
 
 void ParticleSystem::Update()
 {
+
+
 	Super::Update();
 
 	currentTime += Time::Delta();

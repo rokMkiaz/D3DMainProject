@@ -94,6 +94,8 @@ DynamicCubeMap::~DynamicCubeMap()
 
 void DynamicCubeMap::PreRender(Vector3& position, Vector3& scale, float zNear, float zFar, float fov)
 {
+
+
 	this->position = position;
 
 	//Create Views
@@ -121,6 +123,7 @@ void DynamicCubeMap::PreRender(Vector3& position, Vector3& scale, float zNear, f
 
 	perspective = new Perspective(1, 1, zNear, zFar, Math::PI * fov);
 	perspective->GetMatrix(&desc.Projection);
+
 
 	buffer->Render();
 	sBuffer->SetConstantBuffer(buffer->Buffer());

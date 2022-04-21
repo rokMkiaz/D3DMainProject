@@ -2,7 +2,7 @@
 #include "Main.h"
 #include "Systems/Window.h"
 
-#include"Objects/PondWaterDemo.h"
+
 #include"Objects/ShadowDemo.h"
 #include"Objects/ProjectorDemo.h"
 #include"Objects/DynamicCubeMapDemo.h"
@@ -20,6 +20,11 @@
 #include"Terrain/WeatherDemo.h"
 //#include"Vertex/RectDemo.h"
 #include"Mesh/CubeDemo.h"
+#include"Texture/TextureLoadDemo.h"
+#include"Terrain/GetVerticalRaycast.h"
+#include"Terrain/GetRaycastDemo.h"
+#include"Terrain/HeightMapDemo.h"
+#include"Terrain/GetHeightDemo.h"
 /*
 #include"DirectCompute/GetMultiBoneDemo.h"
 #include"DirectCompute/GetAnimationBoneDemo.h"
@@ -33,20 +38,15 @@
 #include"Vertex/Vertex_Line2.h"
 #include"Vertex/TriangleList.h"
 #include"Mesh/MeshDemo.h"
-#include"Texture/TextureDemo.h"
-#include"Texture/TextureLoadDemo.h"
 #include"Texture/TextureSamplerDemo.h"
-#include"Terrain/HeightMapDemo.h"
 #include"Terrain/NormalVectorDemo.h"
-#include"Terrain/GetHeightDemo.h"
-#include"Terrain/GetVerticalRaycast.h"
+#include"Texture/TextureDemo.h"
 #include"Objects/CubeSkyDemo.h"
 #include"DirectCompute/ThreadDemo.h"
 #include"DirectCompute/RawBufferDemo.h"
 #include"DirectCompute/TextureBufferDemo.h"
 #include"Projection/ViewportDemo.h"
 #include"Projection/ProjectionDemo.h"
-#include"Terrain/GetRaycastDemo.h"
 #include"Objects/ObbRaycastDemo.h"
 #include"Objects/ObbCollisionDemo.h"
 */
@@ -73,7 +73,6 @@ void Main::Initialize()
 	Push(new GetMultiBoneDemo);
 	Push(new ObbCollisionDemo);
 	Push(new ObbRaycastDemo);
-	Push(new GetRaycastDemo);
 	Push(new ProjectionDemo);
 	Push(new ViewportDemo);
 	Push(new GetAnimationBoneDemo);
@@ -84,19 +83,20 @@ void Main::Initialize()
 	Push(new InstancingDemo);
 	Push(new CubeSkyDemo);
 	Push(new MeshDemo);
-	Push(new GetVerticalRaycast);
-	Push(new GetHeightDemo);
 	Push(new NormalVectorDemo);
 	Push(new HeightMapDemo);
 	Push(new TextureSamplerDemo);
-	Push(new TextureLoadDemo);
 	Push(new TextureDemo);
 	Push(new RotationDemo);
 	Push(new  GridDemo);
 	Push(new UserInterfaceDemo);
 	Push(new TriangleList());
 	*/
-	Push(new CubeDemo);
+	Push(new GetHeightDemo);
+	//Push(new GetRaycastDemo);
+	//Push(new GetVerticalRaycast);
+	//Push(new TextureLoadDemo);
+	//Push(new CubeDemo);
 	//Push(new RectDemo());
 }
 
@@ -140,6 +140,8 @@ void Main::PostRender()
 
 void Main::ResizeScreen()
 {
+
+
 	for (IExecute* exe : executes)
 		exe->ResizeScreen();
 }

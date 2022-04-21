@@ -20,6 +20,8 @@ Collider::~Collider()
 
 void Collider::Update()
 {
+
+
 	Transform temp;
 	temp.World(transform->World());
 

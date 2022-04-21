@@ -42,6 +42,7 @@ void CubeSky::Update()
 
 void CubeSky::Render()
 {
+
 	sSrv->SetResource(srv);
 
 	sphereRender->Pass(pass);

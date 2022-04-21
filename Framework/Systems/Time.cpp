@@ -43,6 +43,7 @@ void Time::Delete()
 
 void Time::Update()
 {
+
 	if (isTimerStopped) return;
 
 	//1. 현재시간을 가져와 시간 간격 및 진행 시간을 계산한다.

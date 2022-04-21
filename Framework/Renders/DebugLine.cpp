@@ -58,6 +58,8 @@ void DebugLine::RenderLine(Vector3& start, Vector3& end, Color& color)
 
 void DebugLine::Update()
 {
+
+
 	Matrix world;
 	D3DXMatrixIdentity(&world);
 
@@ -68,6 +70,7 @@ void DebugLine::Update()
 
 void DebugLine::Render()
 {
+
 	if (drawCount < 1) return;
 
 	D3D::GetDC()->UpdateSubresource(vertexBuffer, 0, NULL, vertices, sizeof(VertexColor) * drawCount, 0);

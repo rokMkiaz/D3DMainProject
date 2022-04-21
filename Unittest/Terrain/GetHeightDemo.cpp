@@ -12,6 +12,14 @@ void GetHeightDemo::Initialize()
 
 	terrain = new Terrain(shader, L"Terrain/Gray256.png");
 	terrain->Pass(0);
+	
+
+	textureShader = new Shader(L"16_Texture.fx");
+	terrainTexture = new Texture(L"_Texture/Terrain/DarkDirt.png");
+	UINT stride = 0;
+	textureVertexBuffer = new VertexBuffer(terrain->GetVerticesData(), terrain->GetVertexCount(), stride );
+	textureIndexBuffer = new IndexBuffer(terrain->GetIndicesData(), terrain->GetIndexCount());
+
 
 	triShader = new Shader(L"09_World.fx");
 
@@ -37,11 +45,16 @@ void GetHeightDemo::Initialize()
 void GetHeightDemo::Destroy()
 {
 	SafeDelete(shader);
+	SafeDelete(textureShader);
 
 	SafeDelete(terrain);
+	SafeDelete(terrainTexture);
+	SafeDelete(textureVertexBuffer)
+	SafeDelete(textureIndexBuffer);
 
 	SafeDelete(triShader);
 	SafeRelease(vertexBuffer);
+
 
 }
 
@@ -83,6 +96,12 @@ void GetHeightDemo::Render()
 
 	D3D::GetDC()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 	D3D::GetDC()->IASetVertexBuffers(0, 1, &vertexBuffer, &stride, &offset);
+
+	if (terrainTexture != NULL)
+		textureShader->AsSRV("Map")->SetResource(terrainTexture->SRV());
+
+	textureVertexBuffer->Render();
+	textureIndexBuffer->Render();
 
 
 	triShader->Draw(0, 0, 3);

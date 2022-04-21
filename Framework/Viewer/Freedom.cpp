@@ -12,7 +12,10 @@ Freedom::~Freedom()
 
 void Freedom::Update()
 {
+
+
 	if (Mouse::Get()->Press(1) == false) return;
+
 
 	//»ó´ë
 	Vector3 f = Forward(); 
@@ -23,6 +26,8 @@ void Freedom::Update()
 	//Vector3 f = Vector3(0, 0, 1);
 	//Vector3 u = Vector3(0, 1, 0);
 	//Vector3 r = Vector3(1, 0, 0);
+
+	
 
 	//Move
 	{

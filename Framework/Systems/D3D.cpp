@@ -34,7 +34,7 @@ void D3D::SetRenderTarget(ID3D11RenderTargetView* rtv, ID3D11DepthStencilView* d
 {
 	if (rtv == nullptr)//널이들어오면 시스템, 아니면 사용자
 		rtv = renderTargetView;
-
+	
 	if (dsv == nullptr)
 		dsv = depthStencilView;
 
@@ -272,7 +272,7 @@ void D3D::CreateBackBuffer(float width, float height)
 		hr = swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (void**)&backbufferPointer);
 		Check(hr)
 
-			hr = D3D::GetDevice()->CreateRenderTargetView(backbufferPointer, NULL, &renderTargetView);
+		hr = D3D::GetDevice()->CreateRenderTargetView(backbufferPointer, NULL, &renderTargetView);
 		Check(hr)
 
 			SafeRelease(backbufferPointer);

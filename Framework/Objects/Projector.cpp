@@ -34,6 +34,7 @@ Projector::~Projector()
 
 void Projector::Update()
 {
+
 	Vector3 position;
 	camera->Position(&position);
 
@@ -76,6 +77,8 @@ void Projector::Update()
 
 void Projector::Render()
 {
+
+
 	buffer->Render();
 	sBuffer->SetConstantBuffer(buffer->Buffer());
 }

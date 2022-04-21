@@ -27,6 +27,8 @@ void Mesh::SetShader(Shader* shader)
 
 void Mesh::Update()
 {
+
+
 	perFrame->Update();
 }
 

@@ -18,11 +18,16 @@ public:
 	float GetVerticalRaycast(Vector3& position);
 	Vector3 GetRaycastPosition();
 
+	TerrainVertex* GetVerticesData() { return vertices; }
+	UINT GetVertexCount() { return vertexCount; }
+
+	UINT* GetIndicesData() { return indices; }
+	UINT GetIndexCount() { return indexCount; }
+
 private:
 	void CreateVertexData();
 	void CreateIndexData();
 	void CreateNormalData();
-	void CreateBuffer();
 
 private:
 	UINT pass = 0;
@@ -35,11 +40,11 @@ private:
 
 	UINT vertexCount;
 	TerrainVertex* vertices;
-	ID3D11Buffer* vertexBuffer;
+	VertexBuffer* vertexBuffer;
 
 	UINT indexCount;
 	UINT* indices;
-	ID3D11Buffer* indexBuffer;
+	IndexBuffer* indexBuffer;
 
 	Matrix world;
 };

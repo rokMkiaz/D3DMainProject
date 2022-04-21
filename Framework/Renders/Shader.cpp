@@ -252,6 +252,8 @@ void Shader::Pass::Draw(UINT vertexCount, UINT startVertexLocation)
 		D3D::GetDC()->Draw(vertexCount, startVertexLocation);
 	}
 	EndDraw();
+
+
 }
 
 void Shader::Pass::DrawIndexed(UINT indexCount, UINT startIndexLocation, INT baseVertexLocation)
@@ -261,6 +263,8 @@ void Shader::Pass::DrawIndexed(UINT indexCount, UINT startIndexLocation, INT bas
 		D3D::GetDC()->DrawIndexed(indexCount, startIndexLocation, baseVertexLocation);
 	}
 	EndDraw();
+
+
 }
 
 void Shader::Pass::DrawInstanced(UINT vertexCountPerInstance, UINT instanceCount, UINT startVertexLocation, UINT startInstanceLocation)
