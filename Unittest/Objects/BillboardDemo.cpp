@@ -9,7 +9,7 @@ void BillboardDemo::Initialize()
 
 
 	shader = new Shader(L"96_Billboard.fxo");
-
+	//shader = new Shader(L"113_Shadow.fxo");
 
 
 	sky = new CubeSky(L"Environment/GrassCube1024.dds");

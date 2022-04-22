@@ -90,7 +90,7 @@ void LightingDemo::Render()
 	sky->Render();
 
 
-	Pass(0, 1, 2);
+	Pass(0,1, 2);
 
 	wall->Render();
 	sphere->Render();

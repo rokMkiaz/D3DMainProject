@@ -122,6 +122,7 @@ void ShadowDemo::Mesh()
 		floor->DiffuseMap("Floor.png");
 		floor->Specular(1, 1, 1, 20);
 		floor->SpecularMap("Floor_Specular.png");
+	
 		floor->NormalMap("Floor_Normal.png");
 
 		stone = new Material(shader);

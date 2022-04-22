@@ -25,6 +25,7 @@
 #include"Terrain/GetRaycastDemo.h"
 #include"Terrain/HeightMapDemo.h"
 #include"Terrain/GetHeightDemo.h"
+#include"Terrain/GetHeightMeshDemo.h"
 /*
 #include"DirectCompute/GetMultiBoneDemo.h"
 #include"DirectCompute/GetAnimationBoneDemo.h"
@@ -53,7 +54,7 @@
 
 void Main::Initialize()
 {
-	//Push(new PondWaterDemo);
+
 	//Push(new ShadowDemo);
 	//Push(new ProjectorDemo);
 	//Push(new DynamicCubeMapDemo);
@@ -92,12 +93,13 @@ void Main::Initialize()
 	Push(new UserInterfaceDemo);
 	Push(new TriangleList());
 	*/
-	Push(new GetHeightDemo);
+	//Push(new GetHeightDemo);
 	//Push(new GetRaycastDemo);
 	//Push(new GetVerticalRaycast);
 	//Push(new TextureLoadDemo);
 	//Push(new CubeDemo);
 	//Push(new RectDemo());
+	Push(new GetHeightMeshDemo());
 }
 
 void Main::Ready()

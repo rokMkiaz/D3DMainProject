@@ -9,6 +9,7 @@ void GetRaycastDemo::Initialize()
 
 	shader = new Shader(L"19_Terrain.fx");
 
+
 	terrain = new Terrain(shader, L"Terrain/Gray256.png");
 	terrain->Pass(1);
 

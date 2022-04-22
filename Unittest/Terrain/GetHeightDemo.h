@@ -16,13 +16,11 @@ public:
 
 private:
 	Shader* shader;
-	Shader* textureShader;
+
 
 	Terrain* terrain;
-	Texture* terrainTexture;
 
-	VertexBuffer* textureVertexBuffer;
-	IndexBuffer* textureIndexBuffer;
+
 
 	Vector3 position = Vector3(0, 0, 0);
 	Shader* triShader;

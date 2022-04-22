@@ -101,7 +101,6 @@ typedef D3DXPLANE Plane;
 #include "Renders/PerFrame.h"
 #include "Renders/Renderer.h"
 #include "Renders/Material.h"
-//#include "Renders/PondWater.h"
 #include "Renders/Render2D.h"
 
 #include "Meshes/Mesh.h"
@@ -110,6 +109,7 @@ typedef D3DXPLANE Plane;
 #include "Meshes/MeshGrid.h"
 #include "Meshes/MeshSphere.h"
 #include "Meshes/MeshCylinder.h"
+#include "Meshes/MeshTerrain.h"
 #include "Meshes/MeshRender.h"
 
 

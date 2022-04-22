@@ -187,6 +187,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Terrain\GetHeightDemo.cpp" />
+    <ClCompile Include="Terrain\GetHeightMeshDemo.cpp" />
     <ClCompile Include="Terrain\GetRaycastDemo.cpp" />
     <ClCompile Include="Terrain\GetVerticalRaycast.cpp" />
     <ClCompile Include="Terrain\HeightMapDemo.cpp" />
@@ -239,6 +240,7 @@
     <ClInclude Include="Objects\CubeSkyDemo.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Terrain\GetHeightDemo.h" />
+    <ClInclude Include="Terrain\GetHeightMeshDemo.h" />
     <ClInclude Include="Terrain\GetRaycastDemo.h" />
     <ClInclude Include="Terrain\GetVerticalRaycast.h" />
     <ClInclude Include="Terrain\HeightMapDemo.h" />

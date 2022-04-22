@@ -54,6 +54,7 @@ void Terrain::Render()
 	indexBuffer->Render();
 
 	shader->DrawIndexed(0, pass, indexCount);
+
 }
 
 float Terrain::GetHeight(Vector3& position)
@@ -176,6 +177,7 @@ Vector3 Terrain::GetRaycastPosition()
 
 	return Vector3(-1, FLT_MIN, -1); //지형 어느 곳에도 충돌 x
 }
+
 
 void Terrain::CreateVertexData()
 {

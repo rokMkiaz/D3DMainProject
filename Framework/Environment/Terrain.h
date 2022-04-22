@@ -4,6 +4,7 @@ class Terrain
 {
 public:
 	typedef VertexNormal TerrainVertex;
+	typedef Material TerrainTexture;
 
 public:
 	Terrain(Shader* shader, wstring heightFile);
@@ -24,6 +25,9 @@ public:
 	UINT* GetIndicesData() { return indices; }
 	UINT GetIndexCount() { return indexCount; }
 
+
+
+
 private:
 	void CreateVertexData();
 	void CreateIndexData();
@@ -34,7 +38,7 @@ private:
 	Shader* shader;
 
 	Texture* heightMap;
-
+	TerrainTexture* heightMapTexture;
 
 	UINT width, height;
 
