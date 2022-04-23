@@ -152,8 +152,9 @@ void MeshTerrain::CreateVertexData()
 
 
 	vector<MeshVertex> v;
-	UINT countX = 11;
-	UINT countZ = 11;
+	//¸Å½Ã °¹¼ö
+	UINT countX = 21;
+	UINT countZ = 21;
 
 	for (UINT z = 0; z < height; z++)
 	{
@@ -171,8 +172,8 @@ void MeshTerrain::CreateVertexData()
 			vertex.Position = Vector3((float)x, heights[pixel].r * 255.0f/10.0f, (float)z);
 			vertex.Normal = Vector3(0, 1, 0);
 			vertex.Tangent = Vector3(0, 0, 0);
-			vertex.Uv.x = (float)x / (float)(countX - 1) * width;
-			vertex.Uv.y = (float)z / (float)(countZ - 1) * height;
+			vertex.Uv.x = (float)x *(float)(countX - 1 ) /width;
+			vertex.Uv.y = (float)z *(float)(countZ - 1 ) /height;
 
 			v.push_back(vertex);
 		}

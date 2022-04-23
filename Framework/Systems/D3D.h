@@ -97,7 +97,7 @@ private:
 	static ID3D11DeviceContext* deviceContext;
 	static IDXGISwapChain* swapChain;
 
-
+	
 
 	ID3D11Debug* debugDevice;
 

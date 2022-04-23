@@ -3,8 +3,8 @@
 
 void GetHeightMeshDemo::Initialize()
 {
-	Context::Get()->GetCamera()->RotationDegree(20, 69, 0);
-	Context::Get()->GetCamera()->Position(-34, 29, 6.0f);
+	Context::Get()->GetCamera()->RotationDegree(24, 54, 0);
+	Context::Get()->GetCamera()->Position(-31, 53, -2);
 
 	shader = new Shader(L"75_Lighting.fx");
 	//shader = new Shader(L"113_Shadow.fxo");
