@@ -1,12 +1,15 @@
 D3D Engine을 만들기 위한 프로젝트
 
+MultiRenderTarget 
+한번의 픽셀 셰이더 렌더링으로 여러개의 장면을 얻어내는 방법
+posteffect : 뽀샤시, 혈흔 등 효과를 내는 effect
+Blur : 픽셀을 고의적으로 망가트려 뿌연효과를 만드는 방법
+ - Gaussian Blur 게임에서 흔히 사용되는 블러방식, 가우스 함수를 이용해 계산한 블러 횟수 당 가중치를 곱한방식
+Bloom : 햇빛을 받을때 나오는 뽀샤시 효과 : 1.Luminosity(밝은면 추출) 2. BlurX 후 BlurY 3. 1,2단계의 결과를 합침
+![blur1](https://user-images.githubusercontent.com/93506849/165056088-30eeeab9-bcbe-4e71-83a0-4b6e7e03e445.JPG)
+![blur2](https://user-images.githubusercontent.com/93506849/165056098-d0ec6b9e-51d2-4618-8ebd-7c4f0a5acb30.JPG)
+![blur3](https://user-images.githubusercontent.com/93506849/165056110-896891e0-a888-4454-88dc-638d5b32f021.JPG)
 
-조명
- Ambient : 태양, 실내에서 주 사용빛(Main Light)
- Diffuse(Lambert) : 자기가 가지고 있는 색상(음영도 포함)
- Specular(Phong) : 정반사광
- Emissive : 외곽선의 색을 표시하는 부분 =시각과 노멀백터에 의존함(아웃라인쉐이딩에 많이 사용함).
- ![빛](https://user-images.githubusercontent.com/93506849/165054425-eabae885-1037-4491-8d05-3a397781ce7c.JPG)
 
  
  
@@ -23,8 +26,18 @@ D3D Engine을 만들기 위한 프로젝트
 
 
 
-모델링
 
+
+조명
+ Ambient : 태양, 실내에서 주 사용빛(Main Light)
+ Diffuse(Lambert) : 자기가 가지고 있는 색상(음영도 포함)
+ Specular(Phong) : 정반사광
+ Emissive : 외곽선의 색을 표시하는 부분 =시각과 노멀백터에 의존함(아웃라인쉐이딩에 많이 사용함).
+ ![빛](https://user-images.githubusercontent.com/93506849/165054425-eabae885-1037-4491-8d05-3a397781ce7c.JPG)
+
+
+
+모델링
 Tweening = 애니매이션 동작의 구간값을 구해 섞어 자연스럽게 이어지게 한다.
 Blending = 애니매이션의 동작을 섞어 자연스럽게 구현하는방법.
 
@@ -84,7 +97,6 @@ Texture : 2차원 데이터, 어떤 의미를 가지고 있는 데이터인지 �
   - UAV (Unordered Access View) : 순서 없는 접근
   -  ![텍스처](https://user-images.githubusercontent.com/93506849/165050345-e6992aaf-a3ba-4e8e-98cc-b07bb6227bb7.JPG)
 
-노멀맵핑,
 
 PS(Pixel Shader Stage) : 각 픽셀에 대해 GPU에서 사용자 정의 함수를 수행하는 단계
 -PS에서 찍은걸 그대로 RTV에 찍는다
