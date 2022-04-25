@@ -47,6 +47,17 @@ Direct Compute : 다이렉트x라이브러리 / 그래픽카드를 코딩하기 
 	-RawBuffer-ByteAddress : 바이트 단위로 CS에서다루게 되는 버퍼
 	-Texture2DBuffer : 2차원 배열을 CS에서 사용할 수 있도록 해주는 버퍼
 	-StruturedBuffer : 구조체를 CS로 넘겨 구조체 단위로 사용
+	
+Particle : 날씨등 입자를 불규칙적으로 움직이게 하는걸 통틀어 표현/일반적인 엔진들은 통합처리되어있음.
+![비1](https://user-images.githubusercontent.com/93506849/165088093-3b2f3a0f-6428-4604-9084-20153998d0ea.JPG)
+![눈](https://user-images.githubusercontent.com/93506849/165088153-e8dde867-a4d7-423f-bb53-102ac4c2951a.JPG)
+
+Geometry Shader : DX10에서 추가된 면을 다루는 셰이더,  정점하나로 면을 만들어낼 수 있음.
+![빌보드](https://user-images.githubusercontent.com/93506849/165087939-3ed08ae1-45d8-40aa-b303-630cd00777ec.JPG)
+![빌보드2](https://user-images.githubusercontent.com/93506849/165087953-c05ae996-1214-40d7-854a-d40aaf7a1452.JPG)
+
+StreamOutput : 3D 셰이더의 결과 리턴/과거 물결표시를 할때 사용하였으나 /현재는 ComputeShader에서 다 처리를 한다.
+
 
 
 
