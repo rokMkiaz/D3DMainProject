@@ -18,12 +18,9 @@ D3D Engine을 만들기 위한 프로젝트
 	X : U - Tangent
 	Y : V - BiNormal or BiTangent 외적을 어느쪽으로하냐에따라 달라짐.
 ![노말맵1](https://user-images.githubusercontent.com/93506849/165054476-0486f0aa-d3df-4deb-bffc-af9d49b388bb.JPG)
-![노말맵2](https://user-image!
-[노말맵4](https://user-images.githubusercontent.com/93506849/165054493-248e69b7-dfbc-4d58-babd-10c7dd83b35c.JPG)
-s.githubusercontent.com/93506849/165054487-920e4609-9312-4880-8fd6-023164da9f7d.JPG)
+  ![노말맵2](https://user-images.githubusercontent.com/93506849/165054706-e7993c3f-f705-4343-b2db-1c1ae03401f6.JPG)
+  ![노말맵4](https://user-images.githubusercontent.com/93506849/165054731-5381731f-2ea8-43e8-a62a-10c408633422.JPG)
 
-  
-  
 
 
 모델링
