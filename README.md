@@ -70,7 +70,7 @@ Input Assembler(IA)\
 -Input Layout : 정점의 구성성분\
 -Vertex Buffer : 정점의 실제 정보 / 배열처럼 내용을 순서대로 받음\
 -Primitive Topology : 정점의 연결 방식\
--Index Buffer : 정점의 연결 순서\
+-Index Buffer : 정점의 연결 순서
 
 VS(Vertex Shader) : 각 정점에 대해 GPU에서 수행하는 사용자 정의(Vertex Shader) 함수\
 
@@ -91,14 +91,14 @@ aabb(Axis Aligne Bounding Box) : 사각형이 회전되어있지 않은 상태�
 obb(Oriented Bounding Box) : 회전 적용된 상태의 충돌\
 	Slab  : 어떤 축 두개를 연장했을 대 두 축 사이의 무한한 공간 obb는 슬랩의 영역에 선분이 교차하는지 체크하는 방법
 충돌에서는 15개의 분리축이 되는지아닌지를 확인\
-  텍스처 맵핑 - 실제 택스처로부터 색상을 1픽셀단위로 가져옴\
+  텍스처 맵핑 - 실제 택스처로부터 색상을 1픽셀단위로 가져옴
 \
 버퍼 와 텍스처가 DX의 자원 (리소스)\
 Texture : 2차원 데이터, 어떤 의미를 가지고 있는 데이터인지 바로 알기 힘들다는 단점을 가지고 있음\
   - SRV (Shader Resource View) : 셰이더에서 텍스쳐를 자원으로 쓰겠다는 관점 \
   - RTV (Render Target View) : 텍스쳐를 렌더 대상으로 보겠단 관점 \
   - DSV (Depth-Stencil View) :  3차원에서 사용하는 내용\
-  - UAV (Unordered Access View) : 순서 없는 접근\
+  - UAV (Unordered Access View) : 순서 없는 접근
   -  ![텍스처](https://user-images.githubusercontent.com/93506849/165050345-e6992aaf-a3ba-4e8e-98cc-b07bb6227bb7.JPG)
 
 
