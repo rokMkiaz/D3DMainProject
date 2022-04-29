@@ -28,7 +28,7 @@ Blur : 픽셀을 고의적으로 망가트려 뿌연효과를 만드는 방법
 
 
 조명
- Ambient : 태양, 실내에서 주 사용빛(Main Light)
+ Ambient : 태양, 실내에서 주 사용빛(Main Light);
  Diffuse(Lambert) : 자기가 가지고 있는 색상(음영도 포함)
  Specular(Phong) : 정반사광
  Emissive : 외곽선의 색을 표시하는 부분 =시각과 노멀백터에 의존함(아웃라인쉐이딩에 많이 사용함).
