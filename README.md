@@ -56,7 +56,7 @@ Geometry Shader : DX10에서 추가된 면을 다루는 셰이더,  정점하나
 ![빌보드](https://user-images.githubusercontent.com/93506849/165087939-3ed08ae1-45d8-40aa-b303-630cd00777ec.JPG)
 ![빌보드2](https://user-images.githubusercontent.com/93506849/165087953-c05ae996-1214-40d7-854a-d40aaf7a1452.JPG)
 
-StreamOutput : 3D 셰이더의 결과 리턴/과거 물결표시를 할때 사용하였으나 /현재는 ComputeShader에서 다 처리를 한다.\
+StreamOutput : 3D 셰이더의 결과 리턴/과거 물결표시를 할때 사용하였으나 /현재는 ComputeShader에서 다 처리를 한다.
 \
 \
 Direct X Graphics Infrastructure(기반)\
@@ -67,9 +67,9 @@ Direct X Graphics Infrastructure(기반)\
 IA->VS->RS->PS->OM  (Direct3d graphics(Rendering)Pipeline 의 5단계)\
  
 Input Assembler(IA)\
--Input Layout : 정점의 구성성분\
--Vertex Buffer : 정점의 실제 정보 / 배열처럼 내용을 순서대로 받음\
--Primitive Topology : 정점의 연결 방식\
+-Input Layout : 정점의 구성성분
+-Vertex Buffer : 정점의 실제 정보 / 배열처럼 내용을 순서대로 받음
+-Primitive Topology : 정점의 연결 방식
 -Index Buffer : 정점의 연결 순서
 
 VS(Vertex Shader) : 각 정점에 대해 GPU에서 수행하는 사용자 정의(Vertex Shader) 함수\
@@ -81,7 +81,7 @@ RS(Rasterizer Stage) : \
   *안티앨리어싱: 레스터화(픽셀화)의 한계로 발생하는 계단현상을 억제해주는 기술\
   SSAA(Super-Sampling Anti Aliasing) : 강제적으로 배율을 높인 템플릿에 그린 뒤 원본사이즈로 줄인다.(현재는 사용안함)\
   MSAA(Multi-Sampling Anti Aliasing) : 경계면 색상을 그라데이션으로 계산하여 색을 채워준다.\
--Viewport 결합 가능\
+-Viewport 결합 가능
  *View port \
 projection : 3D-IA-VS-RS-2D의 랜더링 파이프라인을 통해 계산한다고 해도 우리가 사용하기 위해 리턴 받기가 힘들다 그래서 같은수식으로 계산해서 값을 사용하고,
 	2D위치로 계산되어야 하는  UI 등을 표시하기 위해서 사용.\
@@ -94,10 +94,10 @@ obb(Oriented Bounding Box) : 회전 적용된 상태의 충돌\
   텍스처 맵핑 - 실제 택스처로부터 색상을 1픽셀단위로 가져옴
 \
 버퍼 와 텍스처가 DX의 자원 (리소스)\
-Texture : 2차원 데이터, 어떤 의미를 가지고 있는 데이터인지 바로 알기 힘들다는 단점을 가지고 있음\
-  - SRV (Shader Resource View) : 셰이더에서 텍스쳐를 자원으로 쓰겠다는 관점 \
-  - RTV (Render Target View) : 텍스쳐를 렌더 대상으로 보겠단 관점 \
-  - DSV (Depth-Stencil View) :  3차원에서 사용하는 내용\
+Texture : 2차원 데이터, 어떤 의미를 가지고 있는 데이터인지 바로 알기 힘들다는 단점을 가지고 있음
+  - SRV (Shader Resource View) : 셰이더에서 텍스쳐를 자원으로 쓰겠다는 관점 
+  - RTV (Render Target View) : 텍스쳐를 렌더 대상으로 보겠단 관점 
+  - DSV (Depth-Stencil View) :  3차원에서 사용하는 내용
   - UAV (Unordered Access View) : 순서 없는 접근
   -  ![텍스처](https://user-images.githubusercontent.com/93506849/165050345-e6992aaf-a3ba-4e8e-98cc-b07bb6227bb7.JPG)
 
