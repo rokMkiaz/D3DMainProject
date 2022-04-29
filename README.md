@@ -3,7 +3,7 @@ D3D Engine을 만들기 위한 프로젝트\
 MultiRenderTarget \
 한번의 픽셀 셰이더 렌더링으로 여러개의 장면을 얻어내는 방법\
 posteffect : 뽀샤시, 혈흔 등 효과를 내는 effect\
-Blur : 픽셀을 고의적으로 망가트려 뿌연효과를 만드는 방법\
+Blur : 픽셀을 고의적으로 망가트려 뿌연효과를 만드는 방법
 - Gaussian Blur 게임에서 흔히 사용되는 블러방식, 가우스 함수를 이용해 계산한 블러 횟수 당 가중치를 곱한방식
 ![blur1](https://user-images.githubusercontent.com/93506849/165056088-30eeeab9-bcbe-4e71-83a0-4b6e7e03e445.JPG)
 ![blur2](https://user-images.githubusercontent.com/93506849/165056098-d0ec6b9e-51d2-4618-8ebd-7c4f0a5acb30.JPG)
