@@ -42,6 +42,7 @@ Texture : 2차원 데이터, 어떤 의미를 가지고 있는 데이터인지 �
   - UAV (Unordered Access View) : 순서 없는 접근
   -  ![텍스처](https://user-images.githubusercontent.com/93506849/165050345-e6992aaf-a3ba-4e8e-98cc-b07bb6227bb7.JPG)
 \
+
 PS(Pixel Shader Stage) : 각 픽셀에 대해 GPU에서 사용자 정의 함수를 수행하는 단계
 -Vertex에 색상을 입력한다.
 \
