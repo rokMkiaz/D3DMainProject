@@ -1,17 +1,13 @@
 D3D Engine을 만들기 위한 프로젝트\
 \
-MultiRenderTarget \
-한번의 픽셀 셰이더 렌더링으로 여러개의 장면을 얻어내는 방법\
-posteffect : 뽀샤시, 혈흔 등 효과를 내는 effect\
-Blur : 픽셀을 고의적으로 망가트려 뿌연효과를 만드는 방법
-- Gaussian Blur 게임에서 흔히 사용되는 블러방식, 가우스 함수를 이용해 계산한 블러 횟수 당 가중치를 곱한방식
-![blur1](https://user-images.githubusercontent.com/93506849/165056088-30eeeab9-bcbe-4e71-83a0-4b6e7e03e445.JPG)
-![blur2](https://user-images.githubusercontent.com/93506849/165056098-d0ec6b9e-51d2-4618-8ebd-7c4f0a5acb30.JPG)
-![blur3](https://user-images.githubusercontent.com/93506849/165056110-896891e0-a888-4454-88dc-638d5b32f021.JPG)
+Geometry Shader :VertexShader를 거쳐온 도형 정보를 입력받는데, 해당 도형 정보의 정점을 모두 없앨 수도있고 더 많은 도형을 만들어 내보낼 수 있다.\
+-DynamicCubeMap\
+![1](https://user-images.githubusercontent.com/93506849/166083570-1482fe73-df86-4acd-a770-b728bd2e659c.JPG)
+-Billboard\
+![빌보드](https://user-images.githubusercontent.com/93506849/165087939-3ed08ae1-45d8-40aa-b303-630cd00777ec.JPG)
 
-
- 
- 
+StreamOutput : 3D 셰이더의 결과 리턴/과거 물결표시를 할때 사용하였으나 /현재는 ComputeShader에서 다 처리를 한다.
+\
   Normal Mapping : 평면에 굴곡이있는 면을넣어 입체감을 만들게함. 사람이 입체감을 느끼게 되는것은 음영이 있기 때문이다. 노멀맵은 픽셀의 값을 방향으로 변환하여 노멀백터로 간주해 라이팅과의 내적으로 음영을만든다.\
 	=BumpMapping, 페럴럭스 오큘리전\
   탄잰트공간 : 이미지에서 가져온값(RGB)으로 백터를만들고 이 값들로과 조명값과 내적\
@@ -22,24 +18,26 @@ Blur : 픽셀을 고의적으로 망가트려 뿌연효과를 만드는 방법
 ![노말맵1](https://user-images.githubusercontent.com/93506849/165054476-0486f0aa-d3df-4deb-bffc-af9d49b388bb.JPG)
 ![노말맵2](https://user-images.githubusercontent.com/93506849/165054706-e7993c3f-f705-4343-b2db-1c1ae03401f6.JPG)
 ![노말맵4](https://user-images.githubusercontent.com/93506849/165054731-5381731f-2ea8-43e8-a62a-10c408633422.JPG)
-
-
-
-
-
+\
+MultiRenderTarget \
+한번의 픽셀 셰이더 렌더링으로 여러개의 장면을 얻어내는 방법\
+posteffect : 뽀샤시, 혈흔 등 효과를 내는 effect\
+Blur : 픽셀을 고의적으로 망가트려 뿌연효과를 만드는 방법
+- Gaussian Blur 게임에서 흔히 사용되는 블러방식, 가우스 함수를 이용해 계산한 블러 횟수 당 가중치를 곱한방식
+![blur1](https://user-images.githubusercontent.com/93506849/165056088-30eeeab9-bcbe-4e71-83a0-4b6e7e03e445.JPG)
+![blur2](https://user-images.githubusercontent.com/93506849/165056098-d0ec6b9e-51d2-4618-8ebd-7c4f0a5acb30.JPG)
+![blur3](https://user-images.githubusercontent.com/93506849/165056110-896891e0-a888-4454-88dc-638d5b32f021.JPG)
+\
+Particle : 날씨등 입자를 불규칙적으로 움직이게 하는걸 통틀어 표현/일반적인 엔진들은 통합처리되어있음.
+![비1](https://user-images.githubusercontent.com/93506849/165088093-3b2f3a0f-6428-4604-9084-20153998d0ea.JPG)
+![눈](https://user-images.githubusercontent.com/93506849/165088153-e8dde867-a4d7-423f-bb53-102ac4c2951a.JPG)
+\
 조명\
  Ambient : 태양, 실내에서 주 사용빛(Main Light)\
  Diffuse(Lambert) : 자기가 가지고 있는 색상(음영도 포함)\
  Specular(Phong) : 정반사광\
  Emissive : 외곽선의 색을 표시하는 부분 =시각과 노멀백터에 의존함(아웃라인쉐이딩에 많이 사용함).
  ![빛](https://user-images.githubusercontent.com/93506849/165054425-eabae885-1037-4491-8d05-3a397781ce7c.JPG)
-
-
-
-모델링\
-Tweening = 애니매이션 동작의 구간값을 구해 섞어 자연스럽게 이어지게 한다.\
-Blending = 애니매이션의 동작을 섞어 자연스럽게 구현하는방법.\
-\
 CS Buffer\
 Direct Compute : 다이렉트x라이브러리 / 그래픽카드를 코딩하기 위한 언어체계\
 		대량으로 있는 데이터를 쪼개질 수 있게 하기위해 필요하다. GPU가 다량의 쓰레드를 사용한다.\
@@ -47,18 +45,9 @@ Direct Compute : 다이렉트x라이브러리 / 그래픽카드를 코딩하기 
 	-RawBuffer-ByteAddress : 바이트 단위로 CS에서다루게 되는 버퍼\
 	-Texture2DBuffer : 2차원 배열을 CS에서 사용할 수 있도록 해주는 버퍼\
 	-StruturedBuffer : 구조체를 CS로 넘겨 구조체 단위로 사용\
-	
-Particle : 날씨등 입자를 불규칙적으로 움직이게 하는걸 통틀어 표현/일반적인 엔진들은 통합처리되어있음.
-![비1](https://user-images.githubusercontent.com/93506849/165088093-3b2f3a0f-6428-4604-9084-20153998d0ea.JPG)
-![눈](https://user-images.githubusercontent.com/93506849/165088153-e8dde867-a4d7-423f-bb53-102ac4c2951a.JPG)
-
-Geometry Shader :VertexShader를 거쳐온 도형 정보를 입력받는데, 해당 도형 정보의 정점을 모두 없앨 수도있고 더 많은 도형을 만들어 내보낼 수 있다.\
--DynamicCubeMap\
-![1](https://user-images.githubusercontent.com/93506849/166083570-1482fe73-df86-4acd-a770-b728bd2e659c.JPG)
--Billboard\
-![빌보드](https://user-images.githubusercontent.com/93506849/165087939-3ed08ae1-45d8-40aa-b303-630cd00777ec.JPG)
-
-StreamOutput : 3D 셰이더의 결과 리턴/과거 물결표시를 할때 사용하였으나 /현재는 ComputeShader에서 다 처리를 한다.
+모델링\
+Tweening = 애니매이션 동작의 구간값을 구해 섞어 자연스럽게 이어지게 한다.\
+Blending = 애니매이션의 동작을 섞어 자연스럽게 구현하는방법.\
 \
 \
 Direct X Graphics Infrastructure(기반)\
