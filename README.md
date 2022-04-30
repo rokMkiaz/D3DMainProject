@@ -5,8 +5,8 @@ Geometry Shader :VertexShader를 거쳐온 도형 정보를 입력받는데, 해
 ![1](https://user-images.githubusercontent.com/93506849/166083570-1482fe73-df86-4acd-a770-b728bd2e659c.JPG)
 -Billboard\
 ![빌보드](https://user-images.githubusercontent.com/93506849/165087939-3ed08ae1-45d8-40aa-b303-630cd00777ec.JPG)
--Shadow
-![그림자2](https://user-images.githubusercontent.com/93506849/166084181-139f69aa-fe05-4d2d-843f-f16a47fc7f7e.JPG)
+-Shadow\
+![그림자1](https://user-images.githubusercontent.com/93506849/166084212-3bddbfb6-c968-4fd1-9124-53530b6cae9b.JPG)
 \
 StreamOutput : 3D 셰이더의 결과 리턴/과거 물결표시를 할때 사용하였으나 /현재는 ComputeShader에서 다 처리를 한다.
 \
