@@ -12,9 +12,9 @@ Input Assembler(IA)\
 -Vertex Buffer : 정점의 실제 정보 / 배열처럼 내용을 순서대로 받음
 -Primitive Topology : 정점의 연결 방식
 -Index Buffer : 정점의 연결 순서
-
+\
 VS(Vertex Shader) : 각 정점에 대해 GPU에서 수행하는 사용자 정의(Vertex Shader) 함수\
-
+\
 RS(Rasterizer Stage) : \
   Clipping : 출력영역에 포함되지 않은 내용을 소거하는 작업\
   Back Face Culling: 구성 방향이 반시계인 삼각형을 소거하는 작업\
@@ -41,11 +41,10 @@ Texture : 2차원 데이터, 어떤 의미를 가지고 있는 데이터인지 �
   - DSV (Depth-Stencil View) :  3차원에서 사용하는 내용
   - UAV (Unordered Access View) : 순서 없는 접근
   -  ![텍스처](https://user-images.githubusercontent.com/93506849/165050345-e6992aaf-a3ba-4e8e-98cc-b07bb6227bb7.JPG)
-
-
+\
 PS(Pixel Shader Stage) : 각 픽셀에 대해 GPU에서 사용자 정의 함수를 수행하는 단계
 -Vertex에 색상을 입력한다.
-
+\
 Output Merger(OM) : Render Target View/결과를 출력할 대상 일반적으로 Swap Chain의 Scareen Buffer를 대상으로 함.
 \
 모델링\
@@ -59,6 +58,7 @@ Direct Compute : 다이렉트x라이브러리 / 그래픽카드를 코딩하기 
 	-RawBuffer-ByteAddress : 바이트 단위로 CS에서다루게 되는 버퍼\
 	-Texture2DBuffer : 2차원 배열을 CS에서 사용할 수 있도록 해주는 버퍼\
 	-StruturedBuffer : 구조체를 CS로 넘겨 구조체 단위로 사용\
+\
 조명\
  Ambient : 태양, 실내에서 주 사용빛(Main Light)\
  Diffuse(Lambert) : 자기가 가지고 있는 색상(음영도 포함)\
