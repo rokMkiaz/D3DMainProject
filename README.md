@@ -53,9 +53,9 @@ Particle : 날씨등 입자를 불규칙적으로 움직이게 하는걸 통틀�
 ![눈](https://user-images.githubusercontent.com/93506849/165088153-e8dde867-a4d7-423f-bb53-102ac4c2951a.JPG)
 
 Geometry Shader :VertexShader를 거쳐온 도형 정보를 입력받는데, 해당 도형 정보의 정점을 모두 없앨 수도있고 더 많은 도형을 만들어 내보낼 수 있다.
--DynamicCubeMap
+-DynamicCubeMap\
 ![1](https://user-images.githubusercontent.com/93506849/166083570-1482fe73-df86-4acd-a770-b728bd2e659c.JPG)
--Billboard
+-Billboard\
 ![빌보드](https://user-images.githubusercontent.com/93506849/165087939-3ed08ae1-45d8-40aa-b303-630cd00777ec.JPG)
 
 StreamOutput : 3D 셰이더의 결과 리턴/과거 물결표시를 할때 사용하였으나 /현재는 ComputeShader에서 다 처리를 한다.
