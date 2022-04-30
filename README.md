@@ -52,7 +52,7 @@ Particle : 날씨등 입자를 불규칙적으로 움직이게 하는걸 통틀�
 ![비1](https://user-images.githubusercontent.com/93506849/165088093-3b2f3a0f-6428-4604-9084-20153998d0ea.JPG)
 ![눈](https://user-images.githubusercontent.com/93506849/165088153-e8dde867-a4d7-423f-bb53-102ac4c2951a.JPG)
 
-Geometry Shader :VertexShader를 거쳐온 도형 정보를 입력받는데, 해당 도형 정보의 정점을 모두 없앨 수도있고 더 많은 도형을 만들어 내보낼 수 있다.
+Geometry Shader :VertexShader를 거쳐온 도형 정보를 입력받는데, 해당 도형 정보의 정점을 모두 없앨 수도있고 더 많은 도형을 만들어 내보낼 수 있다.\
 -DynamicCubeMap\
 ![1](https://user-images.githubusercontent.com/93506849/166083570-1482fe73-df86-4acd-a770-b728bd2e659c.JPG)
 -Billboard\
