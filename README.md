@@ -60,10 +60,10 @@ Direct Compute : 다이렉트x라이브러리 / 그래픽카드를 코딩하기 
 	-StruturedBuffer : 구조체를 CS로 넘겨 구조체 단위로 사용\
 \
 조명\
- Ambient : 태양, 실내에서 주 사용빛(Main Light)\
- Diffuse(Lambert) : 자기가 가지고 있는 색상(음영도 포함)\
- Specular(Phong) : 정반사광\
- Emissive : 외곽선의 색을 표시하는 부분 =시각과 노멀백터에 의존함(아웃라인쉐이딩에 많이 사용함).
+ - Ambient : 태양, 실내에서 주 사용빛(Main Light)\
+ - Diffuse(Lambert) : 자기가 가지고 있는 색상(음영도 포함)\
+ - Specular(Phong) : 정반사광\
+ - Emissive : 외곽선의 색을 표시하는 부분 =시각과 노멀백터에 의존함(아웃라인쉐이딩에 많이 사용함).
  ![빛](https://user-images.githubusercontent.com/93506849/165054425-eabae885-1037-4491-8d05-3a397781ce7c.JPG)
 \
 Particle : 날씨등 입자를 불규칙적으로 움직이게 하는걸 통틀어 표현/일반적인 엔진들은 통합처리되어있음.
@@ -98,7 +98,7 @@ Geometry Shader :VertexShader를 거쳐온 도형 정보를 입력받는데, 해
 - Billboard\
 ![빌보드](https://user-images.githubusercontent.com/93506849/165087939-3ed08ae1-45d8-40aa-b303-630cd00777ec.JPG)
 
--Shadow\
+- Shadow\
 ![그림자1](https://user-images.githubusercontent.com/93506849/166084212-3bddbfb6-c968-4fd1-9124-53530b6cae9b.JPG)
 
 
