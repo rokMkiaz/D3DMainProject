@@ -5,7 +5,9 @@ Geometry Shader :VertexShader를 거쳐온 도형 정보를 입력받는데, 해
 ![1](https://user-images.githubusercontent.com/93506849/166083570-1482fe73-df86-4acd-a770-b728bd2e659c.JPG)
 -Billboard\
 ![빌보드](https://user-images.githubusercontent.com/93506849/165087939-3ed08ae1-45d8-40aa-b303-630cd00777ec.JPG)
-
+-Shadow
+![그림자2](https://user-images.githubusercontent.com/93506849/166084181-139f69aa-fe05-4d2d-843f-f16a47fc7f7e.JPG)
+\
 StreamOutput : 3D 셰이더의 결과 리턴/과거 물결표시를 할때 사용하였으나 /현재는 ComputeShader에서 다 처리를 한다.
 \
   Normal Mapping : 평면에 굴곡이있는 면을넣어 입체감을 만들게함. 사람이 입체감을 느끼게 되는것은 음영이 있기 때문이다. 노멀맵은 픽셀의 값을 방향으로 변환하여 노멀백터로 간주해 라이팅과의 내적으로 음영을만든다.\
