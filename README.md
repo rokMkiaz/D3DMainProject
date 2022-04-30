@@ -101,6 +101,5 @@ Geometry Shader :VertexShader를 거쳐온 도형 정보를 입력받는데, 해
 -Shadow\
 ![그림자1](https://user-images.githubusercontent.com/93506849/166084212-3bddbfb6-c968-4fd1-9124-53530b6cae9b.JPG)
 \
-StreamOutput : 3D 셰이더의 결과 리턴/과거 물결표시를 할때 사용하였으나 /현재는 ComputeShader에서 다 처리를 한다.
 
 
