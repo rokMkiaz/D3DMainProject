@@ -1,4 +1,4 @@
-## D3D Engine을 만들기 위한 프로젝트
+## D3D Engine을 공부하기 위한 프로젝트
 
  * Direct X Graphics Infrastructure(기반)\
 -Adapter : 그래픽 카드 정보 열거\
@@ -28,31 +28,31 @@ projection : 3D-IA-VS-RS-2D의 랜더링 파이프라인을 통해 계산한다�
 unprojection : 2D공간에서 3D공간으로 이동하는것(마우스클릭을 위한 작용) 화면으로부터 지점까지의 삼각형에 선을그어 충돌 검사를 하는데 그사이에 물체를
 	감지하면  그위치값을 반환을 한다.선의 시작 = 근면 마우스위치, 선의 종료 = 원면 마우스 위치 선의 방향 = 선의시작-선의 종료/대형 맵에 관해서는 '스크린스페이스 피킹방법'이 있다.\
 \
-버퍼 와 텍스처가 DX의 자원 (리소스)\
-Texture : 2차원 데이터, 어떤 의미를 가지고 있는 데이터인지 바로 알기 힘들다는 단점을 가지고 있음
+버퍼 와 텍스처가 DX의 자원 (Resource)
+> + Texture : 2차원 데이터, 어떤 의미를 가지고 있는 데이터인지 바로 알기 힘들다는 단점을 가지고 있음
   -SRV (Shader Resource View) : 셰이더에서 텍스쳐를 자원으로 쓰겠다는 관점 
   -RTV (Render Target View) : 텍스쳐를 렌더 대상으로 보겠단 관점 
   -DSV (Depth-Stencil View) :  3차원에서 사용하는 내용
   -UAV (Unordered Access View) : 순서 없는 접근
   ![텍스처](https://user-images.githubusercontent.com/93506849/165050345-e6992aaf-a3ba-4e8e-98cc-b07bb6227bb7.JPG)
-
+  
+>  + Buffer\
+  -VertexBuffer : 정점들로 조립되어서 렌더링 파이프라인에 투입될 자료를 담는 역할을 한다. 가장 단순한 형태의 정점 버퍼는 정점 구조체들의 배열이다. 그러한 배열의 각 원소는 정점의 위치, 법선 벡터, 텍스처 좌표 같은 자료를 담는다\
+  -IndexBuffer : 정점의 연결순서를 저장하여 도형을 정의하는 기능을 담당한다.\
+-CS Buffer\
+Direct Compute : 다이렉트x라이브러리 / 그래픽카드를 코딩하기 위한 언어체계
+		대량으로 있는 데이터를 쪼개질 수 있게 하기위해 필요하다. GPU가 다량의 쓰레드를 사용한다.
+	 -Comput Shader는 계산용으로만 사용되므로 렌더링 파이프라인과 별도로 동작하며, 따로 설정이 가능하다\
+	 -RawBuffer-ByteAddress : 바이트 단위로 CS에서다루게 되는 버퍼\
+	 -Texture2DBuffer : 2차원 배열을 CS에서 사용할 수 있도록 해주는 버퍼\
+	 -StruturedBuffer : 구조체를 CS로 넘겨 구조체 단위로 사용
 
  * PS(Pixel Shader Stage) : 각 픽셀에 대해 GPU에서 사용자 정의 함수를 수행하는 단계
 -Vertex에 색상을 입력한다.
 
  * Output Merger(OM) : Render Target View/결과를 출력할 대상 일반적으로 Swap Chain의 Scareen Buffer를 대상으로 함.
-\
-모델링\
-Tweening = 애니매이션 동작의 구간값을 구해 섞어 자연스럽게 이어지게 한다.\
-Blending = 애니매이션의 동작을 섞어 자연스럽게 구현하는방법.\
-\
-CS Buffer\
-Direct Compute : 다이렉트x라이브러리 / 그래픽카드를 코딩하기 위한 언어체계\
-		대량으로 있는 데이터를 쪼개질 수 있게 하기위해 필요하다. GPU가 다량의 쓰레드를 사용한다.\
-	-Comput Shader는 계산용으로만 사용되므로 렌더링 파이프라인과 별도로 동작하며, 따로 설정이 가능하다\
-	-RawBuffer-ByteAddress : 바이트 단위로 CS에서다루게 되는 버퍼\
-	-Texture2DBuffer : 2차원 배열을 CS에서 사용할 수 있도록 해주는 버퍼\
-	-StruturedBuffer : 구조체를 CS로 넘겨 구조체 단위로 사용
+
+
 
 # 구현기능
 - Mesh & Texture
