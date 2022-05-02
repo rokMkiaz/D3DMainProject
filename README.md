@@ -54,10 +54,10 @@ Direct Compute : 다이렉트x라이브러리 / 그래픽카드를 코딩하기 
 	-Texture2DBuffer : 2차원 배열을 CS에서 사용할 수 있도록 해주는 버퍼\
 	-StruturedBuffer : 구조체를 CS로 넘겨 구조체 단위로 사용\
 \
-조명\
- - Ambient : 태양, 실내에서 주 사용빛(Main Light)\
- - Diffuse(Lambert) : 자기가 가지고 있는 색상(음영도 포함)\
- - Specular(Phong) : 정반사광\
+조명
+ - Ambient : 태양, 실내에서 주 사용빛(Main Light)
+ - Diffuse(Lambert) : 자기가 가지고 있는 색상(음영도 포함)
+ - Specular(Phong) : 정반사광
  - Emissive : 외곽선의 색을 표시하는 부분 =시각과 노멀백터에 의존함(아웃라인쉐이딩에 많이 사용함).
  ![빛](https://user-images.githubusercontent.com/93506849/165054425-eabae885-1037-4491-8d05-3a397781ce7c.JPG)
 \
