@@ -3,7 +3,7 @@ D3D Engine을 만들기 위한 프로젝트\
 Direct X Graphics Infrastructure(기반)\
 -Adapter : 그래픽 카드 정보 열거\
 -Output(모니터) : 디스플레이 모드 열거\
--Swap Chain  : 전면 버퍼와 후면 버퍼 바꿔가며 출력
+-Swap Chain  : 전면 버퍼와 후면 버퍼 바꿔가며 출력\
 \
 IA->VS->RS->PS->OM  (Direct3d graphics(Rendering)Pipeline 의 5단계)\
  \
