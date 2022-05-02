@@ -90,7 +90,7 @@ Gaussian Blur 게임에서 흔히 사용되는 블러방식, 가우스 함수를
 ![노말맵4](https://user-images.githubusercontent.com/93506849/165054731-5381731f-2ea8-43e8-a62a-10c408633422.JPG)
 
 \
-Geometry Shader :VertexShader를 거쳐온 도형 정보를 입력받는데, 해당 도형 정보의 정점을 모두 없앨 수도있고 더 많은 도형을 만들어 내보낼 수 있다.\
+Geometry Shader :VertexShader를 거쳐온 도형 정보를 입력받는데, 해당 도형 정보의 정점을 모두 없앨 수도있고 더 많은 도형을 만들어 내보낼 수 있다.
 - DynamicCubeMap
 ![1](https://user-images.githubusercontent.com/93506849/166083570-1482fe73-df86-4acd-a770-b728bd2e659c.JPG)
 - Billboard\
