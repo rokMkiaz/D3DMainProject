@@ -1,6 +1,7 @@
 ## D3D Engine을 공부하기 위한 프로젝트
 
- * Direct X Graphics Infrastructure(기반)\
+- DirectX : 마이크로소프트 플랫폼에서 작업을 위한 API(application programming interface)의 집합\
+Direct X Graphics Infrastructure(기반)\
 -Adapter : 그래픽 카드 정보 열거\
 -Output(모니터) : 디스플레이 모드 열거\
 -Swap Chain  : 전면 버퍼와 후면 버퍼 바꿔가며 출력
@@ -8,9 +9,9 @@
  IA->VS->RS->PS->OM  (Direct3d graphics(Rendering)Pipeline 의 5단계)
  
  * Input Assembler(IA)\
--Input Layout : 정점의 구성성분
--Vertex Buffer : 정점의 실제 정보 / 배열처럼 내용을 순서대로 받음
--Primitive Topology : 정점의 연결 방식
+-Input Layout : 정점의 구성성분\
+-Vertex Buffer : 정점의 실제 정보 / 배열처럼 내용을 순서대로 받음\
+-Primitive Topology : 정점의 연결 방식\
 -Index Buffer : 정점의 연결 순서
 
  * VS(Vertex Shader) : 각 정점에 대해 GPU에서 수행하는 사용자 정의(Vertex Shader) 함수
@@ -23,10 +24,11 @@
   SSAA(Super-Sampling Anti Aliasing) : 강제적으로 배율을 높인 템플릿에 그린 뒤 원본사이즈로 줄인다.(현재는 사용안함)\
   MSAA(Multi-Sampling Anti Aliasing) : 경계면 색상을 그라데이션으로 계산하여 색을 채워준다.\
 -Viewport 결합 가능\
- *View port \
+ *View port\
 projection : 3D-IA-VS-RS-2D의 랜더링 파이프라인을 통해 계산한다고 해도 우리가 사용하기 위해 리턴 받기가 힘들다 그래서 같은수식으로 계산해서 값을 사용하고,2D위치로 계산되어야 하는  UI 등을 표시하기 위해서 사용.\
 unprojection : 2D공간에서 3D공간으로 이동하는것(마우스클릭을 위한 작용) 화면으로부터 지점까지의 삼각형에 선을그어 충돌 검사를 하는데 그사이에 물체를
 	감지하면  그위치값을 반환을 한다.선의 시작 = 근면 마우스위치, 선의 종료 = 원면 마우스 위치 선의 방향 = 선의시작-선의 종료/대형 맵에 관해서는 '스크린스페이스 피킹방법'이 있다.\
+![hFOV to vFOV](https://user-images.githubusercontent.com/93506849/166220045-471e5f18-2170-4c00-bf25-b1dc720ebe18.png)
 \
 버퍼 와 텍스처가 DX의 자원 (Resource)
 > + Texture : 2차원 데이터, 어떤 의미를 가지고 있는 데이터인지 바로 알기 힘들다는 단점을 가지고 있음
@@ -47,7 +49,7 @@ Direct Compute : 다이렉트x라이브러리 / 그래픽카드를 코딩하기 
 	 -Texture2DBuffer : 2차원 배열을 CS에서 사용할 수 있도록 해주는 버퍼\
 	 -StruturedBuffer : 구조체를 CS로 넘겨 구조체 단위로 사용
 
- * PS(Pixel Shader Stage) : 각 픽셀에 대해 GPU에서 사용자 정의 함수를 수행하는 단계
+ * PS(Pixel Shader Stage) : 각 픽셀에 대해 GPU에서 사용자 정의 함수를 수행하는 단계\
 -Vertex에 색상을 입력한다.
 
  * Output Merger(OM) : Render Target View/결과를 출력할 대상 일반적으로 Swap Chain의 Scareen Buffer를 대상으로 함.
