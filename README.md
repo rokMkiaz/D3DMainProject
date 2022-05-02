@@ -84,6 +84,7 @@ Gaussian Blur 게임에서 흔히 사용되는 블러방식, 가우스 함수를
 	Z : Normal\
 	X : U - Tangent\
 	Y : V - BiNormal or BiTangent 외적을 어느쪽으로하냐에따라 달라짐.
+![기본백색](https://user-images.githubusercontent.com/93506849/166196182-e7d8cdb6-e0e7-4ea7-96be-b54e725a62ec.JPG)
 ![노말맵1](https://user-images.githubusercontent.com/93506849/165054476-0486f0aa-d3df-4deb-bffc-af9d49b388bb.JPG)
 ![노말맵2](https://user-images.githubusercontent.com/93506849/165054706-e7993c3f-f705-4343-b2db-1c1ae03401f6.JPG)
 ![노말맵4](https://user-images.githubusercontent.com/93506849/165054731-5381731f-2ea8-43e8-a62a-10c408633422.JPG)
