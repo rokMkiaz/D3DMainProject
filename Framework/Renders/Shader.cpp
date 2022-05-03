@@ -9,6 +9,7 @@ Shader::Shader(wstring file)
 		D3D::GetDC()->RSGetState(&initialStateBlock->RSRasterizerState);
 		D3D::GetDC()->OMGetBlendState(&initialStateBlock->OMBlendState, initialStateBlock->OMBlendFactor, &initialStateBlock->OMSampleMask);
 		D3D::GetDC()->OMGetDepthStencilState(&initialStateBlock->OMDepthStencilState, &initialStateBlock->OMStencilRef);
+
 	}
 
 	CreateEffect();
@@ -100,6 +101,7 @@ void Shader::CreateEffect()
 			pass.IPass->GetDesc(&pass.Desc);
 			pass.Name = String::ToWString(pass.Desc.Name);
 			pass.IPass->GetVertexShaderDesc(&pass.PassVsDesc);
+
 			pass.PassVsDesc.pShaderVariable->GetShaderDesc(pass.PassVsDesc.ShaderIndex, &pass.EffectVsDesc);
 
 			for (UINT s = 0; s < pass.EffectVsDesc.NumInputSignatureEntries; s++)
@@ -304,9 +306,11 @@ void Shader::Pass::EndDraw()
 	if (StateBlockMask.OMBlendState == 1)
 		D3D::GetDC()->OMSetBlendState(StateBlock->OMBlendState, StateBlock->OMBlendFactor, StateBlock->OMSampleMask);
 
+
 	D3D::GetDC()->HSSetShader(NULL, NULL, 0);
 	D3D::GetDC()->DSSetShader(NULL, NULL, 0);
 	D3D::GetDC()->GSSetShader(NULL, NULL, 0);
+
 }
 
 void Shader::Pass::Dispatch(UINT x, UINT y, UINT z)

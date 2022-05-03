@@ -3,8 +3,8 @@
 
 void BlurDemo::Initialize()
 {
-	Context::Get()->GetCamera()->RotationDegree(20, 0, 0);
-	Context::Get()->GetCamera()->Position(1, 36, -85);
+	Context::Get()->GetCamera()->RotationDegree(12, -29, 0);
+	Context::Get()->GetCamera()->Position(14, 17, -28);
 	((Freedom*)Context::Get()->GetCamera())->Speed(50, 2);
 
 
@@ -98,7 +98,7 @@ void BlurDemo::Update()
 	sphere->Update();
 
 	airplane->Update();
-	kachujin->Update();
+	//kachujin->Update();
 
 	Matrix worlds[MAX_MODEL_TRANSFORMS];
 	for (UINT i = 0; i < kachujin->GetTransformCount(); i++)
@@ -143,7 +143,7 @@ void BlurDemo::PreRender()
 
 		airplane->Render();
 
-		kachujin->Render();
+		//kachujin->Render();
 		weapon->Render();
 
 		billboard->Render();

@@ -111,8 +111,8 @@ void BillboardDemo::Render()
 void BillboardDemo::Billboards()
 {
 	billboard = new Billboard(shader);
-	billboard->Pass(3);
-	//billboard->Pass(4);
+	//billboard->Pass(3);
+	billboard->Pass(4);
 
 	billboard->AddTexture(L"Terrain/grass_14.tga");
 	billboard->AddTexture(L"Terrain/grass_07.tga");

@@ -15,17 +15,11 @@ void WeatherDemo::Initialize()
 	rain = new Rain(Vector3(300, 100, 500), (UINT)1e+4f, L"Environment/Rain.png");
 	snow = new Snow(Vector3(300, 100, 500), (UINT)1e+5f, L"Environment/Snow.png");
 
-	Billboards();
+
 
 	Mesh();
 	Airplane();
 
-	Kachujin();
-	KachujinCollider();
-	KachujinWeapon();
-
-	PointLighting();
-	SpotLighting();
 }
 
 void WeatherDemo::Update()
@@ -38,19 +32,11 @@ void WeatherDemo::Update()
 	sphere->Update();
 
 	airplane->Update();
-	kachujin->Update();
+
 
 	Matrix worlds[MAX_MODEL_TRANSFORMS];
-	for (UINT i = 0; i < kachujin->GetTransformCount(); i++)
-	{
-		kachujin->GetAttachTransform(i, worlds);
-		weapon->GetTransform(i)->World(weaponInitTransform->World() * worlds[40]);
-	}
 
-	weapon->UpdateTransforms();
-	weapon->Update();
 
-	billboard->Update();
 
 
 
@@ -89,10 +75,8 @@ void WeatherDemo::Render()
 
 	airplane->Render();
 
-	kachujin->Render();
-	weapon->Render();
 
-	billboard->Render();
+
 
 	switch (weatherType)
 	{
@@ -101,18 +85,7 @@ void WeatherDemo::Render()
 	}
 }
 
-void WeatherDemo::Billboards()
-{
-	billboard = new Billboard(shader);
 
-	for (UINT i = 0; i < 1200; i++)
-	{
-		Vector2 scale = Math::RandomVec2(1, 3);
-		Vector2 position = Math::RandomVec2(-60, 60);
-
-		billboard->Add(Vector3(position.x, scale.y * 0.5f, position.y), scale, 0);
-	}
-}
 
 void WeatherDemo::Mesh()
 {
@@ -209,163 +182,9 @@ void WeatherDemo::Airplane()
 	models.push_back(airplane);
 }
 
-void WeatherDemo::Kachujin()
-{
-	kachujin = new ModelAnimator(shader);
-	kachujin->ReadMesh(L"Kachujin/Mesh");
-	kachujin->ReadMaterial(L"Kachujin/Mesh");
-	kachujin->ReadClip(L"Kachujin/Sword And Shield Idle");
-	kachujin->ReadClip(L"Kachujin/Sword And Shield Walk");
-	kachujin->ReadClip(L"Kachujin/Sword And Shield Run");
-	kachujin->ReadClip(L"Kachujin/Sword And Shield Slash");
-	kachujin->ReadClip(L"Kachujin/Salsa Dancing");
 
 
-	Transform* transform = NULL;
 
-	transform = kachujin->AddTransform();
-	transform->Position(0, 0, -30);
-	transform->Scale(0.075f, 0.075f, 0.075f);
-	kachujin->PlayTweenMode(0, 0, 1.0f);
-
-	transform = kachujin->AddTransform();
-	transform->Position(-15, 0, -30);
-	transform->Scale(0.075f, 0.075f, 0.075f);
-	kachujin->PlayTweenMode(1, 1, 1.0f);
-
-	transform = kachujin->AddTransform();
-	transform->Position(-30, 0, -30);
-	transform->Scale(0.075f, 0.075f, 0.075f);
-	kachujin->PlayTweenMode(2, 2, 0.75f);
-
-	transform = kachujin->AddTransform();
-	transform->Position(15, 0, -30);
-	transform->Scale(0.075f, 0.075f, 0.075f);
-	kachujin->PlayBlendMode(3, 0, 1, 2);
-	kachujin->SetBlendAlpha(3, 1.5f);
-
-	transform = kachujin->AddTransform();
-	transform->Position(30, 0, -32.5f);
-	transform->Scale(0.075f, 0.075f, 0.075f);
-	kachujin->PlayTweenMode(4, 4, 0.75f);
-
-	kachujin->UpdateTransforms();
-
-	animators.push_back(kachujin);
-}
-
-void WeatherDemo::KachujinCollider()
-{
-	UINT count = kachujin->GetTransformCount();
-	colliders = new  ColliderObject * [count];
-
-	colliderInitTransforms = new Transform();
-	colliderInitTransforms->Position(-2.9f, 1.45f, -50.0f);
-	colliderInitTransforms->Scale(5, 5, 75);
-
-	for (UINT i = 0; i < count; i++)
-	{
-		colliders[i] = new ColliderObject();
-
-		//colliders[i]->Init = new Transform();
-		//colliders[i]->Init->Position(0, 0, 0);
-		//colliders[i]->Init->Scale(10, 30, 10);
-
-		colliders[i]->Transform = new Transform();
-		//colliders[i]->Collider = new Collider(colliders[i]->Transform, colliders[i]->Init);
-		colliders[i]->Collider = new Collider(colliders[i]->Transform, colliderInitTransforms);
-	}
-}
-
-void WeatherDemo::KachujinWeapon()
-{
-	weapon = new ModelRender(shader);
-	weapon->ReadMesh(L"Weapon/Sword");
-	weapon->ReadMaterial(L"Weapon/Sword");
-
-	UINT count = kachujin->GetTransformCount();
-	for (UINT i = 0; i < count; i++)
-		weapon->AddTransform();
-
-	weapon->UpdateTransforms();
-	models.push_back(weapon);
-
-
-	weaponInitTransform = new Transform();
-	weaponInitTransform->Position(-2.9f, 1.45f, -6.45f);
-	weaponInitTransform->Scale(0.5f, 0.5f, 0.75f);
-	weaponInitTransform->Rotation(0, 0, 1);
-}
-
-void WeatherDemo::PointLighting()
-{
-	PointLight light;
-	light =
-	{
-		Color(0.0f, 0.0f, 0.0f, 1.0f), //Ambient
-		Color(0.0f, 0.0f, 1.0f, 1.0f), //Diffuse
-		Color(0.0f, 0.0f, 0.7f, 1.0f), //Specular
-		Color(0.0f, 0.0f, 0.7f, 1.0f), //Emissive
-		Vector3(-30, 10, -30), 5.0f, 0.9f
-	};
-	Lighting::Get()->AddPointLight(light);
-
-	light =
-	{
-		Color(0.0f, 0.0f, 0.0f, 1.0f),
-		Color(1.0f, 0.0f, 0.0f, 1.0f),
-		Color(0.6f, 0.2f, 0.0f, 1.0f),
-		Color(0.6f, 0.3f, 0.0f, 1.0f),
-		Vector3(15, 10, -30), 10.0f, 0.3f
-	};
-	Lighting::Get()->AddPointLight(light);
-
-	light =
-	{
-		Color(0.0f, 0.0f, 0.0f, 1.0f), //Ambient
-		Color(0.0f, 1.0f, 0.0f, 1.0f), //Diffuse
-		Color(0.0f, 0.7f, 0.0f, 1.0f), //Specular
-		Color(0.0f, 0.7f, 0.0f, 1.0f), //Emissive
-		Vector3(-5, 1, -17.5f), 5.0f, 0.9f
-	};
-	Lighting::Get()->AddPointLight(light);
-
-	light =
-	{
-		Color(0.0f, 0.0f, 0.0f, 1.0f),
-		Color(0.0f, 0.0f, 1.0f, 1.0f),
-		Color(0.0f, 0.0f, 0.7f, 1.0f),
-		Color(0.0f, 0.0f, 0.7f, 1.0f),
-		Vector3(-10, 1, -17.5f), 5.0f, 0.9f
-	};
-	Lighting::Get()->AddPointLight(light);
-}
-
-void WeatherDemo::SpotLighting()
-{
-	SpotLight light;
-	light =
-	{
-		Color(0.3f, 1.0f, 0.0f, 1.0f),
-		Color(0.7f, 1.0f, 0.0f, 1.0f),
-		Color(0.3f, 1.0f, 0.0f, 1.0f),
-		Color(0.3f, 1.0f, 0.0f, 1.0f),
-		Vector3(-15, 20, -30), 25.0f,
-		Vector3(0, -1, 0), 30.0f, 0.4f
-	};
-	Lighting::Get()->AddSpotLight(light);
-
-	light =
-	{
-		Color(1.0f, 0.2f, 0.9f, 1.0f),
-		Color(1.0f, 0.2f, 0.9f, 1.0f),
-		Color(1.0f, 0.2f, 0.9f, 1.0f),
-		Color(1.0f, 0.2f, 0.9f, 1.0f),
-		Vector3(0, 20, -30), 30.0f,
-		Vector3(0, -1, 0), 40.0f, 0.55f
-	};
-	Lighting::Get()->AddSpotLight(light);
-}
 
 void WeatherDemo::Pass(UINT mesh, UINT model, UINT anim)
 {

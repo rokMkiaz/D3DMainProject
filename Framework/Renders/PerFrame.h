@@ -20,9 +20,8 @@ private:
 		Plane Culling[4];
 		Plane Clipping;
 
-		float TessellationFactor;
 		float Time;
-		float Padding[2];
+		float Padding[3];
 	} desc;
 
 	struct LightDesc
@@ -67,5 +66,4 @@ private:
 	ConstantBuffer* spotLightBuffer;
 	ID3DX11EffectConstantBuffer* sSpotLightBuffer;
 
-	float SubDivisionLevel = 1.0f;//Å×¼¿·¹ÀÌ¼Ç
 };

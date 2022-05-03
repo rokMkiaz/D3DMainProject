@@ -5,14 +5,14 @@ class D3DEnumAdapterInfo;
 
 struct D3DDesc
 {
-	wstring AppName;
-	HINSTANCE Instance;
-	HWND Handle;
-	float Width;
-	float Height;
+	wstring appName;
+	HINSTANCE instance;
+	HWND handle;
+	float width;
+	float height;
 	bool bVsync;
 	bool bFullScreen;
-	D3DXCOLOR Background;
+	D3DXCOLOR backGround;
 };
 
 class D3D
@@ -40,12 +40,12 @@ public:
 
 	static float Width()
 	{
-		return d3dDesc.Width;
+		return d3dDesc.width;
 	}
 
 	static float Height()
 	{
-		return d3dDesc.Height;
+		return d3dDesc.height;
 	}
 
 	static const D3DDesc& GetDesc()
@@ -55,7 +55,7 @@ public:
 
 	static const HWND& GetHandle()
 	{
-		return d3dDesc.Handle;
+		return d3dDesc.handle;
 	}
 
 	static void SetDesc(D3DDesc& desc)
@@ -87,8 +87,8 @@ private:
 	void DeleteBackBuffer();
 
 private:
-	static vector<D3DEnumAdapterInfo*> apapterInfos;
-	static int selected_adapter_index;
+	static vector<D3DEnumAdapterInfo*> adapterInfos;
+	static int selectedAdapterIndex;
 	
 	static D3D* instance;
 	
@@ -111,7 +111,7 @@ private:
 	ID3D11DepthStencilView* depthStencilView;
 	ID3D11RenderTargetView* renderTargetView;
 
-	Vector2 WorldSize;
+	Vector2 worldSize;
 };
 
 class D3DEnumAdapterInfo
@@ -122,11 +122,11 @@ public:
 	D3DEnumAdapterInfo();
 	~D3DEnumAdapterInfo();
 
-	UINT AdapterOrdinal;
-	IDXGIAdapter1* Adapter;
-	DXGI_ADAPTER_DESC1 AdapterDesc;
+	UINT adapterOrdinal;
+	IDXGIAdapter1* adapter;
+	DXGI_ADAPTER_DESC1 adapterDesc;
 
-	D3DEnumOutputInfo* OutputInfo;
+	D3DEnumOutputInfo* outputInfo;
 };
 
 class D3DEnumOutputInfo
@@ -136,9 +136,9 @@ class D3DEnumOutputInfo
 public:
 	D3DEnumOutputInfo();
 	~D3DEnumOutputInfo();
-	IDXGIOutput* Output;
-	DXGI_OUTPUT_DESC OutputDesc;
+	IDXGIOutput* output;
+	DXGI_OUTPUT_DESC outputDesc;
 
-	UINT Numerator;
-	UINT Denominator;
+	UINT numerator;
+	UINT denominator;
 };

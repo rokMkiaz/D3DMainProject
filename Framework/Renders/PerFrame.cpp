@@ -46,8 +46,6 @@ void PerFrame::Render()
 
 	desc.Projection = Context::Get()->Projection();
 	desc.VP = desc.View * desc.Projection;
-	//TODO::
-	desc.TessellationFactor = SubDivisionLevel;
 
 	buffer->Render();
 	sBuffer->SetConstantBuffer(buffer->Buffer());

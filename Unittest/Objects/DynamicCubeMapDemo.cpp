@@ -115,14 +115,14 @@ void DynamicCubeMapDemo::Update()
 
 	airplane->Update();
 	kachujin->Update();
-
+	
 	Matrix worlds[MAX_MODEL_TRANSFORMS];
 	for (UINT i = 0; i < kachujin->GetTransformCount(); i++)
 	{
 		kachujin->GetAttachTransform(i, worlds);
 		weapon->GetTransform(i)->World(weaponInitTransform->World() * worlds[40]);
 	}
-
+	
 	weapon->UpdateTransforms();
 	weapon->Update();
 
@@ -133,7 +133,7 @@ void DynamicCubeMapDemo::PreRender()
 {
 	//Dynamic CubeMap
 	{
-		Vector3 p, s;
+		Vector3 p , s ;
 		sphere2->GetTransform(0)->Position(&p);
 		sphere2->GetTransform(0)->Scale(&s);
 
@@ -159,8 +159,8 @@ void DynamicCubeMapDemo::PreRender()
 
 		airplane->Render();
 
-		kachujin->Render();
-		weapon->Render();
+		//kachujin->Render();
+		//weapon->Render();
 	}
 }
 
@@ -190,10 +190,10 @@ void DynamicCubeMapDemo::Render()
 
 	airplane->Render();
 
-	kachujin->Render();
-	weapon->Render();
+	//kachujin->Render();
+	//weapon->Render();
 
-	billboard->Render();
+	//billboard->Render();
 }
 
 void DynamicCubeMapDemo::PostRender()
@@ -307,8 +307,8 @@ void DynamicCubeMapDemo::Mesh()
 
 		sphere2 = new MeshRender(shader, new MeshSphere(0.5f, 20, 20));
 		transform = sphere2->AddTransform();
-		transform->Position(10, 10, 0);
-		transform->Scale(5, 5, 5);
+		transform->Position(0, 30, 0);
+		transform->Scale(30, 30, 30);
 	}
 
 	sphere->UpdateTransforms();

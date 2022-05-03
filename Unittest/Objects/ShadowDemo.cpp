@@ -80,8 +80,8 @@ void ShadowDemo::PreRender()
 
 	airplane->Render();
 
-	kachujin->Render();
-	weapon->Render();
+	//kachujin->Render();
+	//weapon->Render();
 }
 
 void ShadowDemo::Render()
@@ -105,8 +105,8 @@ void ShadowDemo::Render()
 	
 	airplane->Render();
 	
-	kachujin->Render();
-	weapon->Render();
+	//kachujin->Render();
+	//weapon->Render();
 }
 
 void ShadowDemo::PostRender()

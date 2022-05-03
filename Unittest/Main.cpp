@@ -61,7 +61,7 @@ void Main::Initialize()
 	//Push(new BloomDemo);
 	//Push(new GaussianBlurDemo2);
 	//Push(new GaussianBlurDemo);
-	//Push(new BlurDemo);
+	Push(new BlurDemo);
 	//Push(new MrtDemo);
 	//Push(new ColorToneDemo);
 	//Push(new WeatherDemo);
@@ -99,7 +99,7 @@ void Main::Initialize()
 	//Push(new TextureLoadDemo);
 	//Push(new CubeDemo);
 	//Push(new RectDemo());
-	Push(new GetHeightMeshDemo());
+	//Push(new GetHeightMeshDemo());
 }
 
 void Main::Ready()
@@ -158,14 +158,14 @@ void Main::Push(IExecute * execute)
 int WINAPI WinMain(HINSTANCE instance, HINSTANCE prevInstance, LPSTR param, int command)
 {
 	D3DDesc desc;
-	desc.AppName = L"D3D Game";
-	desc.Instance = instance;
+	desc.appName = L"D3D Game";
+	desc.instance = instance;
 	desc.bFullScreen = false;
 	desc.bVsync = false;
-	desc.Handle = NULL;
-	desc.Width = 1280;
-	desc.Height = 720;
-	desc.Background = Color(0.3f, 0.3f, 0.3f, 1.0f);
+	desc.handle = NULL;
+	desc.width = 1280;
+	desc.height = 720;
+	desc.backGround = Color(0.3f, 0.3f, 0.3f, 1.0f);
 	D3D::SetDesc(desc);
 
 	Main* main = new Main();

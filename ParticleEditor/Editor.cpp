@@ -256,7 +256,7 @@ void Editor::OnGUI_Write()
 		(
 			file, L"Particle file\0*.xml", L"../../_Textures/Particles",
 			bind(&Editor::WriteFile, this, placeholders::_1),
-			desc.Handle
+			desc.handle
 		);
 	}
 }

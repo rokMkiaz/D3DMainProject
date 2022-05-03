@@ -60,6 +60,7 @@ private:
 		UINT OMSampleMask;
 		ID3D11DepthStencilState* OMDepthStencilState;
 		UINT OMStencilRef;
+
 	};
 	StateBlock* initialStateBlock;
 

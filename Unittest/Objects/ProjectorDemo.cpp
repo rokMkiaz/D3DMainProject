@@ -43,17 +43,17 @@ void ProjectorDemo::Update()
 
 
 	airplane->Update();
-	kachujin->Update();
-
-	Matrix worlds[MAX_MODEL_TRANSFORMS];
-	for (UINT i = 0; i < kachujin->GetTransformCount(); i++)
-	{
-		kachujin->GetAttachTransform(i, worlds);
-		weapon->GetTransform(i)->World(weaponInitTransform->World() * worlds[40]);
-	}
-
-	weapon->UpdateTransforms();
-	weapon->Update();
+	//kachujin->Update();
+	//
+	//Matrix worlds[MAX_MODEL_TRANSFORMS];
+	//for (UINT i = 0; i < kachujin->GetTransformCount(); i++)
+	//{
+	//	kachujin->GetAttachTransform(i, worlds);
+	//	weapon->GetTransform(i)->World(weaponInitTransform->World() * worlds[40]);
+	//}
+	//
+	//weapon->UpdateTransforms();
+	//weapon->Update();
 
 
 }
@@ -87,8 +87,8 @@ void ProjectorDemo::Render()
 
 	airplane->Render();
 
-	kachujin->Render();
-	weapon->Render();
+	//kachujin->Render();
+	//weapon->Render();
 
 	
 }
@@ -201,90 +201,90 @@ void ProjectorDemo::Airplane()
 
 void ProjectorDemo::Kachujin()
 {
-	kachujin = new ModelAnimator(shader);
-	kachujin->ReadMesh(L"Kachujin/Mesh");
-	kachujin->ReadMaterial(L"Kachujin/Mesh");
-	kachujin->ReadClip(L"Kachujin/Sword And Shield Idle");
-	kachujin->ReadClip(L"Kachujin/Sword And Shield Walk");
-	kachujin->ReadClip(L"Kachujin/Sword And Shield Run");
-	kachujin->ReadClip(L"Kachujin/Sword And Shield Slash");
-	kachujin->ReadClip(L"Kachujin/Salsa Dancing");
-
-
-	Transform* transform = NULL;
-
-	transform = kachujin->AddTransform();
-	transform->Position(0, 0, -30);
-	transform->Scale(0.075f, 0.075f, 0.075f);
-	kachujin->PlayTweenMode(0, 0, 1.0f);
-
-	transform = kachujin->AddTransform();
-	transform->Position(-15, 0, -30);
-	transform->Scale(0.075f, 0.075f, 0.075f);
-	kachujin->PlayTweenMode(1, 1, 1.0f);
-
-	transform = kachujin->AddTransform();
-	transform->Position(-30, 0, -30);
-	transform->Scale(0.075f, 0.075f, 0.075f);
-	kachujin->PlayTweenMode(2, 2, 0.75f);
-
-	transform = kachujin->AddTransform();
-	transform->Position(15, 0, -30);
-	transform->Scale(0.075f, 0.075f, 0.075f);
-	kachujin->PlayBlendMode(3, 0, 1, 2);
-	kachujin->SetBlendAlpha(3, 1.5f);
-
-	transform = kachujin->AddTransform();
-	transform->Position(30, 0, -32.5f);
-	transform->Scale(0.075f, 0.075f, 0.075f);
-	kachujin->PlayTweenMode(4, 4, 0.75f);
-
-	kachujin->UpdateTransforms();
-
-	animators.push_back(kachujin);
+	//kachujin = new ModelAnimator(shader);
+	//kachujin->ReadMesh(L"Kachujin/Mesh");
+	//kachujin->ReadMaterial(L"Kachujin/Mesh");
+	//kachujin->ReadClip(L"Kachujin/Sword And Shield Idle");
+	//kachujin->ReadClip(L"Kachujin/Sword And Shield Walk");
+	//kachujin->ReadClip(L"Kachujin/Sword And Shield Run");
+	//kachujin->ReadClip(L"Kachujin/Sword And Shield Slash");
+	//kachujin->ReadClip(L"Kachujin/Salsa Dancing");
+	//
+	//
+	//Transform* transform = NULL;
+	//
+	//transform = kachujin->AddTransform();
+	//transform->Position(0, 0, -30);
+	//transform->Scale(0.075f, 0.075f, 0.075f);
+	//kachujin->PlayTweenMode(0, 0, 1.0f);
+	//
+	//transform = kachujin->AddTransform();
+	//transform->Position(-15, 0, -30);
+	//transform->Scale(0.075f, 0.075f, 0.075f);
+	//kachujin->PlayTweenMode(1, 1, 1.0f);
+	//
+	//transform = kachujin->AddTransform();
+	//transform->Position(-30, 0, -30);
+	//transform->Scale(0.075f, 0.075f, 0.075f);
+	//kachujin->PlayTweenMode(2, 2, 0.75f);
+	//
+	//transform = kachujin->AddTransform();
+	//transform->Position(15, 0, -30);
+	//transform->Scale(0.075f, 0.075f, 0.075f);
+	//kachujin->PlayBlendMode(3, 0, 1, 2);
+	//kachujin->SetBlendAlpha(3, 1.5f);
+	//
+	//transform = kachujin->AddTransform();
+	//transform->Position(30, 0, -32.5f);
+	//transform->Scale(0.075f, 0.075f, 0.075f);
+	//kachujin->PlayTweenMode(4, 4, 0.75f);
+	//
+	//kachujin->UpdateTransforms();
+	//
+	//animators.push_back(kachujin);
 }
 
 void ProjectorDemo::KachujinCollider()
 {
-	UINT count = kachujin->GetTransformCount();
-	colliders = new  ColliderObject * [count];
-
-	colliderInitTransforms = new Transform();
-	colliderInitTransforms->Position(-2.9f, 1.45f, -50.0f);
-	colliderInitTransforms->Scale(5, 5, 75);
-
-	for (UINT i = 0; i < count; i++)
-	{
-		colliders[i] = new ColliderObject();
-
-		//colliders[i]->Init = new Transform();
-		//colliders[i]->Init->Position(0, 0, 0);
-		//colliders[i]->Init->Scale(10, 30, 10);
-
-		colliders[i]->Transform = new Transform();
-		//colliders[i]->Collider = new Collider(colliders[i]->Transform, colliders[i]->Init);
-		colliders[i]->Collider = new Collider(colliders[i]->Transform, colliderInitTransforms);
-	}
+	//UINT count = kachujin->GetTransformCount();
+	//colliders = new  ColliderObject * [count];
+	//
+	//colliderInitTransforms = new Transform();
+	//colliderInitTransforms->Position(-2.9f, 1.45f, -50.0f);
+	//colliderInitTransforms->Scale(5, 5, 75);
+	//
+	//for (UINT i = 0; i < count; i++)
+	//{
+	//	colliders[i] = new ColliderObject();
+	//
+	//	//colliders[i]->Init = new Transform();
+	//	//colliders[i]->Init->Position(0, 0, 0);
+	//	//colliders[i]->Init->Scale(10, 30, 10);
+	//
+	//	colliders[i]->Transform = new Transform();
+	//	//colliders[i]->Collider = new Collider(colliders[i]->Transform, colliders[i]->Init);
+	//	colliders[i]->Collider = new Collider(colliders[i]->Transform, colliderInitTransforms);
+	//}
 }
 
 void ProjectorDemo::KachujinWeapon()
 {
-	weapon = new ModelRender(shader);
-	weapon->ReadMesh(L"Weapon/Sword");
-	weapon->ReadMaterial(L"Weapon/Sword");
-
-	UINT count = kachujin->GetTransformCount();
-	for (UINT i = 0; i < count; i++)
-		weapon->AddTransform();
-
-	weapon->UpdateTransforms();
-	models.push_back(weapon);
-
-
-	weaponInitTransform = new Transform();
-	weaponInitTransform->Position(-2.9f, 1.45f, -6.45f);
-	weaponInitTransform->Scale(0.5f, 0.5f, 0.75f);
-	weaponInitTransform->Rotation(0, 0, 1);
+	//weapon = new ModelRender(shader);
+	//weapon->ReadMesh(L"Weapon/Sword");
+	//weapon->ReadMaterial(L"Weapon/Sword");
+	//
+	//UINT count = kachujin->GetTransformCount();
+	//for (UINT i = 0; i < count; i++)
+	//	weapon->AddTransform();
+	//
+	//weapon->UpdateTransforms();
+	//models.push_back(weapon);
+	//
+	//
+	//weaponInitTransform = new Transform();
+	//weaponInitTransform->Position(-2.9f, 1.45f, -6.45f);
+	//weaponInitTransform->Scale(0.5f, 0.5f, 0.75f);
+	//weaponInitTransform->Rotation(0, 0, 1);
 }
 
 void ProjectorDemo::PointLighting()

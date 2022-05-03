@@ -1,8 +1,8 @@
 #include "Framework.h"
 #include "D3D.h"
 
-vector<D3DEnumAdapterInfo*> D3D::apapterInfos;
-int D3D::selected_adapter_index = -1;
+vector<D3DEnumAdapterInfo*> D3D::adapterInfos;
+int D3D::selectedAdapterIndex = -1;
 
 D3D* D3D::instance = nullptr;
 
@@ -63,8 +63,8 @@ void D3D::ResizeScreen(float width, float height)
 	if (width < 1 || height < 1)
 		return;
 	
-	d3dDesc.Width = width;
-	d3dDesc.Height = height;
+	d3dDesc.width = width;
+	d3dDesc.height = height;
 	
 	DeleteBackBuffer();
 	{
@@ -80,7 +80,7 @@ D3D::D3D()
 	SetGpuInfo();
 
 	CreateSwapChainAndDevice();
-	CreateBackBuffer(d3dDesc.Width, d3dDesc.Height);
+	CreateBackBuffer(d3dDesc.width, d3dDesc.height);
 }
 
 D3D::~D3D()
@@ -116,13 +116,13 @@ void D3D::EnumerateAdapters()
 
 		D3DEnumAdapterInfo* adapter_info = new D3DEnumAdapterInfo();
 		ZeroMemory(adapter_info, sizeof(D3DEnumAdapterInfo));
-		adapter_info->AdapterOrdinal = index;
-		adapter->GetDesc1(&adapter_info->AdapterDesc);
-		adapter_info->Adapter = adapter;
+		adapter_info->adapterOrdinal = index;
+		adapter->GetDesc1(&adapter_info->adapterDesc);
+		adapter_info->adapter = adapter;
 
 		EnumerateAdapterOutput(adapter_info);
 
-		apapterInfos.push_back(adapter_info);
+		adapterInfos.push_back(adapter_info);
 
 		++index;
 	}
@@ -135,17 +135,17 @@ bool D3D::EnumerateAdapterOutput(D3DEnumAdapterInfo* adapter_info)
 	HRESULT hr;
 	IDXGIOutput* output = NULL;
 
-	hr = adapter_info->Adapter->EnumOutputs(0, &output);
+	hr = adapter_info->adapter->EnumOutputs(0, &output);
 	if (DXGI_ERROR_NOT_FOUND == hr)
 		return false;
 
 	D3DEnumOutputInfo* output_info = new D3DEnumOutputInfo();
 	ZeroMemory(output_info, sizeof(D3DEnumOutputInfo));
 
-	hr = output->GetDesc(&output_info->OutputDesc);
+	hr = output->GetDesc(&output_info->outputDesc);
 	Check(hr);
 
-	output_info->Output = output;
+	output_info->output = output;
 
 	UINT num_modes = 0;
 	DXGI_MODE_DESC* display_modes = nullptr;
@@ -162,17 +162,17 @@ bool D3D::EnumerateAdapterOutput(D3DEnumAdapterInfo* adapter_info)
 	for (UINT i = 0; i < num_modes; i++)
 	{
 		bool isCheck = true;
-		isCheck &= display_modes[i].Width == d3dDesc.Width;
-		isCheck &= display_modes[i].Height == d3dDesc.Height;
+		isCheck &= display_modes[i].Width == d3dDesc.width;
+		isCheck &= display_modes[i].Height == d3dDesc.height;
 
 		if (isCheck == true)
 		{
-			output_info->Numerator = display_modes[i].RefreshRate.Numerator;
-			output_info->Denominator = display_modes[i].RefreshRate.Denominator;
+			output_info->numerator = display_modes[i].RefreshRate.Numerator;
+			output_info->denominator = display_modes[i].RefreshRate.Denominator;
 		}
 	}
 
-	adapter_info->OutputInfo = output_info;
+	adapter_info->outputInfo = output_info;
 
 	SafeDeleteArray(display_modes);
 
@@ -200,8 +200,8 @@ void D3D::CreateSwapChainAndDevice()
 
 	if (d3dDesc.bVsync == true)
 	{
-		swapChainDesc.BufferDesc.RefreshRate.Numerator = apapterInfos[0]->OutputInfo->Numerator;
-		swapChainDesc.BufferDesc.RefreshRate.Denominator = apapterInfos[0]->OutputInfo->Denominator;
+		swapChainDesc.BufferDesc.RefreshRate.Numerator = adapterInfos[0]->outputInfo->numerator;
+		swapChainDesc.BufferDesc.RefreshRate.Denominator = adapterInfos[0]->outputInfo->denominator;
 	}
 	else
 	{
@@ -210,7 +210,7 @@ void D3D::CreateSwapChainAndDevice()
 	}
 
 	swapChainDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
-	swapChainDesc.OutputWindow = d3dDesc.Handle;
+	swapChainDesc.OutputWindow = d3dDesc.handle;
 	swapChainDesc.SampleDesc.Count = 1;
 	swapChainDesc.SampleDesc.Quality = 0;
 	swapChainDesc.Windowed = !d3dDesc.bFullScreen;
@@ -229,24 +229,24 @@ void D3D::CreateSwapChainAndDevice()
 	};
 
 	UINT maxVideoMemory = 0;  //그래픽카드 메모리 비교
-	for (UINT i = 0; i < apapterInfos.size(); ++i)
+	for (UINT i = 0; i < adapterInfos.size(); ++i)
 	{
-		if (apapterInfos[i]->AdapterDesc.DedicatedVideoMemory > maxVideoMemory)
+		if (adapterInfos[i]->adapterDesc.DedicatedVideoMemory > maxVideoMemory)
 		{
-			selected_adapter_index = i;
-			maxVideoMemory = apapterInfos[i]->AdapterDesc.DedicatedVideoMemory;
+			selectedAdapterIndex = i;
+			maxVideoMemory = adapterInfos[i]->adapterDesc.DedicatedVideoMemory;
 		}
 	}
 
-	numerator = apapterInfos[0]->OutputInfo->Numerator;
-	denominator = apapterInfos[0]->OutputInfo->Denominator;
+	numerator = adapterInfos[0]->outputInfo->numerator;
+	denominator = adapterInfos[0]->outputInfo->denominator;
 
-	gpuMemorySize = apapterInfos[selected_adapter_index]->AdapterDesc.DedicatedVideoMemory / 1024 / 1024;
-	gpuDescription = apapterInfos[selected_adapter_index]->AdapterDesc.Description;
+	gpuMemorySize = adapterInfos[selectedAdapterIndex]->adapterDesc.DedicatedVideoMemory / 1024 / 1024;
+	gpuDescription = adapterInfos[selectedAdapterIndex]->adapterDesc.Description;
 
 	HRESULT hr = D3D11CreateDeviceAndSwapChain
 	(
-		apapterInfos[selected_adapter_index]->Adapter
+		adapterInfos[selectedAdapterIndex]->adapter
 		, D3D_DRIVER_TYPE_UNKNOWN
 		, NULL
 		, creationFlags
@@ -320,22 +320,22 @@ void D3D::DeleteBackBuffer()
 }
 
 D3DEnumAdapterInfo::D3DEnumAdapterInfo()
-	: Adapter(nullptr), OutputInfo(nullptr)
+	: adapter(nullptr), outputInfo(nullptr)
 {
 }
 
 D3DEnumAdapterInfo::~D3DEnumAdapterInfo()
 {
-	SafeRelease(Adapter);
-	SafeDelete(OutputInfo);
+	SafeRelease(adapter);
+	SafeDelete(outputInfo);
 }
 
 D3DEnumOutputInfo::D3DEnumOutputInfo()
-	: Output(nullptr), Numerator(0), Denominator(1)
+	: output(nullptr), numerator(0), denominator(1)
 {
 }
 
 D3DEnumOutputInfo::~D3DEnumOutputInfo()
 {
-	SafeRelease(Output);
+	SafeRelease(output);
 }

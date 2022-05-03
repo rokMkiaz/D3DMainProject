@@ -2,66 +2,186 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="Framework.cpp" />
-    <ClCompile Include="Renders\Context.cpp" />
-    <ClCompile Include="Renders\Shader.cpp" />
-    <ClCompile Include="Renders\Texture.cpp" />
-    <ClCompile Include="Systems\D3D.cpp" />
-    <ClCompile Include="Systems\Gui.cpp" />
-    <ClCompile Include="Systems\Keyboard.cpp" />
-    <ClCompile Include="Systems\Mouse.cpp" />
-    <ClCompile Include="Systems\Time.cpp" />
-    <ClCompile Include="Systems\Window.cpp" />
-    <ClCompile Include="Utilities\BinaryFile.cpp" />
-    <ClCompile Include="Utilities\Math.cpp" />
-    <ClCompile Include="Utilities\Path.cpp" />
-    <ClCompile Include="Utilities\String.cpp" />
-    <ClCompile Include="Utilities\Xml.cpp" />
-    <ClCompile Include="Viewer\Orthographic.cpp" />
-    <ClCompile Include="Viewer\Perspective.cpp" />
-    <ClCompile Include="Viewer\Projection.cpp" />
-    <ClCompile Include="Viewer\Viewport.cpp" />
-    <ClCompile Include="Viewer\Camera.cpp" />
-    <ClCompile Include="Viewer\Freedom.cpp" />
-    <ClCompile Include="Environment\Terrain.cpp" />
-    <ClCompile Include="Renders\DebugLine.cpp" />
-    <ClCompile Include="Meshes\Mesh.cpp" />
-    <ClCompile Include="Meshes\MeshQuad.cpp" />
-    <ClCompile Include="Meshes\MeshCylinder.cpp" />
-    <ClCompile Include="Meshes\MeshGrid.cpp" />
-    <ClCompile Include="Meshes\MeshSphere.cpp" />
-    <ClCompile Include="Meshes\MeshCube.cpp" />
-    <ClCompile Include="Environment\CubeSky.cpp" />
-    <ClCompile Include="Renders\Transform.cpp" />
-    <ClCompile Include="Renders\PerFrame.cpp" />
-    <ClCompile Include="Model\Model.cpp" />
-    <ClCompile Include="Model\ModelMesh.cpp" />
-    <ClCompile Include="Model\ModelRender.cpp" />
-    <ClCompile Include="Renders\Material.cpp" />
-    <ClCompile Include="Model\ModelClip.cpp" />
-    <ClCompile Include="Model\ModelAnimator.cpp" />
-    <ClCompile Include="Meshes\MeshRender.cpp" />
-    <ClCompile Include="Renders\Render2D.cpp" />
-    <ClCompile Include="Objects\Collider.cpp" />
-    <ClCompile Include="Renders\Lighting.cpp" />
-    <ClCompile Include="Objects\Billboard.cpp" />
-    <ClCompile Include="Environment\Rain.cpp" />
-    <ClCompile Include="Environment\Snow.cpp" />
-    <ClCompile Include="Particle\Particlesystem.cpp" />
-    <ClCompile Include="Viewer\RenderTarget.cpp" />
-    <ClCompile Include="Viewer\DepthStencil.cpp" />
-    <ClCompile Include="Objects\PostEffect.cpp" />
-    <ClCompile Include="Objects\DynamicCubeMap.cpp" />
-    <ClCompile Include="Viewer\Fixity.cpp" />
-    <ClCompile Include="Objects\Projector.cpp" />
-    <ClCompile Include="Objects\Shadow.cpp" />
-    <ClCompile Include="Renders\Renderer.cpp" />
-    <ClCompile Include="Renders\Buffers\ConstantBuffer.cpp" />
-    <ClCompile Include="Renders\Buffers\IndexBuffer.cpp" />
-    <ClCompile Include="Renders\Buffers\RawBuffer.cpp" />
-    <ClCompile Include="Renders\Buffers\StructuredBuffer.cpp" />
-    <ClCompile Include="Renders\Buffers\TextureBuffer.cpp" />
-    <ClCompile Include="Renders\Buffers\VertexBuffer.cpp" />
-    <ClCompile Include="Meshes\MeshTerrain.cpp" />
+    <ClCompile Include="Objects\Billboard.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\BinaryFile.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Viewer\Camera.cpp">
+      <Filter>Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\Collider.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Renders\Buffers\ConstantBuffer.cpp">
+      <Filter>Renders\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Renders\Context.cpp">
+      <Filter>Renders</Filter>
+    </ClCompile>
+    <ClCompile Include="Environment\CubeSky.cpp">
+      <Filter>Environment</Filter>
+    </ClCompile>
+    <ClCompile Include="Systems\D3D.cpp">
+      <Filter>Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Renders\DebugLine.cpp">
+      <Filter>Renders</Filter>
+    </ClCompile>
+    <ClCompile Include="Viewer\DepthStencil.cpp">
+      <Filter>Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\DynamicCubeMap.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Viewer\Fixity.cpp">
+      <Filter>Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="Viewer\Freedom.cpp">
+      <Filter>Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="Systems\Gui.cpp">
+      <Filter>Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Renders\Buffers\IndexBuffer.cpp">
+      <Filter>Renders\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Systems\Keyboard.cpp">
+      <Filter>Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Renders\Lighting.cpp">
+      <Filter>Renders</Filter>
+    </ClCompile>
+    <ClCompile Include="Renders\Material.cpp">
+      <Filter>Renders</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\Math.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Meshes\Mesh.cpp">
+      <Filter>Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="Meshes\MeshCube.cpp">
+      <Filter>Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="Meshes\MeshCylinder.cpp">
+      <Filter>Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="Meshes\MeshGrid.cpp">
+      <Filter>Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="Meshes\MeshQuad.cpp">
+      <Filter>Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="Meshes\MeshRender.cpp">
+      <Filter>Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="Meshes\MeshSphere.cpp">
+      <Filter>Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="Meshes\MeshTerrain.cpp">
+      <Filter>Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\Model.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\ModelAnimator.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\ModelClip.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\ModelMesh.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\ModelRender.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Systems\Mouse.cpp">
+      <Filter>Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Viewer\Orthographic.cpp">
+      <Filter>Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="Particle\Particlesystem.cpp">
+      <Filter>Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="Renders\PerFrame.cpp">
+      <Filter>Renders</Filter>
+    </ClCompile>
+    <ClCompile Include="Viewer\Perspective.cpp">
+      <Filter>Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\PostEffect.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\Projector.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Viewer\Projection.cpp">
+      <Filter>Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="Renders\Buffers\RawBuffer.cpp">
+      <Filter>Renders\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Environment\Rain.cpp">
+      <Filter>Environment</Filter>
+    </ClCompile>
+    <ClCompile Include="Environment\Snow.cpp">
+      <Filter>Environment</Filter>
+    </ClCompile>
+    <ClCompile Include="Renders\Render2D.cpp">
+      <Filter>Renders</Filter>
+    </ClCompile>
+    <ClCompile Include="Renders\Renderer.cpp">
+      <Filter>Renders</Filter>
+    </ClCompile>
+    <ClCompile Include="Viewer\RenderTarget.cpp">
+      <Filter>Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="Renders\Shader.cpp">
+      <Filter>Renders</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\Shadow.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\String.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Renders\Buffers\StructuredBuffer.cpp">
+      <Filter>Renders\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Environment\Terrain.cpp">
+      <Filter>Environment</Filter>
+    </ClCompile>
+    <ClCompile Include="Renders\Buffers\TextureBuffer.cpp">
+      <Filter>Renders\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Renders\Texture.cpp">
+      <Filter>Renders</Filter>
+    </ClCompile>
+    <ClCompile Include="Systems\Time.cpp">
+      <Filter>Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Renders\Transform.cpp">
+      <Filter>Renders</Filter>
+    </ClCompile>
+    <ClCompile Include="Renders\Buffers\VertexBuffer.cpp">
+      <Filter>Renders\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Systems\Window.cpp">
+      <Filter>Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\Xml.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\Path.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Viewer\Viewport.cpp">
+      <Filter>Viewer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Renders">
@@ -76,73 +196,221 @@
     <Filter Include="Viewer">
       <UniqueIdentifier>{88f1dcd0-f932-40cb-98bc-1cbd69d0a6ec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Meshes">
+      <UniqueIdentifier>{c005774a-da53-4dbf-b766-59ab1abede70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Model">
+      <UniqueIdentifier>{d83356a2-0936-40db-b47b-c036dc7c88d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects">
+      <UniqueIdentifier>{8391cdef-b4aa-4c19-b697-5e75ab2482f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Environment">
+      <UniqueIdentifier>{5f288b3e-0d0e-4890-a3bd-140bd6a58826}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renders\Buffers">
+      <UniqueIdentifier>{008e9729-32b7-4d5f-8c8e-dd6eab0d282f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Particle">
+      <UniqueIdentifier>{d8d53574-1645-4232-97f5-1839eb515e8a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework.h" />
-    <ClInclude Include="Renders\Context.h" />
-    <ClInclude Include="Renders\Shader.h" />
-    <ClInclude Include="Renders\Texture.h" />
-    <ClInclude Include="Renders\VertexLayouts.h" />
-    <ClInclude Include="Systems\D3D.h" />
-    <ClInclude Include="Systems\Gui.h" />
-    <ClInclude Include="Systems\IExecute.h" />
-    <ClInclude Include="Systems\Keyboard.h" />
-    <ClInclude Include="Systems\Mouse.h" />
-    <ClInclude Include="Systems\Time.h" />
-    <ClInclude Include="Systems\Window.h" />
-    <ClInclude Include="Utilities\BinaryFile.h" />
-    <ClInclude Include="Utilities\Math.h" />
-    <ClInclude Include="Utilities\Path.h" />
-    <ClInclude Include="Utilities\String.h" />
-    <ClInclude Include="Utilities\Xml.h" />
-    <ClInclude Include="Viewer\Orthographic.h" />
-    <ClInclude Include="Viewer\Perspective.h" />
-    <ClInclude Include="Viewer\Projection.h" />
-    <ClInclude Include="Viewer\Viewport.h" />
-    <ClInclude Include="Viewer\Camera.h" />
-    <ClInclude Include="Viewer\Freedom.h" />
-    <ClInclude Include="Environment\Terrain.h" />
-    <ClInclude Include="Renders\DebugLine.h" />
-    <ClInclude Include="Meshes\Mesh.h" />
-    <ClInclude Include="Meshes\MeshQuad.h" />
-    <ClInclude Include="Meshes\MeshCylinder.h" />
-    <ClInclude Include="Meshes\MeshGrid.h" />
-    <ClInclude Include="Meshes\MeshSphere.h" />
-    <ClInclude Include="Meshes\MeshCube.h" />
-    <ClInclude Include="Environment\CubeSky.h" />
-    <ClInclude Include="Renders\Transform.h" />
-    <ClInclude Include="Renders\PerFrame.h" />
-    <ClInclude Include="Model\Model.h" />
-    <ClInclude Include="Model\ModelMesh.h" />
-    <ClInclude Include="Model\ModelRender.h" />
-    <ClInclude Include="Renders\Material.h" />
-    <ClInclude Include="Model\ModelClip.h" />
-    <ClInclude Include="Model\ModelAnimator.h" />
-    <ClInclude Include="Meshes\MeshRender.h" />
-    <ClInclude Include="Renders\Render2D.h" />
-    <ClInclude Include="Objects\Collider.h" />
-    <ClInclude Include="Renders\Lighting.h" />
-    <ClInclude Include="Objects\Billboard.h" />
-    <ClInclude Include="Environment\Rain.h" />
-    <ClInclude Include="Environment\Snow.h" />
-    <ClInclude Include="Particle\ParticleData.h" />
-    <ClInclude Include="Particle\ParticleSystem.h" />
-    <ClInclude Include="Viewer\RenderTarget.h" />
-    <ClInclude Include="Viewer\DepthStencil.h" />
-    <ClInclude Include="Objects\PostEffect.h" />
-    <ClInclude Include="Objects\DynamicCubeMap.h" />
-    <ClInclude Include="Viewer\Fixity.h" />
-    <ClInclude Include="Objects\Projector.h" />
-    <ClInclude Include="Objects\Shadow.h" />
-    <ClInclude Include="Renders\Renderer.h" />
-    <ClInclude Include="Renders\iBuffers.h" />
-    <ClInclude Include="Renders\Buffers\ConstantBuffer.h" />
-    <ClInclude Include="Renders\Buffers\CsResource.h" />
-    <ClInclude Include="Renders\Buffers\IndexBuffer.h" />
-    <ClInclude Include="Renders\Buffers\RawBuffer.h" />
-    <ClInclude Include="Renders\Buffers\StructuredBuffer.h" />
-    <ClInclude Include="Renders\Buffers\TextureBuffer.h" />
-    <ClInclude Include="Renders\Buffers\VertexBuffer.h" />
-    <ClInclude Include="Meshes\MeshTerrain.h" />
+    <ClInclude Include="Objects\Billboard.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\BinaryFile.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Viewer\Camera.h">
+      <Filter>Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\Collider.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Renders\Buffers\ConstantBuffer.h">
+      <Filter>Renders\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Renders\Context.h">
+      <Filter>Renders</Filter>
+    </ClInclude>
+    <ClInclude Include="Renders\Buffers\CsResource.h">
+      <Filter>Renders\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Environment\CubeSky.h">
+      <Filter>Environment</Filter>
+    </ClInclude>
+    <ClInclude Include="Systems\D3D.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Renders\DebugLine.h">
+      <Filter>Renders</Filter>
+    </ClInclude>
+    <ClInclude Include="Viewer\DepthStencil.h">
+      <Filter>Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\DynamicCubeMap.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Viewer\Fixity.h">
+      <Filter>Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="Viewer\Freedom.h">
+      <Filter>Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="Systems\Gui.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Renders\iBuffers.h">
+      <Filter>Renders</Filter>
+    </ClInclude>
+    <ClInclude Include="Systems\IExecute.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Renders\Buffers\IndexBuffer.h">
+      <Filter>Renders\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Systems\Keyboard.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Renders\Lighting.h">
+      <Filter>Renders</Filter>
+    </ClInclude>
+    <ClInclude Include="Renders\Material.h">
+      <Filter>Renders</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\Math.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Meshes\Mesh.h">
+      <Filter>Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Meshes\MeshCube.h">
+      <Filter>Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Meshes\MeshCylinder.h">
+      <Filter>Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Meshes\MeshGrid.h">
+      <Filter>Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Meshes\MeshQuad.h">
+      <Filter>Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Meshes\MeshRender.h">
+      <Filter>Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Meshes\MeshSphere.h">
+      <Filter>Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Meshes\MeshTerrain.h">
+      <Filter>Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Model.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\ModelAnimator.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\ModelClip.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\ModelMesh.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\ModelRender.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Systems\Mouse.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Viewer\Orthographic.h">
+      <Filter>Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle\ParticleData.h">
+      <Filter>Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle\ParticleSystem.h">
+      <Filter>Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="Renders\PerFrame.h">
+      <Filter>Renders</Filter>
+    </ClInclude>
+    <ClInclude Include="Viewer\Perspective.h">
+      <Filter>Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\PostEffect.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\Projector.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Viewer\Projection.h">
+      <Filter>Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="Renders\Buffers\RawBuffer.h">
+      <Filter>Renders\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Environment\Rain.h">
+      <Filter>Environment</Filter>
+    </ClInclude>
+    <ClInclude Include="Environment\Snow.h">
+      <Filter>Environment</Filter>
+    </ClInclude>
+    <ClInclude Include="Renders\Render2D.h">
+      <Filter>Renders</Filter>
+    </ClInclude>
+    <ClInclude Include="Renders\Renderer.h">
+      <Filter>Renders</Filter>
+    </ClInclude>
+    <ClInclude Include="Viewer\RenderTarget.h">
+      <Filter>Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="Renders\Shader.h">
+      <Filter>Renders</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\Shadow.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\String.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Renders\Buffers\StructuredBuffer.h">
+      <Filter>Renders\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Environment\Terrain.h">
+      <Filter>Environment</Filter>
+    </ClInclude>
+    <ClInclude Include="Renders\Buffers\TextureBuffer.h">
+      <Filter>Renders\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Renders\Texture.h">
+      <Filter>Renders</Filter>
+    </ClInclude>
+    <ClInclude Include="Systems\Time.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Renders\Transform.h">
+      <Filter>Renders</Filter>
+    </ClInclude>
+    <ClInclude Include="Renders\Buffers\VertexBuffer.h">
+      <Filter>Renders\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Renders\VertexLayouts.h">
+      <Filter>Renders</Filter>
+    </ClInclude>
+    <ClInclude Include="Systems\Window.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\Xml.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\Path.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Viewer\Viewport.h">
+      <Filter>Viewer</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

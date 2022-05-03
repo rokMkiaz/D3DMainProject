@@ -70,11 +70,11 @@ void Main::Push(IExecute * execute)
 int WINAPI WinMain(HINSTANCE instance, HINSTANCE prevInstance, LPSTR param, int command)
 {
 	D3DDesc desc;
-	desc.AppName = L"D3D Game";
-	desc.Instance = instance;
+	desc.appName = L"D3D Game";
+	desc.instance = instance;
 	desc.bFullScreen = false;
 	desc.bVsync = false;
-	desc.Handle = NULL;
+	desc.handle = NULL;
 	desc.Width = 1280;
 	desc.Height = 720;
 	desc.Background = Color(0.3f, 0.3f, 0.3f, 1.0f);

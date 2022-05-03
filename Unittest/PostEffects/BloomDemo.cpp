@@ -3,8 +3,8 @@
 
 void BloomDemo::Initialize()
 {
-	Context::Get()->GetCamera()->RotationDegree(20, 0, 0);
-	Context::Get()->GetCamera()->Position(1, 36, -85);
+	Context::Get()->GetCamera()->RotationDegree(18, -46, 0);
+	Context::Get()->GetCamera()->Position(17, 19, -20);
 	((Freedom*)Context::Get()->GetCamera())->Speed(50, 2);
 
 
@@ -70,7 +70,7 @@ void BloomDemo::Update()
 	sphere->Update();
 
 	airplane->Update();
-	kachujin->Update();
+	//kachujin->Update();
 
 	Matrix worlds[MAX_MODEL_TRANSFORMS];
 	for (UINT i = 0; i < kachujin->GetTransformCount(); i++)
@@ -116,7 +116,7 @@ void BloomDemo::PreRender()
 
 		airplane->Render();
 
-		kachujin->Render();
+		//kachujin->Render();
 		weapon->Render();
 
 		billboard->Render();

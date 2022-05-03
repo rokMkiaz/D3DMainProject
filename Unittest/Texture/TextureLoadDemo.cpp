@@ -67,7 +67,7 @@ void TextureLoadDemo::Update()
 		function<void(wstring)> f = bind(&TextureLoadDemo::LoadTexture, this, placeholders::_1);
 
 		D3DDesc desc = D3D::GetDesc();
-		Path::OpenFileDialog(L"", Path::ImageFilter, L"../../_Textures/", f, desc.Handle);
+		Path::OpenFileDialog(L"", Path::ImageFilter, L"../../_Textures/", f, desc.handle);
 	}
 }
 

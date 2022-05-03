@@ -45,12 +45,12 @@ private:
 	ModelRender* airplane = NULL;
 
 
-	ModelAnimator* kachujin = NULL;
-	Transform* colliderInitTransforms;
-	ColliderObject** colliders;
-
-	ModelRender* weapon = NULL;
-	Transform* weaponInitTransform;
+	//ModelAnimator* kachujin = NULL;
+	//Transform* colliderInitTransforms;
+	//ColliderObject** colliders;
+	//
+	//ModelRender* weapon = NULL;
+	//Transform* weaponInitTransform;
 
 	vector<MeshRender*> meshes;
 	vector<ModelRender*> models;

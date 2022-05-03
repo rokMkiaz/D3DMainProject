@@ -14,21 +14,16 @@ public:
 	virtual void ResizeScreen() override {}
 
 private:
-	void Billboards();
 	void Mesh();
 	void Airplane();
-	void Kachujin();
-	void KachujinCollider();
-	void KachujinWeapon();
-	void PointLighting();
-	void SpotLighting();
+	
 
 	void Pass(UINT mesh, UINT model, UINT anim);
 
 private:
 	Shader* shader;
 
-	Billboard* billboard;
+
 
 	CubeSky* sky;
 
@@ -54,12 +49,6 @@ private:
 	ModelRender* airplane = NULL;
 
 
-	ModelAnimator* kachujin = NULL;
-	Transform* colliderInitTransforms;
-	ColliderObject** colliders;
-
-	ModelRender* weapon = NULL;
-	Transform* weaponInitTransform;
 
 	vector<MeshRender*> meshes;
 	vector<ModelRender*> models;
