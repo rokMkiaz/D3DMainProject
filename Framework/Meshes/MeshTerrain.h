@@ -3,7 +3,7 @@
 class MeshTerrain : public Mesh
 {
 public:
-	MeshTerrain(wstring heightFile);
+	MeshTerrain(wstring heightFile, UINT countX, UINT countZ);
 	~MeshTerrain();
 
 	float GetHeight(Vector3& position);
@@ -27,7 +27,9 @@ private:
 private:
 	Texture* heightMap;
 
-	UINT width, height;
+	UINT width = 0, height = 0;
+
+	UINT countX = 0, countZ = 0;
 
 
 
