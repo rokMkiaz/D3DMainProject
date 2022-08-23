@@ -61,13 +61,13 @@ Direct Compute : 다이렉트x라이브러리 / 그래픽카드를 코딩하기 
 ![매시](https://user-images.githubusercontent.com/93506849/166215380-2f7a3a23-e36e-4fc2-94c9-f5ce3fe126a3.JPG)
 
 - 조명\
- -Ambient : 태양, 실내에서 주 사용빛(Main Light)
- -Diffuse(Lambert) : 자기가 가지고 있는 색상(음영도 포함)
- -Specular(Phong) : 정반사광
+ -Ambient : 태양, 실내에서 주 사용빛(Main Light)\
+ -Diffuse(Lambert) : 자기가 가지고 있는 색상(음영도 포함)\
+ -Specular(Phong) : 정반사광\
  -Emissive : 외곽선의 색을 표시하는 부분 =시각과 노멀백터에 의존함(아웃라인쉐이딩에 많이 사용함).
  ![빛](https://user-images.githubusercontent.com/93506849/165054425-eabae885-1037-4491-8d05-3a397781ce7c.JPG)
 
-- Particle :날씨등 입자를 불규칙적으로 움직이게 하는걸 통틀어 표현/일반적인 엔진들은 통합처리되어있음.
+- Particle :날씨등 입자를 불규칙적으로 움직이게 하는걸 통틀어 표현/일반적인 엔진들은 통합처리되어있음.\
 ![비](https://user-images.githubusercontent.com/93506849/166085134-94b2bd2d-cc6d-4a33-b700-dac700464cee.gif)
 ![눈](https://user-images.githubusercontent.com/93506849/166085147-99ad4ae7-8987-4d45-8861-1a89ce65676a.gif)
 
