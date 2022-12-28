@@ -60,7 +60,7 @@ Direct Compute : 다이렉트x라이브러리 / 그래픽카드를 코딩하기 
 - Mesh & Texture
 ![매시](https://user-images.githubusercontent.com/93506849/166215380-2f7a3a23-e36e-4fc2-94c9-f5ce3fe126a3.JPG)
 
-- 조명\
+- 조명 효과(Meterial)\
  -Ambient : 태양, 실내에서 주 사용빛(Main Light)\
  -Diffuse(Lambert) : 자기가 가지고 있는 색상(음영도 포함)\
  -Specular(Phong) : 정반사광\
