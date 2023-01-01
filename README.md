@@ -7,7 +7,11 @@ Direct X Graphics Infrastructure(기반)\
 -Swap Chain  : 전면 버퍼와 후면 버퍼 바꿔가며 출력
 
  IA->VS->RS->PS->OM  (Direct3d graphics(Rendering)Pipeline 의 5단계)
- 
+![1](https://user-images.githubusercontent.com/93506849/210162411-6491c609-512c-4a71-83d0-2e0f0ef4a821.png)
+![2](https://user-images.githubusercontent.com/93506849/210162414-2a8d7c1c-a06a-4637-aa46-70b02858962c.png)
+![3](https://user-images.githubusercontent.com/93506849/210162416-7e7a7b7f-6c47-48ac-a5b4-623449fd0841.png)
+출처 : https://m.blog.naver.com/jyh0841/220473615493
+
  * Input Assembler(IA)\
 -Input Layout : 정점의 구성성분\
 -Vertex Buffer : 정점의 실제 정보 / 배열처럼 내용을 순서대로 받음\
